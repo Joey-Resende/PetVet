@@ -1,2 +1,2 @@
 # PetVet
-Feito para estudar Django criando uma app para uma clinica veterinária
+Feito para estudar Django criando um app para uma clinica veterinária
