@@ -8,6 +8,8 @@ authors = ["Joey-Resende <givanildo.resende@gmail.com>"]
 python = "^3.9"
 
 [tool.poetry.dev-dependencies]
+isort = "^5.10.1"
+mkdocs = "^1.2.3"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
