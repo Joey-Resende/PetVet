@@ -1,18 +1,18 @@
-from core.models import SpeciesOfPet, Procedures, Doctor
+from core.models import Pets
 from django.shortcuts import render
 from django.views import generic
 
 
 def index(request):
     """View function for home page site."""
-    num_procedures = Procedures.objects.all().count()
+    num_pets = Pets.objects.all().count()
 
     context = {
-        'num_procedures': num_procedures,
+        'num_pets': num_pets,
     }
 
     return render(request, 'index.html', context=context)
 
 
-class ProceduresListView(generic.ListView):
-    model = Procedures
+class PetsListView(generic.ListView):
+    model = Pets
