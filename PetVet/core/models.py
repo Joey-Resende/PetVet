@@ -13,8 +13,7 @@ type_sedative = (('N', 'Nao'), ('S', 'Simples'), ('C', 'Complexo'))
 
 class Pets(models.Model):
     """Model representing a classe pet."""
-    id = models.UUIDField(
-        primary_key=True, default=uuid.uuid4, help_text='Id do Pet')
+    id = models.AutoField(primary_key=True)
     pet_name = models.CharField(
         max_length=30, help_text='Digite o nome do Pet')
     species = models.CharField(
@@ -51,8 +50,8 @@ class Tutor(models.Model):
     email = models.EmailField(max_length=254, help_text='Digite seu Email')
     street = models.CharField(max_length=40, help_text='Digite a rua')
     number = models.IntegerField(help_text='Digite o numero')
-    district = models.CharField(max_length=40, help_text='Digite a rua')
-    state = models.CharField(max_length=40, help_text='Digite a rua')
+    district = models.CharField(max_length=40, help_text='Digite o Bairro')
+    state = models.CharField(max_length=40, help_text='Digite o Estado')
     cep = models.IntegerField(help_text='Digite o cep')
 
 
@@ -64,7 +63,7 @@ class MedicalCare(models.Model):
     procedure = models.CharField(
         max_length=1, choices=procedures, blank=True, help_text='Escolha o tipo do atendimento')
     sedative = models.CharField(
-        max_length=1, choices=type_sedative, blank=True, help_text='Escolha o tipo de sedativo')
+        max_length=1, choices=type_sedative, default='N', blank=True, help_text='Escolha o tipo de sedativo')
     report = models.TextField(
         max_length=1000, blank=True, help_text='Relato do problema')
 
