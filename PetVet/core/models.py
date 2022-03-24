@@ -3,11 +3,12 @@ from django.db import models
 from django.urls import reverse
 from phone_field import PhoneField
 
-castrated_status = (('N', 'Não'), ('S', 'Sim'))
-sex_status = (('M', 'Macho'), ('F', 'Fêmea'))
-procedures = (('C', 'Consulta'), ('R', 'Retorno'),
-              ('E', 'Exame'), ('C', 'Cirurgia'))
-type_sedative = (('N', 'Nao'), ('S', 'Simples'), ('C', 'Complexo'))
+castrated_status = (('Não', 'Não'), ('Sim', 'Sim'))
+sex_status = (('Macho', 'Macho'), ('Fêmea', 'Fêmea'))
+procedures = (('Consulta', 'Consulta'), ('Retorno', 'Retorno'),
+              ('Exame', 'Exame'), ('Cirurgia', 'Cirurgia'))
+type_sedative = (('Não', 'Não'), ('Simples', 'Simples'),
+                 ('Complexo', 'Complexo'))
 
 
 class MedicalCare(models.Model):
@@ -16,9 +17,9 @@ class MedicalCare(models.Model):
                             help_text='Data do atendimento')
     time = models.TimeField(help_text='Hora do atendimento')
     procedure = models.CharField(
-        max_length=1, choices=procedures, blank=True, help_text='Escolha o tipo do atendimento')
+        max_length=8, choices=procedures, blank=True, help_text='Escolha o tipo do atendimento')
     sedative = models.CharField(
-        max_length=1, choices=type_sedative, default='N', blank=True, help_text='Escolha o tipo de sedativo')
+        max_length=8, choices=type_sedative, default='N', blank=True, help_text='Escolha o tipo de sedativo')
     report = models.TextField(
         max_length=1000, blank=True, help_text='Relato do problema')
 
@@ -41,11 +42,11 @@ class Pets(models.Model):
     breed = models.CharField(
         max_length=30, help_text='Digite a raça do Pet')
     gender = models.CharField(
-        max_length=1, choices=sex_status, blank=True, help_text='Escolha o genêro do Pet')
+        max_length=5, choices=sex_status, blank=True, help_text='Escolha o genêro do Pet')
     date_of_birth = models.DateField(
         null=True, blank=True, help_text='Digite a data de nascimento do Pet')
     castrated = models.CharField(
-        max_length=1, choices=castrated_status, blank=True, default='N', help_text='Escolha se o Pet e castrado')
+        max_length=3, choices=castrated_status, blank=True, default='N', help_text='Escolha se o Pet e castrado')
     weight = models.DecimalField(
         max_digits=6, decimal_places=3, help_text='Digite o peso do Pet')
     medical_care = models.ManyToManyField(

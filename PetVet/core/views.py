@@ -18,8 +18,11 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
-class PetsListView(generic.ListView):
-    model = Pets
+class MedicalCareListView(generic.ListView):
+    model = MedicalCare
+    context_object_name = 'medical_care_list'
+    template_name = 'core/medical_care_list.html'
 
 
-#######
+class MedicalCareDetailView(generic.DetailView):
+    model = MedicalCare

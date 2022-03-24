@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %} {% block content %}
+<h1>Lista de atendimentos</h1>
+{% if medical_care_list %}
+<ul>
+  {% for service in medical_care_list %}
+  <li>
+    <a href="{{ service.get_absolute_url }}">{{ service.procedure }}</a>
+    ({{service.report}})
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Não há atendimentos na clínica.</p>
+{% endif %} {% endblock %}
