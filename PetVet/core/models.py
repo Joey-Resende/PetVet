@@ -11,25 +11,26 @@ type_sedative = (('Não', 'Não'), ('Simples', 'Simples'),
                  ('Complexo', 'Complexo'))
 
 
-class MedicalCare(models.Model):
-    """Model representing a classe Medical care."""
-    date = models.DateField(null=True, blank=True,
-                            help_text='Data do atendimento')
-    time = models.TimeField(help_text='Hora do atendimento')
-    procedure = models.CharField(
-        max_length=8, choices=procedures, blank=True, help_text='Escolha o tipo do atendimento')
-    sedative = models.CharField(
-        max_length=8, choices=type_sedative, default='N', blank=True, help_text='Escolha o tipo de sedativo')
-    report = models.TextField(
-        max_length=1000, blank=True, help_text='Relato do problema')
+class Tutor(models.Model):
+    """Model representing a classe Tutor."""
+    tutor_name = models.CharField(
+        max_length=30, help_text='Digite o nome do Tutor')
+    cpf = CPFField('cpf')
+    phone = PhoneField(blank=True, help_text='Digite seu telefone')
+    email = models.EmailField(max_length=254, help_text='Digite seu Email')
+    street = models.CharField(max_length=40, help_text='Digite a rua')
+    number = models.IntegerField(help_text='Digite o numero')
+    district = models.CharField(max_length=40, help_text='Digite o Bairro')
+    state = models.CharField(max_length=40, help_text='Digite o Estado')
+    cep = models.IntegerField(help_text='Digite o cep')
 
     def get_absolute_url(self):
         """Returns the url to access a particular pet instance."""
-        return reverse('medical_care-detail', args=[str(self.id)])
+        return reverse('tutor-detail', args=[str(self.id)])
 
     def __str__(self):
         """String for representing the Model object."""
-        return self.report
+        return self.tutor_name
 
 
 class Pets(models.Model):
@@ -49,8 +50,8 @@ class Pets(models.Model):
         max_length=3, choices=castrated_status, blank=True, default='N', help_text='Escolha se o Pet e castrado')
     weight = models.DecimalField(
         max_digits=6, decimal_places=3, help_text='Digite o peso do Pet')
-    medical_care = models.ManyToManyField(
-        MedicalCare, help_text='Escolha um atendimento')
+    tutor_name = models.ForeignKey(
+        'Tutor', on_delete=models.SET_NULL, null=True)
 
     class Meta:
         ordering = ['id']
@@ -64,35 +65,10 @@ class Pets(models.Model):
         return self.pet_name
 
 
-class Tutor(models.Model):
-    """Model representing a classe Tutor."""
-    tutor_name = models.CharField(
-        max_length=30, help_text='Digite o nome do Tutor')
-    cpf = CPFField('cpf')
-    phone = PhoneField(blank=True, help_text='Digite seu telefone')
-    email = models.EmailField(max_length=254, help_text='Digite seu Email')
-    street = models.CharField(max_length=40, help_text='Digite a rua')
-    number = models.IntegerField(help_text='Digite o numero')
-    district = models.CharField(max_length=40, help_text='Digite o Bairro')
-    state = models.CharField(max_length=40, help_text='Digite o Estado')
-    cep = models.IntegerField(help_text='Digite o cep')
-    pet = models.ManyToManyField(Pets, help_text='Selecione um pet')
-
-    def get_absolute_url(self):
-        """Returns the url to access a particular pet instance."""
-        return reverse('tutor-detail', args=[str(self.id)])
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.tutor_name
-
-
 class Vet(models.Model):
     """Model representing a classe Vet."""
     vet_name = models.CharField(
         max_length=30, help_text='Nome do Veterinario')
-    medical_care = models.ManyToManyField(
-        MedicalCare, help_text='Escolha um atendimento')
 
     def get_absolute_url(self):
         """Returns the url to access a particular pet instance."""
@@ -101,3 +77,26 @@ class Vet(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.vet_name
+
+
+class MedicalCare(models.Model):
+    """Model representing a classe Medical care."""
+    date = models.DateField(null=True, blank=True,
+                            help_text='Data do atendimento')
+    time = models.TimeField(help_text='Hora do atendimento')
+    pet_name = models.ForeignKey('Pets', on_delete=models.SET_NULL, null=True)
+    procedure = models.CharField(
+        max_length=8, choices=procedures, blank=True, help_text='Escolha o tipo do atendimento')
+    vet_name = models.ForeignKey('Vet', on_delete=models.SET_NULL, null=True)
+    sedative = models.CharField(
+        max_length=8, choices=type_sedative, default='N', blank=True, help_text='Escolha o tipo de sedativo')
+    report = models.TextField(
+        max_length=1000, blank=True, help_text='Relato do problema')
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular pet instance."""
+        return reverse('medical_care-detail', args=[str(self.id)])
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.report
