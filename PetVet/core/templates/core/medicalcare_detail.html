@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %} {% block content %}
+<h1>
+  Detalhes da {{ medical_care.procedure }} de
+  <a href="">{{ medical_care.pet_name }}</a>
+</h1>
+<!-- author detail link not yet defined -->
+
+<p><strong>Data:</strong> {{ medicalcare_detail.date }}</p>
+<p><strong>Hora:</strong> {{ medicalcare_detail.time }}</p>
+<p><strong>Veterinário(a):</strong> {{ medicalcare_detail.vet_name }}</p>
+<p><strong>Sedativo:</strong> {{ medicalcare_detail.sedative }}</p>
+<p><strong>Queixa:</strong> {{ medicalcare_detail.report }}</p>
+
+{% endblock %}

@@ -81,6 +81,7 @@ class Vet(models.Model):
 
 class MedicalCare(models.Model):
     """Model representing a classe Medical care."""
+    id = models.AutoField(primary_key=True)
     date = models.DateField(null=True, blank=True,
                             help_text='Data do atendimento')
     time = models.TimeField(help_text='Hora do atendimento')
@@ -89,7 +90,7 @@ class MedicalCare(models.Model):
         max_length=8, choices=procedures, blank=True, help_text='Escolha o tipo do atendimento')
     vet_name = models.ForeignKey('Vet', on_delete=models.SET_NULL, null=True)
     sedative = models.CharField(
-        max_length=8, choices=type_sedative, default='N', blank=True, help_text='Escolha o tipo de sedativo')
+        max_length=8, choices=type_sedative, default='Não', blank=True, help_text='Escolha o tipo de sedativo')
     report = models.TextField(
         max_length=1000, blank=True, help_text='Relato do problema')
 
