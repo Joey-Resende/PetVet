@@ -4,8 +4,8 @@
 <ul>
   {% for service in medical_care_list %}
   <li>
-    <a href="{{ service.get_absolute_url }}">{{ service.procedure }}</a>
-    ({{service.pet_name}}: {{service.report}})
+    <a href="{{ service.get_absolute_url }}">{{ service.procedure }} - </a>
+    ({{service.pet_name}}): {{service.report}}
   </li>
   {% endfor %}
 </ul>
