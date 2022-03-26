@@ -1,14 +1,14 @@
 {% extends "base_generic.html" %} {% block content %}
 <h1>
-  Detalhes de {{ medicalcare_detail.procedure }} de
-  <a href="">{{ medicalcare_detail.pet_name }}</a>
+  Detalhes de {{ medicalcare.procedure }} de
+  <a href="">{{ medicalcare.pet_name }}</a>
 </h1>
 <!-- author detail link not yet defined -->
 
-<p><strong>Data:</strong> {{ medicalcare_detail.date }}</p>
-<p><strong>Hora:</strong> {{ medicalcare_detail.time }}</p>
-<p><strong>Veterinário(a):</strong> {{ medicalcare_detail.vet_name }}</p>
-<p><strong>Sedativo:</strong> {{ medicalcare_detail.sedative }}</p>
-<p><strong>Queixa:</strong> {{ medicalcare_detail.report }}</p>
+<p><strong>Data:</strong> {{ medicalcare.date }}</p>
+<p><strong>Hora:</strong> {{ medicalcare.time }}</p>
+<p><strong>Veterinário(a):</strong> {{ medicalcare.vet_name }}</p>
+<p><strong>Sedativo:</strong> {{ medicalcare.sedative }}</p>
+<p><strong>Queixa:</strong> {{ medicalcare.report }}</p>
 
 {% endblock %}
