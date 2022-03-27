@@ -22,6 +22,7 @@ class MedicalCareListView(generic.ListView):
     model = MedicalCare
     context_object_name = 'medical_care_list'
     template_name = 'core/medical_care_list.html'
+    paginate_by = 10
 
 
 class MedicalCareDetailView(generic.DetailView):
