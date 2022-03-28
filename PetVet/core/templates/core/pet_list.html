@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %} {% block content %}
+<h1>Lista dos Pets</h1>
+{% if pet_list %}
+<ul>
+  {% for pet in pet_list %}
+  <li>
+    <a href="{{ pet.get_absolute_url }}">{{ pet.pet_name }} - </a>
+    ({{ pet.species }}): {{ pet.breed }}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Não há Pets cadastrados.</p>
+{% endif %} {% endblock %}

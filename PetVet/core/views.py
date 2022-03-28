@@ -27,3 +27,14 @@ class MedicalCareListView(generic.ListView):
 
 class MedicalCareDetailView(generic.DetailView):
     model = MedicalCare
+
+
+class PetListView(generic.ListView):
+    model = Pets
+    context_object_name = 'pet_list'
+    template_name = 'core/pet_list.html'
+    paginate_by = 10
+
+
+class PetDetailView(generic.DetailView):
+    model = Pets
