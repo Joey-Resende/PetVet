@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %} {% block content %}
+<h1>
+  Detalhes de {{ pets.pet_name }} de
+  <a href="">{{ pets.tutor_name }}</a>
+</h1>
+<!-- author detail link not yet defined -->
+<p><strong>Especie:</strong> {{ pets.species }}</p>
+<p><strong>Raca:</strong> {{ pets.breed }}</p>
+<p><strong>Sexo:</strong> {{ pets.gender }}</p>
+<p><strong>Data de Nascimento:</strong> {{ pets.date_of_birth }}</p>
+<p><strong>Castrado?:</strong> {{ pets.castrated }}</p>
+<p><strong>Peso Atual:</strong> {{ pets.weight }}Kg</p>
+<p><strong>Atendimentos:</strong> data de atendimentos</p>
+
+{% endblock %}

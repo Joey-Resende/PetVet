@@ -4,8 +4,8 @@
 <ul>
   {% for pet in pet_list %}
   <li>
-    <a href="{{ pet.get_absolute_url }}">{{ pet.pet_name }} - </a>
-    ({{ pet.species }}): {{ pet.breed }}
+    <a href="{{ pet.get_absolute_url }}"> {{ pet.pet_name }}</a>
+    - {{ pet.species }} - {{ pet.gender }}
   </li>
   {% endfor %}
 </ul>
