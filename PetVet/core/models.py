@@ -18,11 +18,14 @@ class Tutor(models.Model):
     cpf = CPFField('cpf')
     phone = PhoneField(blank=True, help_text='Digite seu telefone')
     email = models.EmailField(max_length=254, help_text='Digite seu Email')
+    cep = models.IntegerField(help_text='Digite o cep')
     street = models.CharField(max_length=40, help_text='Digite a rua')
     number = models.IntegerField(help_text='Digite o numero')
     district = models.CharField(max_length=40, help_text='Digite o Bairro')
-    state = models.CharField(max_length=40, help_text='Digite o Estado')
-    cep = models.IntegerField(help_text='Digite o cep')
+    city = models.CharField(
+        max_length=40, default='Petrolina', help_text='Digite a Cidade')
+    state = models.CharField(
+        max_length=40, default='Pernambuco', help_text='Digite o Estado')
 
     def get_absolute_url(self):
         """Returns the url to access a particular pet instance."""

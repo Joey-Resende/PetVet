@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %} {% block content %}
+<h1>
+  Detalhes de {{ tutor.tutor_name }} de
+  <a href="">{{ tutor.tutor_name }}</a>
+</h1>
+<!-- author detail link not yet defined -->
+<p><strong>Cpf:</strong> {{ tutor.cpf }}</p>
+<p><strong>Telefone:</strong> {{ tutor.phone }}</p>
+<p><strong>E-mail:</strong> {{ tutor.email }}</p>
+<div>
+  <h2>Endereco</h2>
+  <p><strong>Cep:</strong> {{ tutor.cep }}</p>
+  <p><strong>Rua:</strong> {{ tutor.street }}</p>
+  <p><strong>Numero:</strong> {{ tutor.number }}Kg</p>
+  <p><strong>Bairro:</strong> {{ tutor.district }}</p>
+  <p><strong>Cidade:</strong> {{ tutor.city }}</p>
+  <p><strong>Estado:</strong> {{ tutor.state }}</p>
+</div>
+{% endblock %}
