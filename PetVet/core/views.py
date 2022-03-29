@@ -38,3 +38,14 @@ class PetListView(generic.ListView):
 
 class PetDetailView(generic.DetailView):
     model = Pets
+
+
+class TutorListView(generic.ListView):
+    model = Tutor
+    context_object_name = 'tutor_list'
+    template_name = 'core/tutor_list.html'
+    paginate_by = 10
+
+
+class TutorDetailView(generic.DetailView):
+    model = Tutor

@@ -1,0 +1,14 @@
+{% extends "base_generic.html" %} {% block content %}
+<h1>Lista dos Tutores</h1>
+{% if tutor_list %}
+<ul>
+  {% for tutor in tutor_list %}
+  <li>
+    <a href="{{ tutor.get_absolute_url }}"> {{ tutor.tutor_name }}</a>
+    - {{ tutor.phone }} - {{ tutor.email }}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Não há Tutores cadastrados.</p>
+{% endif %} {% endblock %}
