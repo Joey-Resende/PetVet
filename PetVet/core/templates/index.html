@@ -8,4 +8,8 @@
   <li><strong>Tutores cadastrados:</strong> {{ num_tutors }}</li>
   <li><strong>Atendimentos realizados:</strong> {{ num_medical_care }}</li>
 </ul>
+<p>
+  Voce visitou essa pagina {{ num_visits }}{% if num_visits == 1 %} time{% else
+  %} times{% endif %}.
+</p>
 {% endblock %}

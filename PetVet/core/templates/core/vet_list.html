@@ -3,9 +3,7 @@
 {% if vet_list %}
 <ul>
   {% for vet in vet_list %}
-  <li>
-    <p>{{ vet.vet_name }}</p>
-  </li>
+  <li>{{ vet.vet_name }}</li>
   {% endfor %}
 </ul>
 {% else %}

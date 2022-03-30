@@ -8,11 +8,14 @@ def index(request):
     num_pets = Pets.objects.all().count()
     num_tutors = Tutor.objects.all().count()
     num_medical_care = MedicalCare.objects.all().count()
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
 
     context = {
         'num_pets': num_pets,
         'num_tutors': num_tutors,
         'num_medical_care': num_medical_care,
+        'num_visits': num_visits,
     }
 
     return render(request, 'index.html', context=context)
