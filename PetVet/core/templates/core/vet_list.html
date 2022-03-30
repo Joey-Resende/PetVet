@@ -1,0 +1,13 @@
+{% extends "base_generic.html" %} {% block content %}
+<h1>Lista dos Veterinarios cadastrados</h1>
+{% if vet_list %}
+<ul>
+  {% for vet in vet_list %}
+  <li>
+    <p>{{ vet.vet_name }}</p>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Não há Veterinarios cadastrados.</p>
+{% endif %} {% endblock %}

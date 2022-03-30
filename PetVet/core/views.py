@@ -49,3 +49,10 @@ class TutorListView(generic.ListView):
 
 class TutorDetailView(generic.DetailView):
     model = Tutor
+
+
+class VetListView(generic.ListView):
+    model = Vet
+    context_object_name = 'vet_list'
+    template_name = 'core/vet_list.html'
+    paginate_by = 10
