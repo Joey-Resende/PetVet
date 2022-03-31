@@ -29,6 +29,13 @@
               <a href="{% url 'medical_cares' %}">Todos os Atendimentos</a>
             </li>
             <li><a href="vets">Todos os Veterinarios</a></li>
+            <br />
+            {% if user.is_authenticated %}
+            <li>Usuário: {{ user.get_username }}</li>
+            <li><a href="{% url 'logout'%}?next={{request.path}}">Sair</a></li>
+            {% else %}
+            <li><a href="{% url 'login'%}?next={{request.path}}">Entrar</a></li>
+            {% endif %}
           </ul>
           {% endblock %}
         </div>
@@ -39,15 +46,16 @@
             {% if page_obj.has_previous %}
             <a
               href="{{ request.path }}?page={{ page_obj.previous_page_number }}"
-              >previous</a
+              >anterior</a
             >
             {% endif %}
             <span class="page-current">
-              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+              Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages
+              }}.
             </span>
             {% if page_obj.has_next %}
             <a href="{{ request.path }}?page={{ page_obj.next_page_number }}"
-              >next</a
+              >próxima</a
             >
             {% endif %}
           </span>

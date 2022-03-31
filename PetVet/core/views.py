@@ -1,5 +1,7 @@
 from core.models import MedicalCare, Pets, Tutor, Vet
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 
@@ -21,40 +23,47 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
-class MedicalCareListView(generic.ListView):
+class MedicalCareListView(LoginRequiredMixin, generic.ListView):
+    login_url = '/accounts/login/'
     model = MedicalCare
     context_object_name = 'medical_care_list'
     template_name = 'core/medical_care_list.html'
     paginate_by = 10
 
 
-class MedicalCareDetailView(generic.DetailView):
+class MedicalCareDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/accounts/login/'
     model = MedicalCare
 
 
-class PetListView(generic.ListView):
+class PetListView(LoginRequiredMixin, generic.ListView):
+    login_url = '/accounts/login/'
     model = Pets
     context_object_name = 'pet_list'
     template_name = 'core/pet_list.html'
     paginate_by = 10
 
 
-class PetDetailView(generic.DetailView):
+class PetDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/accounts/login/'
     model = Pets
 
 
-class TutorListView(generic.ListView):
+class TutorListView(LoginRequiredMixin, generic.ListView):
+    login_url = '/accounts/login/'
     model = Tutor
     context_object_name = 'tutor_list'
     template_name = 'core/tutor_list.html'
     paginate_by = 10
 
 
-class TutorDetailView(generic.DetailView):
+class TutorDetailView(LoginRequiredMixin, generic.DetailView):
+    login_url = '/accounts/login/'
     model = Tutor
 
 
-class VetListView(generic.ListView):
+class VetListView(LoginRequiredMixin, generic.ListView):
+    login_url = '/accounts/login/'
     model = Vet
     context_object_name = 'vet_list'
     template_name = 'core/vet_list.html'
