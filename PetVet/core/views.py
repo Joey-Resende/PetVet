@@ -2,27 +2,19 @@ from core.models import MedicalCare, Pets, Tutor, Vet
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views import generic
+from django.views.generic import TemplateView
 
 
-def index(request):
-    """View function for home page site."""
+class IndexView(TemplateView):
+    template_name = 'index.html'
     num_pets = Pets.objects.all().count()
     num_tutors = Tutor.objects.all().count()
     num_medical_care = MedicalCare.objects.all().count()
-    num_visits = request.session.get('num_visits', 0)
-    request.session['num_visits'] = num_visits + 1
-
-    context = {
-        'num_pets': num_pets,
-        'num_tutors': num_tutors,
-        'num_medical_care': num_medical_care,
-        'num_visits': num_visits,
-    }
-
-    return render(request, 'index.html', context=context)
+    #num_visits = request.session.get('num_visits', 0)
+    #request.session['num_visits'] = num_visits + 1
 
 
+'''
 class MedicalCareListView(LoginRequiredMixin, generic.ListView):
     login_url = '/accounts/login/'
     model = MedicalCare
@@ -68,3 +60,4 @@ class VetListView(LoginRequiredMixin, generic.ListView):
     context_object_name = 'vet_list'
     template_name = 'core/vet_list.html'
     paginate_by = 10
+'''
