@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 
 
 class IndexView(TemplateView):
-    template_name = 'index.html'
+    template_name = 'core/index.html'
     num_pets = Pets.objects.all().count()
     num_tutors = Tutor.objects.all().count()
     num_medical_care = MedicalCare.objects.all().count()

@@ -1,3 +1,15 @@
+/* Colors*/
+:root{
+--preto: #000000;
+--branco-1: #ffffff;
+--branco-2:  #E0E2DD;
+--azul-1: #0477BF;
+--azul-2: #0388A6;
+--azul-3: #003570;
+--amarelo-1: #F2CB05;
+--amarelo-2: #D98E04;
+}
+
 body {
-    background-color: yellow;
+    background-color: var(--azul-1);
 }
