@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 
 
 class IndexView(TemplateView):
-    template_name = 'core/index.html'
+    template_name = 'core/base_model.html'
     num_pets = Pets.objects.all().count()
     num_tutors = Tutor.objects.all().count()
     num_medical_care = MedicalCare.objects.all().count()
@@ -53,11 +53,12 @@ class TutorDetailView(LoginRequiredMixin, generic.DetailView):
     login_url = '/accounts/login/'
     model = Tutor
 
+'''
 
-class VetListView(LoginRequiredMixin, generic.ListView):
+
+class VetListView(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = Vet
     context_object_name = 'vet_list'
     template_name = 'core/vet_list.html'
     paginate_by = 10
-'''

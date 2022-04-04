@@ -10,10 +10,32 @@
 --amarelo-2: #D98E04;
 }
 
-body {
+body{
     background-color: var(--azul-1);
+    color: var(--preto);
 }
 
-h1 {
+h3{
+    color: var(--amarelo-2);
+}
+
+div{
+    color: var(--amarelo-1);
+}
+
+
+
+.menu{
+    background-color: var(--azul-3);
+    color: var(--amarelo-2);
+}
+
+
+p{
     color: var(--branco-2);
+}
+
+footer{
+     background-color: var(--azul-3);
+     color: var(--amarelo-1);
 }
