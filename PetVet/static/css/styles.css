@@ -13,3 +13,7 @@
 body {
     background-color: var(--azul-1);
 }
+
+h1 {
+    color: var(--branco-2);
+}
