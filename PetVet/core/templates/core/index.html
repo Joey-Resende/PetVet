@@ -1,13 +1,11 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PetVet</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-  </head>
-  <body>
-    <h1>Bem vindo ao PetVet</h1>
-  </body>
-</html>
+{% extends 'core/base_model.html' %} {%block title%}
+<title>Home</title>
+{% endblock %} {% block content %}
+<h3>Bem vindo ao PetVet</h3>
+<h5>O hospital tem as seguintes contagens de registros:</h5>
+<ul>
+  <li><strong>Atendimentos:</strong> {{ num_medical_care }}</li>
+  <li><strong>Pets:</strong> {{ num_pets }}</li>
+  <li><strong>Tutores:</strong> {{ num_tutors }}</li>
+</ul>
+{% endblock %}

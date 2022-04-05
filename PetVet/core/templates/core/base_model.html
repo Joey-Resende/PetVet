@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shotcut favicon" href="{% static 'img/favicon.ico/' %}" />
     {% block title %}
     <title>PetVet</title>
     {% endblock %}
@@ -17,22 +18,110 @@
   </head>
   <body>
     {% block menu %}
-    <div class="menu">
-      <ul class="sidebar-nav">
-        <li><a href="">Home</a></li>
-        <li><a href="">Atendimentos</a></li>
-        <li><a href="">Pets</a></li>
-        <li><a href="">Tutores</a></li>
-        <li><a href="">Veterinarios</a></li>
-      </ul>
-    </div>
-    {% endblock %} {% block conteudo %}
-    <div class="container">
-      <h3>Template do modelo</h3>
-      <p>Conteudo do site</p>
-    </div>
-    {% endblock %} {% block rodape %}
-    <footer>Rodapé da página</footer>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'img/favicon.ico/' %}" height="40" alt="" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                Início
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                Atendimentos
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                Pets
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="fa fa-question-circle" aria-hidden="true"></i>
+                Tutores
+              </a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle text-white"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                <i class="fa fa-user-circle" aria-hidden="true"></i>
+                <span id="username">{{ request.user }}</span>
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <a class="dropdown-item" href="">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  Meus dados</a
+                >
+                <a class="dropdown-item" href="#">
+                  <i class="fa fa-lock" aria-hidden="true"></i>
+                  Alterar senha</a
+                >
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'logout' %}">
+                  <i class="fa fa-sign-out" aria-hidden="true"></i>
+                  Sair</a
+                >
+              </div>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'registrar' %}">
+                <i class="fa fa-user-plus" aria-hidden="true"></i>
+                Registrar
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'login' %}">
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                Login
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {% endblock %}
+
+    <div class="container">{% block content %} {% endblock %}</div>
+
+    {% block footer %}
+    <footer>PetVet® - Cadastro de Pacientes - V 0.0.1</footer>
     {% endblock%}
 
     <script

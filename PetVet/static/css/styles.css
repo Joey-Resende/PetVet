@@ -20,12 +20,14 @@ h3{
 }
 
 div{
-    color: var(--amarelo-1);
+    color: var(--branco-2);
 }
 
 
 
-.menu{
+nav{
+    padding: 0;
+    list-style: none;
     background-color: var(--azul-3);
     color: var(--amarelo-2);
 }
@@ -38,4 +40,5 @@ p{
 footer{
      background-color: var(--azul-3);
      color: var(--amarelo-1);
+     text-align: center;
 }
