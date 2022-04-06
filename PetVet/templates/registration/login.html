@@ -1,4 +1,4 @@
-{% extends "base_generic.html" %} {% block content %} {% if form.errors %}
+{% extends "base_model.html" %} {% block content %} {% if form.errors %}
 <p>Seu usuário ou senha não estão corretos. Por favor tente novamente.</p>
 {% endif %} {% if next %} {% if user.is_authenticated %}
 <p>
