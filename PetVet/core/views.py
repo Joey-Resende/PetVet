@@ -10,12 +10,9 @@ class IndexView(TemplateView):
     num_pets = Pets.objects.all().count()
     num_tutors = Tutor.objects.all().count()
     num_medical_care = MedicalCare.objects.all().count()
-    #num_visits = request.session.get('num_visits', 0)
-    #request.session['num_visits'] = num_visits + 1
 
 
-'''
-class MedicalCareListView(LoginRequiredMixin, generic.ListView):
+class MedicalCareListView(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = MedicalCare
     context_object_name = 'medical_care_list'
@@ -23,11 +20,14 @@ class MedicalCareListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
 
-class MedicalCareDetailView(LoginRequiredMixin, generic.DetailView):
+class MedicalCareDetailView(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = MedicalCare
+    context_object_name = 'medicalcare_detail'
+    template_name = 'core/medicalcare_detail.html'
 
 
+'''
 class PetListView(LoginRequiredMixin, generic.ListView):
     login_url = '/accounts/login/'
     model = Pets
@@ -53,8 +53,6 @@ class TutorDetailView(LoginRequiredMixin, generic.DetailView):
     login_url = '/accounts/login/'
     model = Tutor
 
-'''
-
 
 class VetListView(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
@@ -62,3 +60,4 @@ class VetListView(LoginRequiredMixin, TemplateView):
     context_object_name = 'vet_list'
     template_name = 'core/vet_list.html'
     paginate_by = 10
+'''

@@ -41,3 +41,8 @@ footer{
      background-color: var(--azul-3);
      color: var(--amarelo-1);
 }
+
+.social {
+    margin-left: 20px;
+    margin-right: 20px;
+}

@@ -1,4 +1,6 @@
-{% extends "base_model.html" %} {% block content %}
+{% extends "base_model.html" %} 
+
+{% block content %}
 <h1>Lista de atendimentos</h1>
 {% if medical_care_list %}
 <ul>
@@ -11,4 +13,5 @@
 </ul>
 {% else %}
 <p>Não há atendimentos na clínica.</p>
-{% endif %} {% endblock %}
+{% endif %} 
+{% endblock %}
