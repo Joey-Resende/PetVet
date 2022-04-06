@@ -1,0 +1,20 @@
+{% extends 'core/base_model.html' %} 
+
+{%block title%}
+<title>Novo Atendimento</title>
+{% endblock %} 
+
+{%block content%}
+<h3>Novo Atendimento</h3>
+<p>Preencha os campos para realizar um novo atendimento</p><br>
+
+<form action="" method="POST">
+
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+    
+    <button type="submit" class="btn btn-warning">Salvar</button>
+
+</form>
+{% endblock %}

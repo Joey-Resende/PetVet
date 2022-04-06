@@ -1,8 +1,8 @@
 from core.models import MedicalCare, Pets, Tutor, Vet
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
+from django.views.generic.edit import CreateView
 
 
 class IndexView(TemplateView):
@@ -25,6 +25,14 @@ class MedicalCareDetailView(LoginRequiredMixin, TemplateView):
     model = MedicalCare
     context_object_name = 'medicalcare_detail'
     template_name = 'core/medicalcare_detail.html'
+
+
+class MedicalCareCreate(CreateView):
+    model = MedicalCare
+    fields = ['date', 'time', 'pet_name',
+              'procedure', 'vet_name', 'sedative', 'report']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('index')
 
 
 '''
