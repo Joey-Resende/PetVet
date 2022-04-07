@@ -105,4 +105,4 @@ class MedicalCare(models.Model):
 
     def __str__(self):
         """String for representing the Model object."""
-        return self.report
+        return f'{self.procedure} - {self.pet_name} - {self.date}'

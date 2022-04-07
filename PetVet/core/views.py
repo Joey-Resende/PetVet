@@ -2,9 +2,10 @@ from core.models import MedicalCare, Pets, Tutor, Vet
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
+# Views Index
 class IndexView(TemplateView):
     template_name = 'core/index.html'
     num_pets = Pets.objects.all().count()
@@ -12,7 +13,8 @@ class IndexView(TemplateView):
     num_medical_care = MedicalCare.objects.all().count()
 
 
-class MedicalCareListView(LoginRequiredMixin, TemplateView):
+# Views Medical Care
+class MedicalCareList(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = MedicalCare
     context_object_name = 'medical_care_list'
@@ -20,7 +22,7 @@ class MedicalCareListView(LoginRequiredMixin, TemplateView):
     paginate_by = 10
 
 
-class MedicalCareDetailView(LoginRequiredMixin, TemplateView):
+class MedicalCareDetail(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = MedicalCare
     context_object_name = 'medicalcare_detail'
@@ -35,7 +37,22 @@ class MedicalCareCreate(CreateView):
     success_url = reverse_lazy('index')
 
 
-class PetListView(LoginRequiredMixin, TemplateView):
+class MedicalCareUpdate(UpdateView):
+    model = MedicalCare
+    fields = ['date', 'time', 'pet_name',
+              'procedure', 'vet_name', 'sedative', 'report']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('index')
+
+
+class MedicalCareDelete(DeleteView):
+    model = MedicalCare
+    template_name = 'core/form_delete.html'
+    success_url = reverse_lazy('index')
+
+
+# Views Pet
+class PetList(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = Pets
     context_object_name = 'pet_list'
@@ -43,7 +60,7 @@ class PetListView(LoginRequiredMixin, TemplateView):
     paginate_by = 10
 
 
-class PetDetailView(LoginRequiredMixin, TemplateView):
+class PetDetail(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = Pets
 
@@ -56,7 +73,22 @@ class PetCreate(CreateView):
     success_url = reverse_lazy('index')
 
 
-class TutorListView(LoginRequiredMixin, TemplateView):
+class PetUpdate(UpdateView):
+    model = Pets
+    fields = ['pet_name', 'species', 'breed', 'gender',
+              'date_of_birth', 'castrated', 'weight', 'tutor_name']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('index')
+
+
+class PetDelete(DeleteView):
+    model = Pets
+    template_name = 'core/form_delete.html'
+    success_url = reverse_lazy('index')
+
+
+# Views Tutor
+class TutorList(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = Tutor
     context_object_name = 'tutor_list'
@@ -64,7 +96,7 @@ class TutorListView(LoginRequiredMixin, TemplateView):
     paginate_by = 10
 
 
-class TutorDetailView(LoginRequiredMixin, TemplateView):
+class TutorDetail(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = Tutor
 
@@ -77,7 +109,22 @@ class TutorCreate(CreateView):
     success_url = reverse_lazy('index')
 
 
-class VetListView(LoginRequiredMixin, TemplateView):
+class TutorUpdate(UpdateView):
+    model = Tutor
+    fields = ['tutor_name', 'cpf', 'phone', 'email', 'cep',
+              'street', 'number', 'district', 'city', 'state']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('index')
+
+
+class TutorDelete(DeleteView):
+    model = Tutor
+    template_name = 'core/form_delete.html'
+    success_url = reverse_lazy('index')
+
+
+# Views Vet
+class VetList(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = Vet
     context_object_name = 'vet_list'
@@ -89,4 +136,17 @@ class VetCreate(CreateView):
     model = Vet
     fields = ['vet_name']
     template_name = 'core/form.html'
+    success_url = reverse_lazy('index')
+
+
+class VetUpdate(UpdateView):
+    model = Vet
+    fields = ['vet_name']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('index')
+
+
+class VetDelete(DeleteView):
+    model = Vet
+    template_name = 'core/form_delete.html'
     success_url = reverse_lazy('index')
