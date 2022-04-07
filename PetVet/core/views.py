@@ -49,6 +49,13 @@ class PetDetailView(LoginRequiredMixin, generic.DetailView):
     model = Pets
 
 
+class PetCreate(CreateView):
+    model = Pet
+    fields = ['pet_name', 'species', 'breed', 'gender', 'date_of_birth', 'castrated','weight', 'tutor_name']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('index')
+
+
 class TutorListView(LoginRequiredMixin, generic.ListView):
     login_url = '/accounts/login/'
     model = Tutor

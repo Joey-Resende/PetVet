@@ -14,18 +14,18 @@ type_sedative = (('Não', 'Não'), ('Simples', 'Simples'),
 class Tutor(models.Model):
     """Model representing a classe Tutor."""
     tutor_name = models.CharField(
-        max_length=30, help_text='Digite o nome do Tutor')
+        max_length=30, verbose_name='Nome do Tutor')
     cpf = CPFField('cpf')
-    phone = PhoneField(blank=True, help_text='Digite seu telefone')
-    email = models.EmailField(max_length=254, help_text='Digite seu Email')
-    cep = models.IntegerField(help_text='Digite o cep')
-    street = models.CharField(max_length=40, help_text='Digite a rua')
-    number = models.IntegerField(help_text='Digite o numero')
-    district = models.CharField(max_length=40, help_text='Digite o Bairro')
+    phone = PhoneField(blank=True, verbose_name='Telefone')
+    email = models.EmailField(max_length=254, verbose_name='Email')
+    cep = models.IntegerField(help_text='Cep')
+    street = models.CharField(max_length=40, verbose_name='Rua')
+    number = models.IntegerField(verbose_name='Numero')
+    district = models.CharField(max_length=40, verbose_name='Bairro')
     city = models.CharField(
-        max_length=40, default='Petrolina', help_text='Digite a Cidade')
+        max_length=40, default='Petrolina', verbose_name='Cidade')
     state = models.CharField(
-        max_length=40, default='Pernambuco', help_text='Digite o Estado')
+        max_length=40, default='Pernambuco', verbose_name='Estado')
 
     def get_absolute_url(self):
         """Returns the url to access a particular pet instance."""
@@ -40,21 +40,21 @@ class Pets(models.Model):
     """Model representing a classe pet."""
     id = models.AutoField(primary_key=True)
     pet_name = models.CharField(
-        max_length=30, help_text='Digite o nome do Pet')
+        max_length=30, verbose_name='Nome do Pet')
     species = models.CharField(
-        max_length=20, help_text='Digite a espécie do Pet')
+        max_length=20, verbose_name='Espécie')
     breed = models.CharField(
-        max_length=30, help_text='Digite a raça do Pet')
+        max_length=30, verbose_name='Raça')
     gender = models.CharField(
-        max_length=5, choices=sex_status, blank=True, help_text='Escolha o genêro do Pet')
+        max_length=5, choices=sex_status, blank=True, verbose_name='Genêro')
     date_of_birth = models.DateField(
-        null=True, blank=True, help_text='Digite a data de nascimento do Pet')
+        null=True, blank=True, verbose_name='Data de Nascimento')
     castrated = models.CharField(
-        max_length=3, choices=castrated_status, blank=True, default='N', help_text='Escolha se o Pet e castrado')
+        max_length=3, choices=castrated_status, blank=True, default='N', verbose_name='Castrado?')
     weight = models.DecimalField(
-        max_digits=6, decimal_places=3, help_text='Digite o peso do Pet')
+        max_digits=6, decimal_places=3, verbose_name='Peso')
     tutor_name = models.ForeignKey(
-        'Tutor', on_delete=models.SET_NULL, null=True)
+        'Tutor', on_delete=models.SET_NULL, null=True, verbose_name="Nome do Tutor")
 
     class Meta:
         ordering = ['id']
@@ -71,7 +71,7 @@ class Pets(models.Model):
 class Vet(models.Model):
     """Model representing a classe Vet."""
     vet_name = models.CharField(
-        max_length=30, help_text='Nome do Veterinario')
+        max_length=30, verbose_name='Nome')
 
     def get_absolute_url(self):
         """Returns the url to access a particular pet instance."""
@@ -86,16 +86,16 @@ class MedicalCare(models.Model):
     """Model representing a classe Medical care."""
     id = models.AutoField(primary_key=True)
     date = models.DateField(null=True, blank=True,
-                            verbose_name='Data do atendimento')
-    time = models.TimeField(verbose_name='Hora do atendimento')
+                            verbose_name='Data')
+    time = models.TimeField(verbose_name='Hora')
     pet_name = models.ForeignKey(
         'Pets', on_delete=models.SET_NULL, null=True, verbose_name="Nome do Pet")
     procedure = models.CharField(
-        max_length=8, choices=procedures, blank=True, verbose_name='Escolha o tipo do atendimento')
+        max_length=8, choices=procedures, blank=True, verbose_name='Tipo de atendimento')
     vet_name = models.ForeignKey(
         'Vet', on_delete=models.SET_NULL, null=True, verbose_name="Veterinario")
     sedative = models.CharField(
-        max_length=8, choices=type_sedative, default='Não', blank=True, verbose_name='Escolha o tipo de sedativo')
+        max_length=8, choices=type_sedative, default='Não', blank=True, verbose_name='Tipo de sedativo')
     report = models.TextField(
         max_length=1000, blank=True, verbose_name='Relato do problema')
 
