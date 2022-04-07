@@ -35,8 +35,7 @@ class MedicalCareCreate(CreateView):
     success_url = reverse_lazy('index')
 
 
-'''
-class PetListView(LoginRequiredMixin, generic.ListView):
+class PetListView(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = Pets
     context_object_name = 'pet_list'
@@ -44,19 +43,20 @@ class PetListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
 
-class PetDetailView(LoginRequiredMixin, generic.DetailView):
+class PetDetailView(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = Pets
 
 
 class PetCreate(CreateView):
-    model = Pet
-    fields = ['pet_name', 'species', 'breed', 'gender', 'date_of_birth', 'castrated','weight', 'tutor_name']
+    model = Pets
+    fields = ['pet_name', 'species', 'breed', 'gender',
+              'date_of_birth', 'castrated', 'weight', 'tutor_name']
     template_name = 'core/form.html'
     success_url = reverse_lazy('index')
 
 
-class TutorListView(LoginRequiredMixin, generic.ListView):
+class TutorListView(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = Tutor
     context_object_name = 'tutor_list'
@@ -64,9 +64,17 @@ class TutorListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
 
-class TutorDetailView(LoginRequiredMixin, generic.DetailView):
+class TutorDetailView(LoginRequiredMixin, TemplateView):
     login_url = '/accounts/login/'
     model = Tutor
+
+
+class TutorCreate(CreateView):
+    model = Tutor
+    fields = ['tutor_name', 'cpf', 'phone', 'email', 'cep',
+              'street', 'number', 'district', 'city', 'state']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('index')
 
 
 class VetListView(LoginRequiredMixin, TemplateView):
@@ -75,4 +83,10 @@ class VetListView(LoginRequiredMixin, TemplateView):
     context_object_name = 'vet_list'
     template_name = 'core/vet_list.html'
     paginate_by = 10
-'''
+
+
+class VetCreate(CreateView):
+    model = Vet
+    fields = ['vet_name']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('index')
