@@ -1,31 +1,31 @@
 /* Colors*/
-:root{
---preto: #000000;
---branco-1: #ffffff;
---branco-2:  #E0E2DD;
---azul-1: #0477BF;
---azul-2: #0388A6;
---azul-3: #003570;
---amarelo-1: #F2CB05;
---amarelo-2: #D98E04;
+:root {
+    --preto: #000000;
+    --branco-1: #ffffff;
+    --branco-2: #E0E2DD;
+    --azul-1: #0477BF;
+    --azul-2: #0388A6;
+    --azul-3: #003570;
+    --amarelo-1: #F2CB05;
+    --amarelo-2: #D98E04;
 }
 
-body{
+body {
     background-color: var(--azul-1);
     color: var(--preto);
 }
 
-h3{
+h3 {
     color: var(--amarelo-2);
 }
 
-div{
+div {
     color: var(--branco-2);
 }
 
 
 
-nav{
+nav {
     padding: 0;
     list-style: none;
     background-color: var(--azul-3);
@@ -33,16 +33,11 @@ nav{
 }
 
 
-p{
+p {
     color: var(--branco-2);
 }
 
-footer{
-     background-color: var(--azul-3);
-     color: var(--amarelo-1);
-}
-
-.social {
-    margin-left: 20px;
-    margin-right: 20px;
+footer {
+    background-color: var(--azul-3);
+    color: var(--amarelo-1);
 }

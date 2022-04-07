@@ -1,17 +1,44 @@
-{% extends "base_model.html" %} 
+{% extends 'core/base_model.html' %} 
+
+{%block title%}
+<title>PetVet - Atendimentos</title>
+{% endblock %} 
 
 {% block content %}
-<h1>Lista de atendimentos</h1>
-{% if medical_care_list %}
-<ul>
-  {% for service in medical_care_list %}
-  <li>
-    <a href="{{ service.get_absolute_url }}">{{ service.procedure }} - </a>
-    ({{service.pet_name}}): {{service.report}}
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>Não há atendimentos na clínica.</p>
-{% endif %} 
+<h3>Lista de atendimentos</h3>
+<hr>
+<a href="{% url 'medical_care_new' %}" class="btn btn-success btn">Novo</a><br><br>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover table-light">
+    <thead class="thead-dark">  
+      <tr>
+        <th>Data</th>
+        <th>Hora</th>
+        <th>Nome do Pet</th>
+        <th>Tipo de Atendimento</th>
+        <th>Relato do Problema</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+      {% for campo in object_list %}
+      <tr>
+        <td>{{ campo.date }}</td>
+        <td>{{ campo.time }}</td>
+        <td>{{ campo.pet_name }}</td>
+        <td>{{ campo.procedure }}</td>
+        <td>{{ campo.report }}</td>
+        <td>
+          <a href="{% url 'medical_care_edit' campo.pk %}" class="btn btn-warning btn-sm">Editar</a>
+          <a href="{% url 'medical_care_delete' campo.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6">Nenhum atendimento cadastrado.</td>
+      </tr>
+      {% endfor %}
+    
+  </table>
+</div>
 {% endblock %}

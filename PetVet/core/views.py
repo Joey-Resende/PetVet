@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.list import ListView
 
 
 # Views Index
@@ -14,10 +15,9 @@ class IndexView(TemplateView):
 
 
 # Views Medical Care
-class MedicalCareList(LoginRequiredMixin, TemplateView):
+class MedicalCareList(LoginRequiredMixin, ListView):
     login_url = '/accounts/login/'
     model = MedicalCare
-    context_object_name = 'medical_care_list'
     template_name = 'core/medical_care_list.html'
     paginate_by = 10
 
@@ -52,10 +52,9 @@ class MedicalCareDelete(DeleteView):
 
 
 # Views Pet
-class PetList(LoginRequiredMixin, TemplateView):
+class PetList(LoginRequiredMixin, ListView):
     login_url = '/accounts/login/'
     model = Pets
-    context_object_name = 'pet_list'
     template_name = 'core/pet_list.html'
     paginate_by = 10
 
@@ -88,10 +87,9 @@ class PetDelete(DeleteView):
 
 
 # Views Tutor
-class TutorList(LoginRequiredMixin, TemplateView):
+class TutorList(LoginRequiredMixin, ListView):
     login_url = '/accounts/login/'
     model = Tutor
-    context_object_name = 'tutor_list'
     template_name = 'core/tutor_list.html'
     paginate_by = 10
 
@@ -124,10 +122,9 @@ class TutorDelete(DeleteView):
 
 
 # Views Vet
-class VetList(LoginRequiredMixin, TemplateView):
+class VetList(LoginRequiredMixin, ListView):
     login_url = '/accounts/login/'
     model = Vet
-    context_object_name = 'vet_list'
     template_name = 'core/vet_list.html'
     paginate_by = 10
 
