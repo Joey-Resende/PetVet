@@ -1,14 +1,40 @@
-{% extends "base_model.html" %} {% block content %}
-<h1>Lista dos Tutores</h1>
-{% if tutor_list %}
-<ul>
-  {% for tutor in tutor_list %}
-  <li>
-    <a href="{{ tutor.get_absolute_url }}"> {{ tutor.tutor_name }}</a>
-    - {{ tutor.phone }} - {{ tutor.email }}
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>Não há Tutores cadastrados.</p>
-{% endif %} {% endblock %}
+{% extends 'core/base_model.html' %} 
+
+{%block title%}
+<title>PetVet - Tutores</title>
+{% endblock %} 
+
+{% block content %}
+<h3>Lista dos Tutores</h3>
+<hr>
+<a href="{% url 'tutor_new' %}" class="btn btn-success btn">Novo</a><br><br>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover table-light">
+    <thead class="thead-dark">  
+      <tr>
+        <th>Nome do Tutor</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+      {% for each in object_list %}
+      <tr>
+        <td>{{ each.tutor_name }}</td>
+        <td>{{ each.phone }}</td>
+        <td>{{ each.email }}</td>
+        <td>
+          <a href="{% url 'tutor_edit' each.pk %}" class="btn btn-warning btn-sm">Editar</a>
+          <a href="{% url 'tutor_delete' each.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4">Nenhum Tutor cadastrado.</td>
+      </tr>
+      {% endfor %}
+    
+  </table>
+</div>
+{% endblock %}

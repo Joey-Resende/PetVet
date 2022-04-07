@@ -1,14 +1,44 @@
-{% extends "base_model.html" %} {% block content %}
-<h1>Lista dos Pets</h1>
-{% if pet_list %}
-<ul>
-  {% for pet in pet_list %}
-  <li>
-    <a href="{{ pet.get_absolute_url }}"> {{ pet.pet_name }}</a>
-    - {{ pet.species }} - {{ pet.gender }}
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>Não há Pets cadastrados.</p>
-{% endif %} {% endblock %}
+{% extends 'core/base_model.html' %} 
+
+{%block title%}
+<title>PetVet - Pets</title>
+{% endblock %} 
+
+{% block content %}
+<h3>Lista dos Pets</h3>
+<hr>
+<a href="{% url 'pet_new' %}" class="btn btn-success btn">Novo</a><br><br>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover table-light">
+    <thead class="thead-dark">  
+      <tr>
+        <th>Id</th>
+        <th>Nome do Pet</th>
+        <th>Espécie</th>
+        <th>Raça</th>
+        <th>Tutor</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+      {% for each in object_list %}
+      <tr>
+        <td>{{ each.id }}</td>
+        <td>{{ each.pet_name }}</td>
+        <td>{{ each.species }}</td>
+        <td>{{ each.breed }}</td>
+        <td>{{ each.tutor_name }}</td>
+        <td>
+          <a href="{% url 'pet_edit' each.pk %}" class="btn btn-warning btn-sm">Editar</a>
+          <a href="{% url 'pet_delete' each.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6">Nenhum Pet cadastrado.</td>
+      </tr>
+      {% endfor %}
+    
+  </table>
+</div>
+{% endblock %}

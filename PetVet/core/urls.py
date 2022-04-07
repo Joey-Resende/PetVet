@@ -26,7 +26,7 @@ urlpatterns = [
     path('pet_delete/<int:pk>', PetDelete.as_view(), name='pet_delete'),
 
 
-    path('tutores/', TutorList.as_view(), name='tutores'),
+    path('tutors/', TutorList.as_view(), name='tutors'),
     path('tutor/<int:pk>', TutorDetail.as_view(), name='tutor-detail'),
     path('tutor_new/', TutorCreate.as_view(), name='tutor_new'),
     path('tutor_edit/<int:pk>', TutorUpdate.as_view(), name='tutor_edit'),

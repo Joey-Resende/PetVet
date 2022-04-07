@@ -1,11 +1,36 @@
-{% extends "base_model.html" %} {% block content %}
-<h1>Lista dos Veterinarios cadastrados</h1>
-{% if vet_list %}
-<ul>
-  {% for vet in vet_list %}
-  <li>{{ vet.vet_name }}</li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>Não há Veterinarios cadastrados.</p>
-{% endif %} {% endblock %}
+{% extends 'core/base_model.html' %} 
+
+{%block title%}
+<title>PetVet - Veterinários</title>
+{% endblock %} 
+
+{% block content %}
+<h3>Lista dos Veterinários</h3>
+<hr>
+<a href="{% url 'vet_new' %}" class="btn btn-success btn">Novo</a><br><br>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover table-light">
+    <thead class="thead-dark">  
+      <tr>
+        <th>Nome do Veterinário</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+      {% for each in object_list %}
+      <tr>
+        <td>{{ each.vet_name }}</td>
+        <td>
+          <a href="{% url 'vet_edit' each.pk %}" class="btn btn-warning btn-sm">Editar</a>
+          <a href="{% url 'vet_delete' each.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4">Nenhum Veterinário cadastrado.</td>
+      </tr>
+      {% endfor %}
+    
+  </table>
+</div>
+{% endblock %}

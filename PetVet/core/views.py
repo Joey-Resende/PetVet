@@ -34,7 +34,7 @@ class MedicalCareCreate(CreateView):
     fields = ['date', 'time', 'pet_name',
               'procedure', 'vet_name', 'sedative', 'report']
     template_name = 'core/form.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('medical_cares')
 
 
 class MedicalCareUpdate(UpdateView):
@@ -42,13 +42,13 @@ class MedicalCareUpdate(UpdateView):
     fields = ['date', 'time', 'pet_name',
               'procedure', 'vet_name', 'sedative', 'report']
     template_name = 'core/form.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('medical_cares')
 
 
 class MedicalCareDelete(DeleteView):
     model = MedicalCare
     template_name = 'core/form_delete.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('medical_cares')
 
 
 # Views Pet
