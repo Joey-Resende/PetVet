@@ -1,9 +1,16 @@
-{% extends "base_model.html" %} {% block content %}
+{% extends "base_model.html" %} 
+
+{%block title%}
+<title>PetVet - Atendimentos</title>
+{% endblock %} 
+
+
+
+{% block content %}
 <h1>
   Detalhes de {{ medicalcare.procedure }} de
   <a href="">{{ medicalcare.pet_name }}</a>
 </h1>
-<!-- author detail link not yet defined -->
 
 <p><strong>Data:</strong> {{ medicalcare.date }}</p>
 <p><strong>Hora:</strong> {{ medicalcare.time }}</p>
@@ -12,3 +19,4 @@
 <p><strong>Queixa:</strong> {{ medicalcare.report }}</p>
 
 {% endblock %}
+

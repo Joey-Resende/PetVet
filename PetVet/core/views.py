@@ -19,7 +19,6 @@ class MedicalCareList(LoginRequiredMixin, ListView):
     login_url = '/accounts/login/'
     model = MedicalCare
     template_name = 'core/medical_care_list.html'
-    paginate_by = 10
 
 
 class MedicalCareDetail(LoginRequiredMixin, TemplateView):
@@ -56,7 +55,6 @@ class PetList(LoginRequiredMixin, ListView):
     login_url = '/accounts/login/'
     model = Pets
     template_name = 'core/pet_list.html'
-    paginate_by = 10
 
 
 class PetDetail(LoginRequiredMixin, TemplateView):
@@ -91,7 +89,6 @@ class TutorList(LoginRequiredMixin, ListView):
     login_url = '/accounts/login/'
     model = Tutor
     template_name = 'core/tutor_list.html'
-    paginate_by = 10
 
 
 class TutorDetail(LoginRequiredMixin, TemplateView):
@@ -126,7 +123,6 @@ class VetList(LoginRequiredMixin, ListView):
     login_url = '/accounts/login/'
     model = Vet
     template_name = 'core/vet_list.html'
-    paginate_by = 10
 
 
 class VetCreate(CreateView):

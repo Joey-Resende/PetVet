@@ -1,13 +1,20 @@
-{% extends "base_model.html" %} {% block content %} {% if form.errors %}
+{% extends "base_model.html" %} 
+
+{% block content %} 
+{% if form.errors %}
 <p>Seu usuário ou senha não estão corretos. Por favor tente novamente.</p>
-{% endif %} {% if next %} {% if user.is_authenticated %}
+{% endif %} 
+
+{% if next %} 
+{% if user.is_authenticated %}
 <p>
   Você não tem premissão para acessar esta página. Para proseguir, Por favor
   entre com uma conta que possui acesso.
 </p>
 {% else %}
 <p>Por favor faça login para acessar esta página.</p>
-{% endif %} {% endif %}
+{% endif %} 
+{% endif %}
 
 <form method="post" action="{% url 'login' %}">
   {% csrf_token %}

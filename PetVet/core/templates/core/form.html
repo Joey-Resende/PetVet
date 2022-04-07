@@ -1,4 +1,5 @@
 {% extends 'core/base_model.html' %} 
+{% load crispy_forms_tags %}
 
 {%block title%}
 <title>PetVet - Novo Cadastro</title>
@@ -6,15 +7,15 @@
 
 {%block content%}
 <h3>Novo Cadastro</h3>
-<p>Preencha os campos para realizar um novo cadastro</p><br>
+<p>Preencha os campos para realizar um novo cadastro</p><hr><br>
 
 <form action="" method="POST">
 
     {% csrf_token %}
     
-    {{ form.as_p }}
+    {{ form|crispy }}
     
-    <button type="submit" class="btn btn-warning">Salvar</button>
+    <button type="submit" class="btn btn-warning mt-3">Salvar</button>
 
 </form>
 {% endblock %}

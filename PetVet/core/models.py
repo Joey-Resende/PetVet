@@ -3,6 +3,7 @@ from django.db import models
 from django.urls import reverse
 from phone_field import PhoneField
 
+
 castrated_status = (('Não', 'Não'), ('Sim', 'Sim'))
 sex_status = (('Macho', 'Macho'), ('Fêmea', 'Fêmea'))
 procedures = (('Consulta', 'Consulta'), ('Retorno', 'Retorno'),
@@ -16,7 +17,7 @@ class Tutor(models.Model):
     tutor_name = models.CharField(
         max_length=30, verbose_name='Nome do Tutor')
     cpf = CPFField('cpf')
-    phone = PhoneField(blank=True, verbose_name='Telefone')
+    phone = PhoneField(verbose_name='Telefone')
     email = models.EmailField(max_length=254, verbose_name='Email')
     cep = models.IntegerField(help_text='Cep')
     street = models.CharField(max_length=40, verbose_name='Rua')
@@ -46,15 +47,14 @@ class Pets(models.Model):
     breed = models.CharField(
         max_length=30, verbose_name='Raça')
     gender = models.CharField(
-        max_length=5, choices=sex_status, blank=True, verbose_name='Genêro')
-    date_of_birth = models.DateField(
-        null=True, blank=True, verbose_name='Data de Nascimento')
+        max_length=5, choices=sex_status, verbose_name='Genêro')
+    date_of_birth = models.DateField(verbose_name='Data de Nascimento')
     castrated = models.CharField(
-        max_length=3, choices=castrated_status, blank=True, default='N', verbose_name='Castrado?')
+        max_length=3, choices=castrated_status, default='N', verbose_name='Castrado?')
     weight = models.DecimalField(
         max_digits=6, decimal_places=3, verbose_name='Peso')
     tutor_name = models.ForeignKey(
-        'Tutor', on_delete=models.SET_NULL, null=True, verbose_name="Nome do Tutor")
+        'Tutor', on_delete=models.PROTECT, verbose_name="Nome do Tutor")
 
     class Meta:
         ordering = ['id']
@@ -85,19 +85,18 @@ class Vet(models.Model):
 class MedicalCare(models.Model):
     """Model representing a classe Medical care."""
     id = models.AutoField(primary_key=True)
-    date = models.DateField(null=True, blank=True,
-                            verbose_name='Data')
+    date = models.DateField(blank=True, verbose_name='Data')
     time = models.TimeField(verbose_name='Hora')
     pet_name = models.ForeignKey(
-        'Pets', on_delete=models.SET_NULL, null=True, verbose_name="Nome do Pet")
+        'Pets', on_delete=models.PROTECT, verbose_name='Nome do Pet')
     procedure = models.CharField(
-        max_length=8, choices=procedures, blank=True, verbose_name='Tipo de atendimento')
+        max_length=8, choices=procedures, verbose_name='Tipo de atendimento')
     vet_name = models.ForeignKey(
-        'Vet', on_delete=models.SET_NULL, null=True, verbose_name="Veterinario")
+        'Vet', on_delete=models.PROTECT, verbose_name='Veterinario')
     sedative = models.CharField(
-        max_length=8, choices=type_sedative, default='Não', blank=True, verbose_name='Tipo de sedativo')
+        max_length=8, choices=type_sedative, default='Não', verbose_name='Tipo de sedativo')
     report = models.TextField(
-        max_length=1000, blank=True, verbose_name='Relato do problema')
+        max_length=1000, verbose_name='Relato do problema')
 
     def get_absolute_url(self):
         """Returns the url to access a particular pet instance."""

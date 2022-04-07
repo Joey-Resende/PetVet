@@ -11,7 +11,7 @@ urlpatterns = [
 
     path('medical_cares/', MedicalCareList.as_view(), name='medical_cares'),
     path('medical_care/<int:pk>', MedicalCareDetail.as_view(),
-         name='medical_care-detail'),
+         name='medical_care_detail'),
     path('medical_care_new/', MedicalCareCreate.as_view(), name='medical_care_new'),
     path('medical_care_edit/<int:pk>',
          MedicalCareUpdate.as_view(), name='medical_care_edit'),

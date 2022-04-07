@@ -40,9 +40,15 @@ INSTALLED_APPS = [
     # apps de terceiros
     'cpf_field',
     'phone_field',
+    'crispy_forms',
+    'crispy_bootstrap5',
     # Meus apps
     'core.apps.CoreConfig',
 ]
+
+# Crispy forms
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -134,5 +140,8 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'login'
+
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
