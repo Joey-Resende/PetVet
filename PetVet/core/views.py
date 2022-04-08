@@ -1,4 +1,5 @@
 from core.models import MedicalCare, Pets, Tutor, Vet
+from braces.views import GroupRequiredMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
@@ -27,8 +28,9 @@ class MedicalCareDetail(LoginRequiredMixin, TemplateView):
     template_name = 'core/medicalcare_detail.html'
 
 
-class MedicalCareCreate(LoginRequiredMixin, CreateView):
+class MedicalCareCreate(LoginRequiredMixin, GroupRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
+    group_required = [u"Admin", u"Recepcionista", u"Veterinários"]
     model = MedicalCare
     fields = ['date', 'time', 'pet_name',
               'procedure', 'vet_name', 'sedative', 'report']
@@ -64,8 +66,9 @@ class PetDetail(LoginRequiredMixin, TemplateView):
     model = Pets
 
 
-class PetCreate(LoginRequiredMixin, CreateView):
+class PetCreate(LoginRequiredMixin, GroupRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
+    group_required = [u"Admin", u"Recepcionista", u"Veterinários"]
     model = Pets
     fields = ['pet_name', 'species', 'breed', 'gender',
               'date_of_birth', 'castrated', 'weight', 'tutor_name']
@@ -101,8 +104,9 @@ class TutorDetail(LoginRequiredMixin, TemplateView):
     model = Tutor
 
 
-class TutorCreate(LoginRequiredMixin, CreateView):
+class TutorCreate(LoginRequiredMixin, GroupRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
+    group_required = [u"Admin", u"Recepcionista", u"Veterinários"]
     model = Tutor
     fields = ['tutor_name', 'cpf', 'phone', 'email', 'cep',
               'street', 'number', 'district', 'city', 'state']
@@ -133,8 +137,9 @@ class VetList(LoginRequiredMixin, ListView):
     template_name = 'core/vet_list.html'
 
 
-class VetCreate(LoginRequiredMixin, CreateView):
+class VetCreate(LoginRequiredMixin, GroupRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
+    group_required = [u"Admin", u"Recepcionista", u"Veterinários"]
     model = Vet
     fields = ['vet_name']
     template_name = 'core/form.html'
@@ -149,8 +154,9 @@ class VetUpdate(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('index')
 
 
-class VetDelete(LoginRequiredMixin, DeleteView):
+class VetDelete(LoginRequiredMixin, GroupRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
+    group_required = [u"Admin"]
     model = Vet
     template_name = 'core/form_delete.html'
     success_url = reverse_lazy('index')
