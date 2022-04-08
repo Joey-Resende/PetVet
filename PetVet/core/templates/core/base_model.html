@@ -23,9 +23,9 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="{% static 'css/styles.css/' %}" />
-  </head>
+</head>
 
-  <body class="d-flex flex-column h-100">
+ <body class="d-flex flex-column h-100">
     <main role="main" class="flex-shrink-0">
       
       {% block menu %}
@@ -98,21 +98,17 @@
                 </a>
                 <div
                   class="dropdown-menu"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <a class="dropdown-item" href="">
+                  aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="#">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    Meus dados</a
-                  >
+                    Meus dados</a>
                   <a class="dropdown-item" href="#">
                     <i class="fa fa-lock" aria-hidden="true"></i>
-                    Alterar senha</a
-                  >
+                    Alterar senha</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="">
+                  <a class="dropdown-item" href="{% url 'logout' %}">
                     <i class="fa fa-sign-out" aria-hidden="true"></i>
-                    Sair</a
-                  >
+                    Sair</a>
                 </div>
               </li>
               {% else %}
