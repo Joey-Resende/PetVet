@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     # Meus apps
     'core.apps.CoreConfig',
+    'users.apps.UsersConfig',
 ]
 
 # Crispy forms

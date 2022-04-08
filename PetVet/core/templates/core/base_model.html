@@ -55,26 +55,26 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="medical_cares">
+                <a class="nav-link" href="{% url 'medical_cares' %}">
                   <i class="fa fa-info-circle" aria-hidden="true"></i>
                   Atendimentos
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="pets">
+                <a class="nav-link" href="{% url 'pets' %}">
                   <i class="fa fa-info-circle" aria-hidden="true"></i>
                   Pets
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="tutors">
+                <a class="nav-link" href="{% url 'tutors' %}">
                   <i class="fa fa-question-circle" aria-hidden="true"></i>
                   Tutores
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="vets">
+                <a class="nav-link" href="{% url 'vets' %}">
                   <i class="fa fa-question-circle" aria-hidden="true"></i>
                   Veterinários
                 </a>
@@ -109,7 +109,7 @@
                     Alterar senha</a
                   >
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{% url 'logout' %}">
+                  <a class="dropdown-item" href="">
                     <i class="fa fa-sign-out" aria-hidden="true"></i>
                     Sair</a
                   >
@@ -117,13 +117,13 @@
               </li>
               {% else %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'registrar' %}">
+                <a class="nav-link" href="">
                   <i class="fa fa-user-plus" aria-hidden="true"></i>
                   Registrar
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'login' %}">
+                <a class="nav-link" href="">
                   <i class="fa fa-sign-in" aria-hidden="true"></i>
                   Login
                 </a>

@@ -2,7 +2,7 @@ from cpf_field.models import CPFField
 from django.db import models
 from django.urls import reverse
 from phone_field import PhoneField
-
+from datetime import date
 
 castrated_status = (('Não', 'Não'), ('Sim', 'Sim'))
 sex_status = (('Macho', 'Macho'), ('Fêmea', 'Fêmea'))
@@ -48,13 +48,14 @@ class Pets(models.Model):
         max_length=30, verbose_name='Raça')
     gender = models.CharField(
         max_length=5, choices=sex_status, verbose_name='Genêro')
-    date_of_birth = models.DateField(verbose_name='Data de Nascimento')
+    date_of_birth = models.DateField(
+        null=True, blank=True, verbose_name='Data de Nascimento')
     castrated = models.CharField(
         max_length=3, choices=castrated_status, default='N', verbose_name='Castrado?')
     weight = models.DecimalField(
         max_digits=6, decimal_places=3, verbose_name='Peso')
     tutor_name = models.ForeignKey(
-        'Tutor', on_delete=models.PROTECT, verbose_name="Nome do Tutor")
+        'Tutor', on_delete=models.PROTECT, null=True, verbose_name="Nome do Tutor")
 
     class Meta:
         ordering = ['id']
@@ -85,14 +86,14 @@ class Vet(models.Model):
 class MedicalCare(models.Model):
     """Model representing a classe Medical care."""
     id = models.AutoField(primary_key=True)
-    date = models.DateField(blank=True, verbose_name='Data')
+    date = models.DateField(default=date.today, verbose_name='Data')
     time = models.TimeField(verbose_name='Hora')
     pet_name = models.ForeignKey(
-        'Pets', on_delete=models.PROTECT, verbose_name='Nome do Pet')
+        'Pets', on_delete=models.PROTECT, null=True, verbose_name='Nome do Pet')
     procedure = models.CharField(
         max_length=8, choices=procedures, verbose_name='Tipo de atendimento')
     vet_name = models.ForeignKey(
-        'Vet', on_delete=models.PROTECT, verbose_name='Veterinario')
+        'Vet', on_delete=models.PROTECT, null=True, verbose_name='Veterinario')
     sedative = models.CharField(
         max_length=8, choices=type_sedative, default='Não', verbose_name='Tipo de sedativo')
     report = models.TextField(
