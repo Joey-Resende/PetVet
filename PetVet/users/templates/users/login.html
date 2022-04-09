@@ -1,22 +1,28 @@
 {% extends 'core/base_model.html' %} 
 {% load crispy_forms_tags %}
 
-{%block title%}
+{% block title %}
 <title>PetVet - Autenticação</title>
 {% endblock %} 
 
 
-{%block content%}
+{% block content %}
 
 <div class="row">
-    <div class ="col-md-4 mx-auto">
-        {% if request.user.is_authenticated %}
-        <h3>Ação não permitida</h3>
+    {% if request.user.is_authenticated %}
+    <div class="col-md mx-auto">
+        <h3>
+            <i class="fa fa-exclamation" aria-hidden="true"></i>
+            Ação não permitida
+        </h3>
         <hr>
         <p class="lead">
             <strong>Houve algum problema para processar a ação desejada ou você não tem premissão para isso.</strong>
         </p>
-        {% else %}
+    </div>
+    {% else %}
+    
+    <div class ="col-md-4 mx-auto">
         <h3>Autenticação</h3>
         <hr>
         <form action="" method="POST">
@@ -27,8 +33,8 @@
     
             <button type="submit" class="btn btn-warning mt-3">Entrar</button>
         </form>
-        {% endif %}
     </div>
+    {% endif %}
 </div>
 
 {% endblock %}
