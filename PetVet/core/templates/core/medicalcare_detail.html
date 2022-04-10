@@ -16,7 +16,7 @@
   </div>
   <div class="card text-white bg-dark mb-3">
     <div class="card-body">
-      <h5 class="card-title">Detalhes de {{ medicalcare.procedure }} <a href="" class="">{{ medicalcare.pet_name }}</a></h5>
+      <h5 class="card-title">Detalhes: {{ medicalcare.procedure }} de {{ medicalcare.pet_name }}</h5>
       <p class="card-text">Queixa: {{ medicalcare.report }}</p>
     </div>
       <ul class="list-group list-group-flush">
@@ -26,6 +26,7 @@
         <li class="list-group-item">Sedativo: {{ medicalcare.sedative }}</li>
       </ul>
     <div class="card-body">
+      <a href="{% url 'medical_cares' %}" class="btn btn-outline-light btn-sm">Voltar</a>
       <a href="" class="btn btn-warning btn-sm">Editar</a>
       <a href="" class="btn btn-danger btn-sm">Excluir</a>
     </div>

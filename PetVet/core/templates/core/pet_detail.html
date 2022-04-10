@@ -1,0 +1,38 @@
+{% extends 'core/base_model.html' %} 
+{% load static %}
+
+
+{%block title%}
+<title>PetVet - Pets</title>
+{% endblock %} 
+
+
+
+{% block content %}
+<div class="container">
+
+  <div class="row col-2">
+    <img class="card-img-top" src="{% static 'img/blackcat_icon.png/' %}" alt="Imagem de capa do card">
+  </div>
+  <div class="card text-white bg-dark mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Detalhes de {{ pets.pet_name }}</h5>
+    </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Id: {{ pets.id }}</li>
+        <li class="list-group-item">Nome: {{ pets.pet_name }}</li>
+        <li class="list-group-item">Especie: {{ pets.species }}</li>
+        <li class="list-group-item">Raca: {{ pets.breed }}</li>
+        <li class="list-group-item">Genero: {{ pets.gender }}</li>
+        <li class="list-group-item">Data de Nascimento: {{ pets.date_of_birth }}</li>
+        <li class="list-group-item">Castrado?: {{ pets.castrated }}</li>
+        <li class="list-group-item">Peso: {{ pets.weight }}</li>
+        <li class="list-group-item">Tutor(a): {{ pets.tutor_name }}</li>
+      </ul>
+    <div class="card-body">
+      <a href="" class="btn btn-warning btn-sm">Editar</a>
+      <a href="" class="btn btn-danger btn-sm">Excluir</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

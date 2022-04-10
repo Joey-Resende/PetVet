@@ -29,8 +29,7 @@
         <td>{{ each.breed }}</td>
         <td>{{ each.tutor_name }}</td>
         <td>
-          <a href="{% url 'pet_edit' each.pk %}" class="btn btn-warning btn-sm">Editar</a>
-          <a href="{% url 'pet_delete' each.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+          <a href="{% url 'pet_detail' each.pk %}" class="btn btn-warning btn-sm">Detalhes</a>
         </td>
       </tr>
       {% empty %}

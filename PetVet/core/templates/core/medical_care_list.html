@@ -1,4 +1,6 @@
 {% extends 'core/base_model.html' %} 
+{% load static %}
+
 
 {%block title%}
 <title>PetVet - Atendimentos</title>
@@ -29,8 +31,7 @@
         <td>{{ each.procedure }}</td>
         <td>{{ each.report }}</td>
         <td>
-          <a href="{% url 'medical_care_edit' each.pk %}" class="btn btn-warning btn-sm">Editar</a>
-          <a href="{% url 'medical_care_delete' each.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+          <a href="{% url 'medical_care_detail' each.pk %}" class="btn btn-warning btn-sm">Detalhes</a>
         </td>
       </tr>
       {% empty %}

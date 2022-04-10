@@ -25,8 +25,7 @@
         <td>{{ each.phone }}</td>
         <td>{{ each.email }}</td>
         <td>
-          <a href="{% url 'tutor_edit' each.pk %}" class="btn btn-warning btn-sm">Editar</a>
-          <a href="{% url 'tutor_delete' each.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+          <a href="{% url 'tutor_detail' each.pk %}" class="btn btn-warning btn-sm">Detalhes</a>
         </td>
       </tr>
       {% empty %}

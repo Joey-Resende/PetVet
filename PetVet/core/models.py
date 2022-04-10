@@ -58,7 +58,7 @@ class Pets(models.Model):
         'Tutor', on_delete=models.PROTECT, null=True, verbose_name="Nome do Tutor")
 
     class Meta:
-        ordering = ['id']
+        ordering = ['-id']
 
     def get_absolute_url(self):
         """Returns the url to access a particular pet instance."""
@@ -99,9 +99,12 @@ class MedicalCare(models.Model):
     report = models.TextField(
         max_length=1000, verbose_name='Relato do problema')
 
+    class Meta:
+        ordering = ['-date']
+
     def get_absolute_url(self):
         """Returns the url to access a particular pet instance."""
-        return reverse('medical_care-detail', args=[str(self.id)])
+        return reverse('medical_care_detail', args=[str(self.id)])
 
     def __str__(self):
         """String for representing the Model object."""

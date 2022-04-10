@@ -20,14 +20,14 @@ urlpatterns = [
 
 
     path('pets/', PetList.as_view(), name='pets'),
-    path('pet/<int:pk>', PetDetail.as_view(), name='pet-detail'),
+    path('pet/<int:pk>', PetDetail.as_view(), name='pet_detail'),
     path('pet_new/', PetCreate.as_view(), name='pet_new'),
     path('pet_edit/<int:pk>', PetUpdate.as_view(), name='pet_edit'),
     path('pet_delete/<int:pk>', PetDelete.as_view(), name='pet_delete'),
 
 
     path('tutors/', TutorList.as_view(), name='tutors'),
-    path('tutor/<int:pk>', TutorDetail.as_view(), name='tutor-detail'),
+    path('tutor/<int:pk>', TutorDetail.as_view(), name='tutor_detail'),
     path('tutor_new/', TutorCreate.as_view(), name='tutor_new'),
     path('tutor_edit/<int:pk>', TutorUpdate.as_view(), name='tutor_edit'),
     path('tutor_delete/<int:pk>', TutorDelete.as_view(), name='tutor_delete'),
