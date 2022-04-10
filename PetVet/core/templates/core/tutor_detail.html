@@ -1,15 +1,33 @@
-{% extends "base_model.html" %} {% block content %}
-<h1>Detalhes de {{ tutor.tutor_name }}</h1>
-<p><strong>Cpf:</strong> {{ tutor.cpf }}</p>
-<p><strong>Telefone:</strong> {{ tutor.phone }}</p>
-<p><strong>E-mail:</strong> {{ tutor.email }}</p>
-<div>
-  <h2>Endereco</h2>
-  <p><strong>Cep:</strong> {{ tutor.cep }}</p>
-  <p><strong>Rua:</strong> {{ tutor.street }}</p>
-  <p><strong>Numero:</strong> {{ tutor.number }}</p>
-  <p><strong>Bairro:</strong> {{ tutor.district }}</p>
-  <p><strong>Cidade:</strong> {{ tutor.city }}</p>
-  <p><strong>Estado:</strong> {{ tutor.state }}</p>
+{% extends 'core/base_model.html' %} 
+{% load static %}
+
+{%block title%}
+<title>PetVet - Tutores</title>
+{% endblock %} 
+
+{% block content %}
+<h3>Detalhe do Tutor(a)</h3>
+<hr>
+<div class="container">
+
+  <div class="row col-2">
+    <img class="card-img-top" src="{% static 'img/blackcat_icon.png/' %}" alt="Imagem de capa do card">
+  </div>
+  <div class="card text-white bg-dark mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Detalhes: {{ tutor.tutor_name }}</h5>
+    </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cpf: {{ tutor.cpf }}</li>
+        <li class="list-group-item">Telefone: {{ tutor.phone }}</li>
+        <li class="list-group-item">Email: {{ tutor.email }}</li>
+        <li class="list-group-item">Endereco: {{ tutor.street }}</li>
+      </ul>
+    <div class="card-body">
+      <a href="{% url 'tutors' %}" class="btn btn-outline-light btn-sm">Voltar</a>
+      <a href="{% url 'tutor_edit' tutor.pk %}" class="btn btn-warning btn-sm">Editar</a>
+      <a href="{% url 'tutor_delete' tutor.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+    </div>
+  </div>
 </div>
 {% endblock %}

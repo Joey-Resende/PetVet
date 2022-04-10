@@ -74,10 +74,6 @@ class Vet(models.Model):
     vet_name = models.CharField(
         max_length=30, verbose_name='Nome')
 
-    def get_absolute_url(self):
-        """Returns the url to access a particular pet instance."""
-        return reverse('vet-detail', args=[str(self.id)])
-
     def __str__(self):
         """String for representing the Model object."""
         return self.vet_name
@@ -103,7 +99,7 @@ class MedicalCare(models.Model):
         ordering = ['-date']
 
     def get_absolute_url(self):
-        """Returns the url to access a particular pet instance."""
+        """Returns the url to access a particular medical care instance."""
         return reverse('medical_care_detail', args=[str(self.id)])
 
     def __str__(self):

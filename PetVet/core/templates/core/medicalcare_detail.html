@@ -1,14 +1,13 @@
 {% extends 'core/base_model.html' %} 
 {% load static %}
 
-
 {%block title%}
 <title>PetVet - Atendimentos</title>
 {% endblock %} 
 
-
-
 {% block content %}
+<h3>Detalhe do Atendimento</h3>
+<hr>
 <div class="container">
 
   <div class="row col-2">
@@ -27,8 +26,8 @@
       </ul>
     <div class="card-body">
       <a href="{% url 'medical_cares' %}" class="btn btn-outline-light btn-sm">Voltar</a>
-      <a href="" class="btn btn-warning btn-sm">Editar</a>
-      <a href="" class="btn btn-danger btn-sm">Excluir</a>
+      <a href="{% url 'medical_care_edit' medicalcare.pk %}" class="btn btn-warning btn-sm">Editar</a>
+      <a href="{% url 'medical_care_delete' medicalcare.pk %}" class="btn btn-danger btn-sm">Excluir</a>
     </div>
   </div>
 </div>

@@ -1,14 +1,13 @@
 {% extends 'core/base_model.html' %} 
 {% load static %}
 
-
 {%block title%}
 <title>PetVet - Pets</title>
 {% endblock %} 
 
-
-
 {% block content %}
+<h3>Detalhe do Pet</h3>
+<hr>
 <div class="container">
 
   <div class="row col-2">
@@ -30,8 +29,9 @@
         <li class="list-group-item">Tutor(a): {{ pets.tutor_name }}</li>
       </ul>
     <div class="card-body">
-      <a href="" class="btn btn-warning btn-sm">Editar</a>
-      <a href="" class="btn btn-danger btn-sm">Excluir</a>
+      <a href="{% url 'pets' %}" class="btn btn-outline-light btn-sm">Voltar</a>
+      <a href="{% url 'pet_edit' pets.pk %}" class="btn btn-warning btn-sm">Editar</a>
+      <a href="{% url 'pet_delete' pets.pk %}" class="btn btn-danger btn-sm">Excluir</a>
     </div>
   </div>
 </div>
