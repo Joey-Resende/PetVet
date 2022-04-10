@@ -25,6 +25,7 @@ class MedicalCareDetail(LoginRequiredMixin, DetailView):
     login_url = reverse_lazy('login')
     model = MedicalCare
     template_name = 'core/medicalcare_detail.html'
+    success_url = reverse_lazy('medical_cares')
 
 
 class MedicalCareCreate(LoginRequiredMixin, CreateView):
@@ -64,6 +65,7 @@ class PetDetail(LoginRequiredMixin, DetailView):
     login_url = reverse_lazy('login')
     model = Pets
     template_name = 'core/pet_detail.html'
+    success_url = reverse_lazy('pets')
 
 
 class PetCreate(LoginRequiredMixin, CreateView):
@@ -72,7 +74,7 @@ class PetCreate(LoginRequiredMixin, CreateView):
     fields = ['pet_name', 'species', 'breed', 'gender',
               'date_of_birth', 'castrated', 'weight', 'tutor_name']
     template_name = 'core/form.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('pets')
 
 
 class PetUpdate(LoginRequiredMixin, UpdateView):
@@ -81,7 +83,7 @@ class PetUpdate(LoginRequiredMixin, UpdateView):
     fields = ['pet_name', 'species', 'breed', 'gender',
               'date_of_birth', 'castrated', 'weight', 'tutor_name']
     template_name = 'core/form.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('pets')
 
 
 class PetDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
@@ -89,7 +91,7 @@ class PetDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
     group_required = [u"Recepcionista", u"Admin"]
     model = Pets
     template_name = 'core/form_delete.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('pets')
 
 
 # Views Tutor
@@ -103,6 +105,7 @@ class TutorDetail(LoginRequiredMixin, DetailView):
     login_url = reverse_lazy('login')
     model = Tutor
     template_name = 'core/tutor_detail.html'
+    success_url = reverse_lazy('tutors')
 
 
 class TutorCreate(LoginRequiredMixin, CreateView):
@@ -111,7 +114,7 @@ class TutorCreate(LoginRequiredMixin, CreateView):
     fields = ['tutor_name', 'cpf', 'phone', 'email', 'cep',
               'street', 'number', 'district', 'city', 'state']
     template_name = 'core/form.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('tutors')
 
 
 class TutorUpdate(LoginRequiredMixin, UpdateView):
@@ -120,7 +123,7 @@ class TutorUpdate(LoginRequiredMixin, UpdateView):
     fields = ['tutor_name', 'cpf', 'phone', 'email', 'cep',
               'street', 'number', 'district', 'city', 'state']
     template_name = 'core/form.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('tutors')
 
 
 class TutorDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
@@ -128,7 +131,7 @@ class TutorDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
     group_required = [u"Recepcionista", u"Admin"]
     model = Tutor
     template_name = 'core/form_delete.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('tutors')
 
 
 # Views Vet
@@ -143,7 +146,7 @@ class VetCreate(LoginRequiredMixin, CreateView):
     model = Vet
     fields = ['vet_name']
     template_name = 'core/form.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('vets')
 
 
 class VetUpdate(LoginRequiredMixin, UpdateView):
@@ -151,7 +154,7 @@ class VetUpdate(LoginRequiredMixin, UpdateView):
     model = Vet
     fields = ['vet_name']
     template_name = 'core/form.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('vets')
 
 
 class VetDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
@@ -159,4 +162,4 @@ class VetDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
     group_required = [u"Recepcionista", u"Admin"]
     model = Vet
     template_name = 'core/form_delete.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('vets')

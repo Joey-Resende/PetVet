@@ -8,7 +8,7 @@ admin.site.register(Vet)
 
 
 class MedicalCareAdmin(admin.ModelAdmin):
-    list_display = ('date', 'time', 'pet_name', 'procedure', 'report')
+    list_display = ('id', 'date', 'time', 'pet_name', 'procedure', 'report')
 
 
 admin.site.register(MedicalCare, MedicalCareAdmin)

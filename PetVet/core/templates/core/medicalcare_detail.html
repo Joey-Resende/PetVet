@@ -1,0 +1,34 @@
+{% extends 'core/base_model.html' %} 
+{% load static %}
+
+
+{%block title%}
+<title>PetVet - Atendimentos</title>
+{% endblock %} 
+
+
+
+{% block content %}
+<div class="container">
+
+  <div class="row col-2">
+    <img class="card-img-top" src="{% static 'img/blackcat_icon.png/' %}" alt="Imagem de capa do card">
+  </div>
+  <div class="card text-white bg-dark mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Detalhes de {{ medicalcare.procedure }} <a href="" class="">{{ medicalcare.pet_name }}</a></h5>
+      <p class="card-text">Queixa: {{ medicalcare.report }}</p>
+    </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Data: {{ medicalcare.date }}</li>
+        <li class="list-group-item">Hora: {{ medicalcare.time }}</li>
+        <li class="list-group-item">Veterinário(a): {{ medicalcare.vet_name }}</li>
+        <li class="list-group-item">Sedativo: {{ medicalcare.sedative }}</li>
+      </ul>
+    <div class="card-body">
+      <a href="" class="btn btn-warning btn-sm">Editar</a>
+      <a href="" class="btn btn-danger btn-sm">Excluir</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

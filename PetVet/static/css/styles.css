@@ -25,13 +25,14 @@ div {
 
 
 
-nav {
-    padding: 0;
-    list-style: none;
+.navbar {
     background-color: var(--azul-3);
     color: var(--amarelo-2);
 }
 
+#navbarNavDropdown {
+    color: var(--amarelo-2);
+}
 
 p {
     color: var(--branco-2);
@@ -39,5 +40,4 @@ p {
 
 footer {
     background-color: var(--azul-3);
-    color: var(--amarelo-1);
 }
