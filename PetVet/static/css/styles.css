@@ -19,6 +19,12 @@ h3 {
     color: var(--amarelo-2);
 }
 
+
+h4 {
+    color: var(--amarelo-2);
+}
+
+
 div {
     color: var(--branco-2);
 }

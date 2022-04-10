@@ -1,15 +1,27 @@
 {% extends 'core/base_model.html' %} 
+{% load static %}
 
 {%block title%}
 <title>PetVet - Home</title>
 {% endblock %} 
 
 {% block content %}
-<h3>Bem vindo ao PetVet</h3>
+<h3><strong>Bem vindo ao PetVet</strong></h3><hr>
+<div class="row col-2">
+  <img class="card-img-top" src="{% static 'img/vet_hospital_icon.png/' %}" alt="Imagem de capa do card">
+</div>
+
 <h5>O hospital tem as seguintes contagens de registros:</h5>
 <ul>
   <li><strong>Atendimentos:</strong> {{ num_medical_care }}</li>
   <li><strong>Pets:</strong> {{ num_pets }}</li>
   <li><strong>Tutores:</strong> {{ num_tutors }}</li>
-</ul>
+</ul><br><br>
+
+
+<h3>
+  <i class="fa fa-exclamation" aria-hidden="true"></i>
+  Antes de ter acesso ao sistema e necessario fazer login.
+</h3>
+
 {% endblock %}

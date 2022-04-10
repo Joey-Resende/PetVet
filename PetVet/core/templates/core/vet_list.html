@@ -1,11 +1,12 @@
 {% extends 'core/base_model.html' %} 
+{% load static %}
 
 {%block title%}
 <title>PetVet - Veterinários</title>
 {% endblock %} 
 
 {% block content %}
-<h3>Lista dos Veterinários</h3>
+<h3><strong>Lista dos Veterinários</strong></h3>
 <hr>
 <a href="{% url 'vet_new' %}" class="btn btn-success btn">Novo</a><br><br>
 

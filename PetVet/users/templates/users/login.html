@@ -1,5 +1,6 @@
 {% extends 'core/base_model.html' %} 
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block title %}
 <title>PetVet - Autenticação</title>
@@ -13,11 +14,15 @@
     <div class="col-md mx-auto">
         <h3>
             <i class="fa fa-exclamation" aria-hidden="true"></i>
-            Ação não permitida
+            <strong>Ação não permitida</strong>
         </h3>
         <hr>
+        <div class="row col-2">
+            <img class="card-img-top" src="{% static 'img/labrador_dog_icon.png/' %}" alt="Imagem de capa do card">
+          </div>
         <p class="lead">
-            <strong>Houve algum problema para processar a ação desejada ou você não tem premissão para isso.</strong>
+            <strong>Houve algum problema para processar a ação desejada ou você não tem premissão para isso.</strong><hr>
+            
         </p>
     </div>
     {% else %}
