@@ -23,9 +23,8 @@ class IndexView(TemplateView):
 
         return context
 
+
 # Views Medical Care
-
-
 class MedicalCareList(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     model = MedicalCare
@@ -47,6 +46,14 @@ class MedicalCareCreate(LoginRequiredMixin, CreateView):
     template_name = 'core/form.html'
     success_url = reverse_lazy('medical_cares')
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = "PetVet - Novo Cadastro"
+        context['title_page'] = "Novo Cadastro"
+
+        return context
+
 
 class MedicalCareUpdate(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
@@ -55,6 +62,14 @@ class MedicalCareUpdate(LoginRequiredMixin, UpdateView):
               'procedure', 'vet_name', 'sedative', 'report']
     template_name = 'core/form.html'
     success_url = reverse_lazy('medical_cares')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = "PetVet - Editar Cadastro"
+        context['title_page'] = "Editar Cadastro"
+
+        return context
 
 
 class MedicalCareDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
@@ -87,6 +102,14 @@ class PetCreate(LoginRequiredMixin, CreateView):
     template_name = 'core/form.html'
     success_url = reverse_lazy('pets')
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = "PetVet - Novo Cadastro"
+        context['title_page'] = "Novo Cadastro"
+
+        return context
+
 
 class PetUpdate(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
@@ -95,6 +118,14 @@ class PetUpdate(LoginRequiredMixin, UpdateView):
               'date_of_birth', 'castrated', 'weight', 'tutor_name']
     template_name = 'core/form.html'
     success_url = reverse_lazy('pets')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = "PetVet - Editar Cadastro"
+        context['title_page'] = "Editar Cadastro"
+
+        return context
 
 
 class PetDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
@@ -127,6 +158,14 @@ class TutorCreate(LoginRequiredMixin, CreateView):
     template_name = 'core/form.html'
     success_url = reverse_lazy('tutors')
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = "PetVet - Novo Cadastro"
+        context['title_page'] = "Novo Cadastro"
+
+        return context
+
 
 class TutorUpdate(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
@@ -135,6 +174,14 @@ class TutorUpdate(LoginRequiredMixin, UpdateView):
               'street', 'number', 'district', 'city', 'state']
     template_name = 'core/form.html'
     success_url = reverse_lazy('tutors')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = "PetVet - Editar Cadastro"
+        context['title_page'] = "Editar Cadastro"
+
+        return context
 
 
 class TutorDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
@@ -159,6 +206,14 @@ class VetCreate(LoginRequiredMixin, CreateView):
     template_name = 'core/form.html'
     success_url = reverse_lazy('vets')
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = "PetVet - Novo Cadastro"
+        context['title_page'] = "Novo Cadastro"
+
+        return context
+
 
 class VetUpdate(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('login')
@@ -166,6 +221,14 @@ class VetUpdate(LoginRequiredMixin, UpdateView):
     fields = ['vet_name']
     template_name = 'core/form.html'
     success_url = reverse_lazy('vets')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = "PetVet - Editar Cadastro"
+        context['title_page'] = "Editar Cadastro"
+
+        return context
 
 
 class VetDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
