@@ -6,27 +6,42 @@
 {% endblock %} 
 
 {% block content %}
-<h3><strong>Detalhe do Tutor(a)</strong></h3>
-<hr>
-<div class="container">
-
-  <div class="row col-2">
-    <img class="card-img-top" src="{% static 'img/client_cat_icon.png/' %}" alt="Imagem de capa do card">
-  </div>
-  <div class="card text-white bg-dark mb-3">
-    <div class="card-body">
-      <h5 class="card-title">Detalhes: {{ tutor.tutor_name }}</h5>
-    </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Cpf: {{ tutor.cpf }}</li>
-        <li class="list-group-item">Telefone: {{ tutor.phone }}</li>
-        <li class="list-group-item">Email: {{ tutor.email }}</li>
-        <li class="list-group-item">Endereco: {{ tutor.street }}</li>
-      </ul>
-    <div class="card-body">
-      <a href="{% url 'tutors' %}" class="btn btn-outline-light btn-sm">Voltar</a>
-      <a href="{% url 'tutor_edit' tutor.pk %}" class="btn btn-warning btn-sm">Editar</a>
-      <a href="{% url 'tutor_delete' tutor.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+<div class="row">
+  <div class="col-sm-auto">
+    
+    <div class="container">
+      <h3><strong>Detalhe do Tutor(a)</strong></h3><hr>
+      <div class="row col-6">
+        <img class="card-img-top" src="{% static 'img/client_cat_icon.png/' %}" alt="Imagem de capa do card">
+      </div>
+      <div class="card text-white bg-dark mb-3">
+          <div class="card-body">
+              <h5 class="card-title">Detalhes: {{ tutor.tutor_name }}</h5>
+          </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Cpf: {{ tutor.cpf }}</li>
+                  <li class="list-group-item">Telefone: {{ tutor.phone }}</li>
+                  <li class="list-group-item">Email: {{ tutor.email }}</li>
+                </ul>
+              <div class="card text-white bg-dark mb-3">
+                <div class="card-body">
+                  <h5 class="card-title">Detalhes do Endereço</h5>
+                </div>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cep: {{ tutor.cep }}</li>
+                    <li class="list-group-item">Rua: {{ tutor.street }} </li>
+                    <li class="list-group-item">Número: {{ tutor.number }} </li>
+                    <li class="list-group-item">Bairro: {{ tutor.district }} </li>
+                    <li class="list-group-item">Cidade: {{ tutor.city }} </li>
+                    <li class="list-group-item">Estado: {{ tutor.state }}</li>
+                  </ul>
+              </div>
+          <div class="card-body">
+            <a href="{% url 'tutors' %}" class="btn btn-outline-light btn-sm">Voltar</a>
+            <a href="{% url 'tutor_edit' tutor.pk %}" class="btn btn-warning btn-sm">Editar</a>
+            <a href="{% url 'tutor_delete' tutor.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+          </div>
+      </div>
     </div>
   </div>
 </div>

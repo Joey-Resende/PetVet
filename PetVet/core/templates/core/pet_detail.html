@@ -6,32 +6,35 @@
 {% endblock %} 
 
 {% block content %}
-<h3><strong>Detalhe do Pet</strong></h3>
-<hr>
-<div class="container">
-
-  <div class="row col-2">
-    <img class="card-img-top" src="{% static 'img/blackcat_icon.png/' %}" alt="Imagem de capa do card">
-  </div>
-  <div class="card text-white bg-dark mb-3">
-    <div class="card-body">
-      <h5 class="card-title">Detalhes de {{ pets.pet_name }}</h5>
-    </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Id: {{ pets.id }}</li>
-        <li class="list-group-item">Nome: {{ pets.pet_name }}</li>
-        <li class="list-group-item">Especie: {{ pets.species }}</li>
-        <li class="list-group-item">Raca: {{ pets.breed }}</li>
-        <li class="list-group-item">Genero: {{ pets.gender }}</li>
-        <li class="list-group-item">Data de Nascimento: {{ pets.date_of_birth }}</li>
-        <li class="list-group-item">Castrado?: {{ pets.castrated }}</li>
-        <li class="list-group-item">Peso: {{ pets.weight }}</li>
-        <li class="list-group-item">Tutor(a): {{ pets.tutor_name }}</li>
-      </ul>
-    <div class="card-body">
-      <a href="{% url 'pets' %}" class="btn btn-outline-light btn-sm">Voltar</a>
-      <a href="{% url 'pet_edit' pets.pk %}" class="btn btn-warning btn-sm">Editar</a>
-      <a href="{% url 'pet_delete' pets.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+<div class="row">
+  <div class="col-sm-auto">
+    
+    <div class="container">
+      <h3><strong>Detalhe do Pet</strong></h3><hr>
+      <div class="row col-6">
+        <img class="card-img-top" src="{% static 'img/blackcat_icon.png/' %}" alt="Imagem de capa do card">
+      </div>
+      <div class="card text-white bg-dark mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Detalhes de {{ pets.pet_name }}</h5>
+        </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Id: {{ pets.id }}</li>
+            <li class="list-group-item">Nome: {{ pets.pet_name }}</li>
+            <li class="list-group-item">Especie: {{ pets.species }}</li>
+            <li class="list-group-item">Raca: {{ pets.breed }}</li>
+            <li class="list-group-item">Genero: {{ pets.gender }}</li>
+            <li class="list-group-item">Data de Nascimento: {{ pets.date_of_birth }}</li>
+            <li class="list-group-item">Castrado?: {{ pets.castrated }}</li>
+            <li class="list-group-item">Peso: {{ pets.weight }}</li>
+            <li class="list-group-item">Tutor(a): {{ pets.tutor_name }}</li>
+          </ul>
+        <div class="card-body">
+          <a href="{% url 'pets' %}" class="btn btn-outline-light btn-sm">Voltar</a>
+          <a href="{% url 'pet_edit' pets.pk %}" class="btn btn-warning btn-sm">Editar</a>
+          <a href="{% url 'pet_delete' pets.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -6,22 +6,37 @@
 {% endblock %} 
 
 {% block content %}
-<h3><strong>Bem vindo ao PetVet</strong></h3><hr>
-<div class="row col-2">
-  <img class="card-img-top" src="{% static 'img/vet_hospital_icon.png/' %}" alt="Imagem de capa do card">
+<div class="row">
+  <div class="col-sm-auto">
+    
+    <div class="container">
+      <h3><strong>Bem vindo ao PetVet</strong></h3><hr>
+      <div class="row col-4">
+        <img class="card-img-top" src="{% static 'img/vet_hospital_icon.png/' %}" alt="Imagem de capa do card">
+      </div>
+      <div class="card text-white bg-dark mb-3">
+        <div class="card-body">
+          <h5 class="card-title">O hospital tem as seguintes contagens de registros:</h5>
+        </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Total de Atendimentos: <strong>{{ num_medical_cares }}</strong></li>
+            <li class="list-group-item">Total de Pets: <strong>{{ num_pets }}</strong></li>
+            <li class="list-group-item">Total de Tutores: <strong>{{ num_tutors }}</strong></li>
+          </ul>
+        <div class="card-body">
+     
+        </div>
+      </div><hr>
+    </div>
+  </div>
 </div>
 
-<h5>O hospital tem as seguintes contagens de registros:</h5>
-<ul>
-  <li><strong>Atendimentos:</strong> {{ num_medical_care }}</li>
-  <li><strong>Pets:</strong> {{ num_pets }}</li>
-  <li><strong>Tutores:</strong> {{ num_tutors }}</li>
-</ul><br><br>
+<br><br>
 
 
 <h3>
   <i class="fa fa-exclamation" aria-hidden="true"></i>
-  Antes de ter acesso ao sistema e necessario fazer login.
+  Antes de ter acesso ao sistema e necessário fazer login.
 </h3>
 
 {% endblock %}

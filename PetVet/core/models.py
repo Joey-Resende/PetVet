@@ -28,6 +28,9 @@ class Tutor(models.Model):
     state = models.CharField(
         max_length=40, default='Pernambuco', verbose_name='Estado')
 
+    class Meta:
+        ordering = ['tutor_name']
+
     def get_absolute_url(self):
         """Returns the url to access a particular pet instance."""
         return reverse('tutor-detail', args=[str(self.id)])
@@ -73,6 +76,9 @@ class Vet(models.Model):
     """Model representing a classe Vet."""
     vet_name = models.CharField(
         max_length=30, verbose_name='Nome')
+
+    class Meta:
+        ordering = ['vet_name']
 
     def __str__(self):
         """String for representing the Model object."""

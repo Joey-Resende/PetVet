@@ -9,12 +9,23 @@ from django.views.generic import DetailView, ListView, TemplateView
 # Views Index
 class IndexView(TemplateView):
     template_name = 'core/index.html'
-    num_pets = Pets.objects.all().count()
-    num_tutors = Tutor.objects.all().count()
-    num_medical_care = MedicalCare.objects.all().count()
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        num_pets = Pets.objects.all().count()
+        num_tutors = Tutor.objects.all().count()
+        num_medical_cares = MedicalCare.objects.all().count()
+
+        context['num_pets'] = num_pets
+        context['num_tutors'] = num_tutors
+        context['num_medical_cares'] = num_medical_cares
+
+        return context
 
 # Views Medical Care
+
+
 class MedicalCareList(LoginRequiredMixin, ListView):
     login_url = reverse_lazy('login')
     model = MedicalCare
