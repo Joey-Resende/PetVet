@@ -7,12 +7,12 @@
 {% endblock %} 
 
 {% block content %}
-<h3><strong>{{ title_page }}</strong></h3>
-<p>Preencha os campos para realizar um novo cadastro</p><hr><br>
-<div class="row">
-    <div class="col-md-4 mx-left">
-        <form action="" method="POST">
 
+<div class="row">
+    <div class="col-md-4 mx-auto">
+        <form action="" method="POST">
+            <h3><strong>{{ title_page }}</strong></h3>
+            <p>{{ tips }}</p><hr><br>
             {% csrf_token %}
     
             {{ form|crispy }}
@@ -22,3 +22,5 @@
     </div>
 </div>
 {% endblock %}
+
+

@@ -49,8 +49,9 @@ class MedicalCareCreate(LoginRequiredMixin, CreateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
-        context['title_window'] = "PetVet - Novo Cadastro"
-        context['title_page'] = "Novo Cadastro"
+        context['title_window'] = 'PetVet - Novo Cadastro'
+        context['title_page'] = 'Novo Cadastro'
+        context['tips'] = 'Preencha os campos para criar um novo atendimento.'
 
         return context
 
@@ -66,8 +67,9 @@ class MedicalCareUpdate(LoginRequiredMixin, UpdateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
-        context['title_window'] = "PetVet - Editar Cadastro"
-        context['title_page'] = "Editar Cadastro"
+        context['title_window'] = 'PetVet - Editar Cadastro'
+        context['title_page'] = 'ditar Cadastro'
+        context['tips'] = 'Preencha os campos para editar esse atendimento.'
 
         return context
 
@@ -107,6 +109,7 @@ class PetCreate(LoginRequiredMixin, CreateView):
 
         context['title_window'] = "PetVet - Novo Cadastro"
         context['title_page'] = "Novo Cadastro"
+        context['tips'] = 'Preencha os campos para criar um novo cadastro.'
 
         return context
 
@@ -124,6 +127,7 @@ class PetUpdate(LoginRequiredMixin, UpdateView):
 
         context['title_window'] = "PetVet - Editar Cadastro"
         context['title_page'] = "Editar Cadastro"
+        context['tips'] = 'Preencha os campos para editar esse cadastro.'
 
         return context
 
@@ -163,6 +167,7 @@ class TutorCreate(LoginRequiredMixin, CreateView):
 
         context['title_window'] = "PetVet - Novo Cadastro"
         context['title_page'] = "Novo Cadastro"
+        context['tips'] = 'Preencha os campos para criar um novo cadastro.'
 
         return context
 
@@ -180,6 +185,7 @@ class TutorUpdate(LoginRequiredMixin, UpdateView):
 
         context['title_window'] = "PetVet - Editar Cadastro"
         context['title_page'] = "Editar Cadastro"
+        context['tips'] = 'Preencha os campos para editar esse cadastro.'
 
         return context
 
@@ -211,6 +217,7 @@ class VetCreate(LoginRequiredMixin, CreateView):
 
         context['title_window'] = "PetVet - Novo Cadastro"
         context['title_page'] = "Novo Cadastro"
+        context['tips'] = 'Preencha os campos para criar um novo cadastro.'
 
         return context
 
@@ -227,6 +234,7 @@ class VetUpdate(LoginRequiredMixin, UpdateView):
 
         context['title_window'] = "PetVet - Editar Cadastro"
         context['title_page'] = "Editar Cadastro"
+        context['tips'] = 'Preencha os campos para editar esse cadastro.'
 
         return context
 
