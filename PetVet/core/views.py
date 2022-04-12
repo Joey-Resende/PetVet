@@ -68,7 +68,7 @@ class MedicalCareUpdate(LoginRequiredMixin, UpdateView):
         context = super().get_context_data(*args, **kwargs)
 
         context['title_window'] = 'PetVet - Editar Cadastro'
-        context['title_page'] = 'ditar Cadastro'
+        context['title_page'] = 'Editar Cadastro'
         context['tips'] = 'Preencha os campos para editar esse atendimento.'
 
         return context
