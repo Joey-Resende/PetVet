@@ -76,7 +76,7 @@ class MedicalCareUpdate(LoginRequiredMixin, UpdateView):
 
 class MedicalCareDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
-    group_required = [u"Recepcionista", u"Admin"]
+    group_required = [u'Recepcionista', u'Admin']
     model = MedicalCare
     template_name = 'core/form_delete.html'
     success_url = reverse_lazy('medical_cares')
@@ -107,8 +107,8 @@ class PetCreate(LoginRequiredMixin, CreateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
-        context['title_window'] = "PetVet - Novo Cadastro"
-        context['title_page'] = "Novo Cadastro"
+        context['title_window'] = 'PetVet - Novo Cadastro'
+        context['title_page'] = 'Novo Cadastro'
         context['tips'] = 'Preencha os campos para criar um novo cadastro.'
 
         return context
@@ -125,8 +125,8 @@ class PetUpdate(LoginRequiredMixin, UpdateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
-        context['title_window'] = "PetVet - Editar Cadastro"
-        context['title_page'] = "Editar Cadastro"
+        context['title_window'] = 'PetVet - Editar Cadastro'
+        context['title_page'] = 'Editar Cadastro'
         context['tips'] = 'Preencha os campos para editar esse cadastro.'
 
         return context
@@ -134,7 +134,7 @@ class PetUpdate(LoginRequiredMixin, UpdateView):
 
 class PetDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
-    group_required = [u"Recepcionista", u"Admin"]
+    group_required = [u'Recepcionista', u'Admin']
     model = Pets
     template_name = 'core/form_delete.html'
     success_url = reverse_lazy('pets')
@@ -165,8 +165,8 @@ class TutorCreate(LoginRequiredMixin, CreateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
-        context['title_window'] = "PetVet - Novo Cadastro"
-        context['title_page'] = "Novo Cadastro"
+        context['title_window'] = 'PetVet - Novo Cadastro'
+        context['title_page'] = 'Novo Cadastro'
         context['tips'] = 'Preencha os campos para criar um novo cadastro.'
 
         return context
@@ -183,8 +183,8 @@ class TutorUpdate(LoginRequiredMixin, UpdateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
-        context['title_window'] = "PetVet - Editar Cadastro"
-        context['title_page'] = "Editar Cadastro"
+        context['title_window'] = 'PetVet - Editar Cadastro'
+        context['title_page'] = 'Editar Cadastro'
         context['tips'] = 'Preencha os campos para editar esse cadastro.'
 
         return context
@@ -192,7 +192,7 @@ class TutorUpdate(LoginRequiredMixin, UpdateView):
 
 class TutorDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
-    group_required = [u"Recepcionista", u"Admin"]
+    group_required = [u'Recepcionista', u'Admin']
     model = Tutor
     template_name = 'core/form_delete.html'
     success_url = reverse_lazy('tutors')
@@ -215,8 +215,8 @@ class VetCreate(LoginRequiredMixin, CreateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
-        context['title_window'] = "PetVet - Novo Cadastro"
-        context['title_page'] = "Novo Cadastro"
+        context['title_window'] = 'PetVet - Novo Cadastro'
+        context['title_page'] = 'Novo Cadastro'
         context['tips'] = 'Preencha os campos para criar um novo cadastro.'
 
         return context
@@ -232,8 +232,8 @@ class VetUpdate(LoginRequiredMixin, UpdateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
-        context['title_window'] = "PetVet - Editar Cadastro"
-        context['title_page'] = "Editar Cadastro"
+        context['title_window'] = 'PetVet - Editar Cadastro'
+        context['title_page'] = 'Editar Cadastro'
         context['tips'] = 'Preencha os campos para editar esse cadastro.'
 
         return context
@@ -241,7 +241,7 @@ class VetUpdate(LoginRequiredMixin, UpdateView):
 
 class VetDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
     login_url = reverse_lazy('login')
-    group_required = [u"Recepcionista", u"Admin"]
+    group_required = [u'Recepcionista', u'Admin']
     model = Vet
     template_name = 'core/form_delete.html'
     success_url = reverse_lazy('vets')
