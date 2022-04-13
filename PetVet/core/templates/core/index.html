@@ -7,11 +7,11 @@
 
 {% block content %}
 <div class="row">
-  <div class="col-sm-auto">
+  <div class="col-md-4 mx-auto">
     
     <div class="container">
       <h3><strong>Bem vindo ao PetVet</strong></h3><hr>
-      <div class="row col-4">
+      <div class="row col-4 mx-auto">
         <img class="card-img-top" src="{% static 'img/vet_hospital_icon.png/' %}" alt="Imagem de capa do card">
       </div>
       <div class="card text-white bg-dark mb-3">
@@ -27,16 +27,12 @@
      
         </div>
       </div><hr>
+      <br>
+      <h3>
+        <i class="fa fa-exclamation" aria-hidden="true"></i>
+        Para ter acesso ao sistema e necessário fazer login.
+      </h3>
     </div>
   </div>
 </div>
-
-<br><br>
-
-
-<h3>
-  <i class="fa fa-exclamation" aria-hidden="true"></i>
-  Para ter acesso ao sistema e necessário fazer login.
-</h3>
-
 {% endblock %}
