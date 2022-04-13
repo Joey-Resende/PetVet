@@ -6,19 +6,22 @@
 {% endblock %} 
 
 {%block content%}
-<h3>Excluir Cadastro</h3>
-<p>Confirme para excluir o registro definitivamente.</p><hr><br>
+<div class="row">
+    <div class="col-md-4 mx-left">
+        <h3>Excluir Cadastro</h3>
+        <p>Confirme para excluir o registro definitivamente.</p><hr><br>
 
-<form action="" method="POST">
-    <p>
-        Deseja excluir o registro: <strong>{{ object }}</strong>?
-    </p>
+        <form action="" method="POST">
+            <p>
+                Deseja excluir o registro: <strong>{{ object }}</strong>?
+            </p>
 
-    {% csrf_token %}
-    
-    {{ form.as_p }}
-    
-    <button type="submit" class="btn btn-danger">Excluir</button>
-
-</form>
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+            
+            <button type="submit" class="btn btn-danger">Excluir</button>
+        </form>
+    </div>
+</div>   
 {% endblock %}
