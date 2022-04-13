@@ -131,26 +131,22 @@
 
     <footer class="mt-auto">
       {% block footer %}
-      <div class="container-fluid text-center">
+      <div class="container">
           <div class="row">
-            <div class="col-md-auto">
-                <span>Desenvolvido por Joey Resende</span>
-            </div> 
-            <div class="col-md-auto">
-                <a href="https://github.com/Joey-Resende" target="_blank">
-                  <img src="{% static 'img/github_logo_icon.png' %}" height="20" alt="logo github">
-                </a>
-            </div> 
-            <div class="col-md-auto">
-                <a href="https://www.linkedin.com/in/givanildo-resende/" target="_blank">
-                  <img src="{% static 'img/linkedin_logo_icon.png' %}" height="20" alt="logo linkedin">
-                </a>  
-            </div>
-            <div class="col">
-                <span><strong>PetVet® - Cadastro de Atendimentos - V 0.0.1</strong></span>
-            </div>
-            <div class="col-2">
-          </div>    
+                <div class="col">
+                      <span>Desenvolvido por Joey Resende</span>
+                      <a href="https://github.com/Joey-Resende" target="_blank">
+                        <img src="{% static 'img/github_logo_icon.png' %}" height="20" alt="logo github">
+                      </a>
+                      <a href="https://www.linkedin.com/in/givanildo-resende/" target="_blank">
+                        <img src="{% static 'img/linkedin_logo_icon.png' %}" height="20" alt="logo linkedin">
+                      </a>
+                </div>
+                <div class="col">
+                      <span><strong>PetVet® - Cadastro de Atendimentos - V 0.0.1</strong></span>
+                </div>
+            
+          </div>
       </div>
       {% endblock %}
     </footer>
