@@ -131,22 +131,27 @@
 
     <footer class="mt-auto">
       {% block footer %}
-      <div class="container">
-          <div class="row">
-                <div class="col">
-                      <span>Desenvolvido por Joey Resende</span>
-                      <a href="https://github.com/Joey-Resende" target="_blank">
-                        <img src="{% static 'img/github_logo_icon.png' %}" height="20" alt="logo github">
-                      </a>
-                      <a href="https://www.linkedin.com/in/givanildo-resende/" target="_blank">
-                        <img src="{% static 'img/linkedin_logo_icon.png' %}" height="20" alt="logo linkedin">
-                      </a>
-                </div>
-                <div class="col">
-                      <span><strong>PetVet® - Cadastro de Atendimentos - V 0.0.1</strong></span>
-                </div>
-            
+      <div class="container-fluid text-center p-3">
+        <div class="row justify-content-md-center">
+          <div class="col text-center">
+            <span><strong>PetVet® - Cadastro de Atendimentos - V 0.0.1</strong></span><br>
           </div>
+        </div>
+        <div class="row justify-content-md-center">
+          <div class="col-md-auto">
+            <span><strong>Desenvolvido por Joey Resende</strong></span>
+          </div>
+          <div class="col-md-auto">
+            <a href="https://github.com/Joey-Resende" target="_blank">
+              <img src="{% static 'img/github_logo_icon.png' %}" height="20" alt="logo github">
+            </a>
+          </div>
+          <div class="col-md-auto">
+            <a href="https://www.linkedin.com/in/givanildo-resende/" target="_blank">
+              <img src="{% static 'img/linkedin_logo_icon.png' %}" height="20" alt="logo linkedin">
+            </a>
+          </div>
+        </div>
       </div>
       {% endblock %}
     </footer>
