@@ -16,8 +16,10 @@ class Tutor(models.Model):
     """Model representing a classe Tutor."""
     tutor_name = models.CharField(
         max_length=30, verbose_name='Nome do Tutor')
-    cpf = CPFField('cpf')
-    phone = PhoneField(verbose_name='Telefone')
+    cpf = models.CharField(max_length=14, null=True,
+                           verbose_name='CPF')
+    phone = models.CharField(max_length=16, null=True,
+                             verbose_name='Telefone')
     email = models.EmailField(max_length=254, verbose_name='Email')
     cep = models.IntegerField(help_text='Cep')
     street = models.CharField(max_length=40, verbose_name='Rua')
