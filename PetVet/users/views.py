@@ -46,6 +46,6 @@ class ProfileUpdate(UpdateView):
 
         context['title_window'] = 'PetVet - Meus Dados'
         context['title_page'] = 'Meus Dados'
-        context['tips'] = 'Preencha os campos para registrar um novo usúario.'
+        context['tips'] = 'Preencha os campos para completar seu perfil.'
 
         return context

@@ -1,7 +1,5 @@
-from cpf_field.models import CPFField
 from django.db import models
 from django.urls import reverse
-from phone_field import PhoneField
 from datetime import date
 
 castrated_status = (('Não', 'Não'), ('Sim', 'Sim'))
