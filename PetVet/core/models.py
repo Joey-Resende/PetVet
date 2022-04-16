@@ -16,10 +16,10 @@ class Tutor(models.Model):
         max_length=30, verbose_name='Nome do Tutor')
     cpf = models.CharField(max_length=14, null=True,
                            verbose_name='CPF')
-    phone = models.CharField(max_length=16, null=True,
+    phone = models.CharField(max_length=15, null=True,
                              verbose_name='Telefone')
     email = models.EmailField(max_length=254, verbose_name='Email')
-    cep = models.IntegerField(help_text='Cep')
+    cep = models.CharField(max_length=9, verbose_name='Cep')
     street = models.CharField(max_length=40, verbose_name='Rua')
     number = models.IntegerField(verbose_name='Numero')
     district = models.CharField(max_length=40, verbose_name='Bairro')

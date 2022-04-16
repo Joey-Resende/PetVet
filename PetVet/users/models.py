@@ -7,6 +7,6 @@ class Profile(models.Model):
                             verbose_name='Nome Completo')
     cpf = models.CharField(max_length=14, null=True,
                            verbose_name='CPF')
-    phone = models.CharField(max_length=16, null=True,
+    phone = models.CharField(max_length=15, null=True,
                              verbose_name='Telefone')
     user = models.OneToOneField(User, on_delete=models.PROTECT)

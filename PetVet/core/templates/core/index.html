@@ -1,49 +1,63 @@
-{% extends 'core/base_model.html' %} 
-{% load static %}
-
-{%block title%}
+{% extends 'core/base_model.html' %} {% load static %} {%block title%}
 <title>PetVet - Home</title>
-{% endblock %} 
-
-{% block content %}
+{% endblock %} {% block content %}
 <div class="row">
   <div class="col-md-4 mx-auto">
-    
     <div class="container">
       {% if request.user.is_authenticated %}
-      <h3 class="text-center"><strong>Bem vindo ao PetVet</strong> <br>{{ user.profile.name }}</h3><hr>
+      <h3 class="text-center">
+        <strong>Bem vindo ao PetVet</strong> <br />{{ user.profile.name }}
+      </h3>
+      <hr />
       {% else %}
-      
+
       <h3>
         <strong>
-        <i class="fa fa-exclamation" aria-hidden="true"></i>
-        Para ter acesso ao sistema e necessário fazer login.
+          <i class="fa fa-exclamation" aria-hidden="true"></i>
+          Para ter acesso ao sistema e necessário fazer login.
         </strong>
       </h3>
       {% endif %}
       <div class="row col-4 mx-auto">
-        <img class="card-img-top" src="{% static 'img/vet_hospital_icon.png/' %}" alt="Imagem de capa do card">
+        <img
+          class="card-img-top"
+          src="{% static 'img/vet_hospital_icon.png/' %}"
+          alt="Imagem de capa do card"
+        />
       </div>
       <div class="card text-white bg-dark mb-3">
         <div class="card-body">
-          <h5 class="card-title">O hospital tem as seguintes contagens de registros:</h5>
+          <h5 class="card-title">
+            O hospital tem as seguintes contagens de registros:
+          </h5>
         </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Total de Atendimentos: <strong>{{ num_medical_cares }}</strong></li>
-            <li class="list-group-item">Total de Pets: <strong>{{ num_pets }}</strong></li>
-            <li class="list-group-item">Total de Tutores: <strong>{{ num_tutors }}</strong></li>
-          </ul>
-        <div class="card-body">
-     
-        </div>
-      </div><hr>
-      <br>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            Total de Atendimentos: <strong>{{ num_medical_cares }}</strong>
+          </li>
+          <li class="list-group-item">
+            Total de Pets: <strong>{{ num_pets }}</strong>
+          </li>
+          <li class="list-group-item">
+            Total de Tutores: <strong>{{ num_tutors }}</strong>
+          </li>
+        </ul>
+        <div class="card-body"></div>
+      </div>
+      <hr />
+      <br />
       {% if request.user.is_authenticated and user.profile.name is none %}
-      <h5 class="text-center"><strong>Você precisa completar seu cadastro. Acesse o meus dados <a href="{% url 'meus_dados' %}"><i class="fas fa-address-card text-warning" aria-hidden="true"></i></a> para atualizar.</strong></h5>
-      {% else %}
-      {% endif %}
+      <h5 class="text-center">
+        <strong
+          >Você precisa completar seu cadastro. Acesse o meus dados
+          <a href="{% url 'meus_dados' %}"
+            ><i class="fas fa-address-card text-warning" aria-hidden="true"></i
+          ></a>
+          para atualizar.</strong
+        >
+      </h5>
+      {% else %} {% endif %}
     </div>
-    
   </div>
 </div>
 {% endblock %}
