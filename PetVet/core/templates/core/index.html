@@ -1,6 +1,11 @@
-{% extends 'core/base_model.html' %} {% load static %} {%block title%}
+{% extends 'core/base_model.html' %} 
+{% load static %} 
+
+{%block title%}
 <title>PetVet - Home</title>
-{% endblock %} {% block content %}
+{% endblock %} 
+
+{% block content %}
 <div class="row">
   <div class="col-md-4 mx-auto">
     <div class="container">
@@ -56,7 +61,9 @@
           para atualizar.</strong
         >
       </h5>
-      {% else %} {% endif %}
+      {% else %} 
+      
+      {% endif %}
     </div>
   </div>
 </div>

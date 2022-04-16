@@ -11,7 +11,7 @@
 <a href="{% url 'tutor_new' %}" class="btn btn-success btn">Novo</a><br><br>
 
 <div class="table-responsive">
-  <table class="table table-bordered table-hover table-dark">
+  <table class="table table-bordered table-hover table-dark" id="tutor_table">
     <thead class="thead-dark">  
       <tr>
         <th>Nome do Tutor(a)</th>
@@ -20,6 +20,7 @@
         <th>Opções</th>
       </tr>
     </thead>
+    <tbody>
       {% for each in object_list %}
       <tr>
         <td>{{ each.tutor_name }}</td>
@@ -34,7 +35,49 @@
         <td colspan="4">Nenhum Tutor cadastrado.</td>
       </tr>
       {% endfor %}
-    
+    </tbody>
   </table>
 </div>
+{% endblock %}
+
+
+{% block scripts %}
+<script>
+
+    $(document).ready(function(){
+
+        $('#tutor_table').DataTable({
+          responsive: true,
+          // "bSort": false,
+          "aaSorting": [],
+          "pageLength": 10,
+          "language": {
+              "decimal": "",
+              "emptyTable": "Sem dados disponíveis",
+              "info": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+              "infoEmpty": "Mostrando de 0 até 0 de 0 registos",
+              "infoFiltered": "(filtrado de _MAX_ registos no total)",
+              "infoPostFix": "",
+              "thousands": ",",
+              "lengthMenu": "Mostrar _MENU_ registos",
+              "loadingRecords": "A carregar dados...",
+              "processing": "A processar...",
+              "search": "Procurar:",
+              "zeroRecords": "Não foram encontrados resultados",
+              "paginate": {
+                  "first": "Primeiro",
+                  "last": "Último",
+                  "next": "Seguinte",
+                  "previous": "Anterior"
+              },
+              "aria": {
+                  "sortAscending": ": ordem crescente",
+                  "sortDescending": ": ordem decrescente"
+              }
+          }
+      });
+
+    });
+
+</script>
 {% endblock %}
