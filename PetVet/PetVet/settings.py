@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # apps de terceiros
-    'cpf_field',
-    'phone_field',
     'crispy_forms',
     'crispy_bootstrap5',
     # Meus apps
