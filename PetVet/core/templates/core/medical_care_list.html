@@ -20,6 +20,7 @@
         <th>Nome do Pet</th>
         <th>Tipo de Atendimento</th>
         <th>Relato do Problema</th>
+        <th>Veterinário</th>
         <th>Opções</th>
       </tr>
     </thead>
@@ -31,6 +32,7 @@
         <td>{{ each.pet_name }}</td>
         <td>{{ each.procedure }}</td>
         <td>{{ each.report }}</td>
+        <td>{{ each.vet_name }}</td>
         <td>
           <a href="{% url 'medical_care_detail' each.pk %}" class="btn btn-warning btn-sm">Detalhes</a>
         </td>

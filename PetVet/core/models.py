@@ -13,7 +13,7 @@ type_sedative = (('Não', 'Não'), ('Simples', 'Simples'),
 class Tutor(models.Model):
     """Model representing a classe Tutor."""
     tutor_name = models.CharField(
-        max_length=30, verbose_name='Nome do Tutor')
+        max_length=50, verbose_name='Nome do Tutor')
     cpf = models.CharField(max_length=14, null=True,
                            verbose_name='CPF')
     phone = models.CharField(max_length=15, null=True,
@@ -56,9 +56,9 @@ class Pets(models.Model):
     castrated = models.CharField(
         max_length=3, choices=castrated_status, default='N', verbose_name='Castrado?')
     weight = models.DecimalField(
-        max_digits=6, decimal_places=3, verbose_name='Peso')
+        max_digits=6, decimal_places=3, verbose_name='Peso', default=0)
     tutor_name = models.ForeignKey(
-        'Tutor', on_delete=models.PROTECT, null=True, verbose_name="Nome do Tutor")
+        'Tutor', on_delete=models.PROTECT, null=True, verbose_name='Nome do Tutor')
 
     class Meta:
         ordering = ['-id']
