@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import IndexView, MedicalCareList, PetList, TutorList,  VetList
-from .views import MedicalCareDetail, PetDetail, TutorDetail
+from .views import IndexView, MedicalCareList, PetList, TutorList,  VetList, GeneralClinicList
+from .views import MedicalCareDetail, PetDetail, TutorDetail, GeneralClinicDetail
 from .views import MedicalCareCreate, PetCreate, TutorCreate, VetCreate, GeneralClinicCreate, PhysicalExamCreate
-from .views import MedicalCareUpdate, PetUpdate, TutorUpdate, VetUpdate
-from .views import MedicalCareDelete, PetDelete, TutorDelete, VetDelete
+from .views import MedicalCareUpdate, PetUpdate, TutorUpdate, VetUpdate, GeneralClinicUpdate
+from .views import MedicalCareDelete, PetDelete, TutorDelete, VetDelete, GeneralClinicDelete
 
 
 urlpatterns = [
@@ -38,8 +38,17 @@ urlpatterns = [
     path('vet_edit/<int:pk>', VetUpdate.as_view(), name='vet_edit'),
     path('vet_delete/<int:pk>', VetDelete.as_view(), name='vet_delete'),
 
+
+    path('general_clinics/', GeneralClinicList.as_view(), name='general_clinics'),
+    path('general_clinic/<int:pk>', GeneralClinicDetail.as_view(),
+         name='general_clinic_detail'),
     path('general_clinic_new/', GeneralClinicCreate.as_view(),
          name='general_clinic_new'),
+    path('general_clinic_edit/<int:pk>',
+         GeneralClinicUpdate.as_view(), name='general_clinic_edit'),
+    path('general_clinic_delete/<int:pk>',
+         GeneralClinicDelete.as_view(), name='general_clinic_delete'),
+
 
     path('physical_exam_new/', PhysicalExamCreate.as_view(),
          name='physical_exam_new'),

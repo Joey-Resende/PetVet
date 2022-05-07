@@ -16,10 +16,14 @@ class IndexView(TemplateView):
         num_pets = Pets.objects.all().count()
         num_tutors = Tutor.objects.all().count()
         num_medical_cares = MedicalCare.objects.all().count()
+        num_general_clinics = GeneralClinic.objects.all().count()
+        num_physical_exams = PhysicalExam.objects.all().count()
 
         context['num_pets'] = num_pets
         context['num_tutors'] = num_tutors
         context['num_medical_cares'] = num_medical_cares
+        context['num_general_clinics'] = num_general_clinics
+        context['num_physical_exams'] = num_physical_exams
 
         return context
 
@@ -248,6 +252,19 @@ class VetDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
 
 
 # Views General Clinic
+class GeneralClinicList(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = GeneralClinic
+    template_name = 'core/general_clinic_list.html'
+
+
+class GeneralClinicDetail(LoginRequiredMixin, DetailView):
+    login_url = reverse_lazy('login')
+    model = GeneralClinic
+    template_name = 'core/general_clinic_detail.html'
+    success_url = reverse_lazy('general_clinics')
+
+
 class GeneralClinicCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = GeneralClinic
@@ -259,11 +276,37 @@ class GeneralClinicCreate(LoginRequiredMixin, CreateView):
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
-        context['title_window'] = 'PetVet - Ficha Clínica Geral'
-        context['title_page'] = 'Ficha Clínica Geral'
-        context['tips'] = 'Preencha os campos para criar uma nova ficha de clínica geral.'
+        context['title_window'] = 'PetVet - Exame Clínico Geral'
+        context['title_page'] = 'Novo Exame Clínico Geral'
+        context['tips'] = 'Preencha os campos para criar um novo exame clínico geral.'
 
         return context
+
+
+class GeneralClinicUpdate(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
+    model = GeneralClinic
+    fields = ['medical_care', 'choice_anamnese',
+              'anamnese', 'choice_anti_rabica', 'choice_type_v', 'choice_v', 'choice_type_felina', 'choice_felina', 'others_felina', 'choice_verminose', 'others_verminose', 'choice_ectopas', 'others_ectopas', 'choice_leish']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('general_clinics')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = 'PetVet - Editar Exame Clínico Geral'
+        context['title_page'] = 'Editar Exame Clínico Geral'
+        context['tips'] = 'Preencha os campos para editar esse exame.'
+
+        return context
+
+
+class GeneralClinicDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('login')
+    group_required = [u'Recepcionista', u'Admin']
+    model = GeneralClinic
+    template_name = 'core/form_delete.html'
+    success_url = reverse_lazy('general_clinics')
 
 
 # Views Physical Exam
@@ -271,7 +314,7 @@ class PhysicalExamCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = PhysicalExam
     fields = ['medical_care', 'choice_conduct',
-              'weight', 'choice_consciousness', 'stance', 'hydration', 'choice_nutricional_status', 'oculopalpebral', 'bucal', 'genital', 'choice_dental_calculus', 'choice_dental_loss', 'gengivite', 'choice_ulcera', 'choice_halitose', 'linfonodos', 'fc', 'fr', 'tpc', 'tr', 'pulse', 'choice_auscu_cardio', 'heart_rate', 'choice_auscu_pulmonar', 'choice_percu_pulmonar', 'palpa_abdominal', 'choice_mamas', 'choice_nodulo', 'choice_nodulo_pain', 'choice_local_pain', 'choice_pain_m']
+              'weight', 'choice_consciousness', 'stance', 'hydration', 'choice_nutricional_status', 'oculopalpebral', 'bucal', 'genital', 'choice_dental_calculus', 'choice_dental_loss', 'gengivite', 'choice_ulcera', 'choice_halitose', 'linfonodos', 'fc', 'fr', 'tpc', 'tr', 'pulse', 'choice_auscu_cardio', 'heart_rate', 'choice_auscu_pulmonar', 'choice_percu_pulmonar', 'palpa_abdominal', 'choice_mamas', 'choice_nodulo', 'choice_nodulo_pain', 'choice_local_pain', 'choice_pain_m', 'genital_region', 'choice_ectoparasitas', 'ectoparasitas_intensity', 'pelage', 'ears', 'diag_differ', 'diag_final', 'case_classification']
     template_name = 'core/form.html'
     success_url = reverse_lazy('medical_cares')
 

@@ -1,0 +1,45 @@
+{% extends 'core/base_model.html' %} 
+{% load static %}
+
+{%block title%}
+<title>PetVet - Atendimentos: Exame Clínico Geral</title>
+{% endblock %} 
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-8 mx-auto">
+    
+    <div class="container">
+      <h3><strong>Detalhe do Exame Clínico</strong></h3><hr>
+      <div class="row col-2">
+        <img class="card-img-top" src="{% static 'img/dog_icon.png/' %}" alt="Imagem de capa do card">
+      </div>
+      <div class="card text-white bg-dark mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Detalhes: {{ generalclinic.medical_care }}</h5>
+          <p class="card-text">Anamnese: {{ generalclinic.anamnese }}</p>
+        </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Escolha Anamnese: {{ generalclinic.choice_anamnese }}</li>
+            <li class="list-group-item">Anti-rábica: {{ generalclinic.choice_anti_rabica }}</li>
+            <li class="list-group-item">V8/V10/V12: {{ generalclinic.choice_type_v }}</li>
+            <li class="list-group-item">Escolha do V: {{ generalclinic.choice_v }}</li>
+            <li class="list-group-item">Tríplice/Quádrupla Felina: {{ generalclinic.choice_type_felina }}</li>
+            <li class="list-group-item">Escolha Felina: {{ generalclinic.choice_felina }}</li>
+            <li class="list-group-item">Outras Vacinas: {{ generalclinic.others_felina }}</li>
+            <li class="list-group-item">Controle de Verminose: {{ generalclinic.choice_verminose }}</li>
+            <li class="list-group-item">Verminose - Fármaco/Dose/Frequência: {{ generalclinic.others_verminose }}</li>
+            <li class="list-group-item">Prevenção Ectoparasitas: {{ generalclinic.choice_ectopas }}</li>
+            <li class="list-group-item">Ectoparasitas - Fármaco/Dose/Frequência: {{ generalclinic.others_ectopas }}</li>
+            <li class="list-group-item">Prevenção Leishmaniose: {{ generalclinic.choice_leish }}</li>
+          </ul>
+        <div class="card-body">
+          <a href="{% url 'general_clinics' %}" class="btn btn-outline-light btn-sm">Voltar</a>
+          <a href="{% url 'general_clinic_edit' generalclinic.pk %}" class="btn btn-warning btn-sm">Editar</a>
+          <a href="{% url 'general_clinic_delete' generalclinic.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

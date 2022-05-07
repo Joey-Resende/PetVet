@@ -19,7 +19,7 @@ vaccination = (('Não Vacinado', 'Não Vacinado'), ('Vacinado', 'Vacinado'),    
 
 type_v = (('V8', 'V8'), ('V10', 'V10'), ('V12', 'V12'))
 
-type_felina = (('Tréplice', 'Tríplice'), ('Quadrúpla', 'Quadrúpla'))
+type_felina = (('Tríplice', 'Tríplice'), ('Quadrúpla', 'Quadrúpla'))
 
 vermi_ecto = (('Não', 'Não'), ('Não sabe Informar', 'Não Sabe Informar'),
               ('Desatualizada', 'Desatualizada'), ('Atualizada', 'Atualizada'))
@@ -63,6 +63,12 @@ local_pain = (('Lado Esquerdo', 'Lado Esquerdo'),
               ('Lado Direito', 'Lado Direito'))
 
 pain_m = (('M1', 'M1'), ('M2', 'M2'), ('M3', 'M3'), ('M4', 'M4'), ('M5', 'M5'))
+
+parasitas = (('Não', 'Não'), ('Carrapato', 'Carrapato'),
+             ('Pulga', 'Pulga'), ('Miíase', 'Miíase'))
+
+classifier = (('Caso Simples', 'Caso Simples'),
+              ('Caso Complexo', 'Caso Complexo'))
 
 
 class Tutor(models.Model):
@@ -197,6 +203,17 @@ class GeneralClinic(models.Model):
     choice_leish = models.CharField(
         max_length=17, choices=leish, verbose_name='Prevenção Leishmaniose')
 
+    class Meta:
+        ordering = ['id']
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular medical care instance."""
+        return reverse('general_clinic_detail', args=[str(self.id)])
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return f'{self.medical_care} - {self.anamnese}'
+
 
 class PhysicalExam(models.Model):
     medical_care = models.ForeignKey(
@@ -246,10 +263,26 @@ class PhysicalExam(models.Model):
     choice_mamas = models.CharField(
         max_length=17, choices=mamas, verbose_name='Mamas/Tetos')
     choice_nodulo = models.CharField(
-        max_length=17, choices=nodulo, verbose_name='Mamas/Tetos')
+        max_length=17, choices=nodulo, verbose_name='Nódulos')
     choice_nodulo_pain = models.CharField(
         max_length=30, choices=castrated_status, verbose_name='Dor Nódulo')
     choice_local_pain = models.CharField(
         max_length=30, choices=local_pain, verbose_name='Localização da Dor')
     choice_pain_m = models.CharField(
         max_length=3, choices=pain_m, verbose_name='')
+    genital_region = models.CharField(
+        max_length=30, default='Normal', verbose_name='Região Genital')
+    choice_ectoparasitas = models.CharField(
+        max_length=30, choices=parasitas, verbose_name='Ectoparasitas')
+    ectoparasitas_intensity = models.CharField(
+        max_length=30, verbose_name='Intensidade dos Parasitas')
+    pelage = models.CharField(
+        max_length=30, default='Normal', verbose_name='Pelagem')
+    ears = models.CharField(
+        max_length=30, default='Normal', verbose_name='Orelhas')
+    diag_differ = models.TextField(
+        max_length=1000, verbose_name='Diagnósticos Diferenciais')
+    diag_final = models.TextField(
+        max_length=1000, verbose_name='Diagnósticos Definitivos')
+    case_classification = models.CharField(
+        max_length=13, choices=classifier, verbose_name='Classificação de caso')
