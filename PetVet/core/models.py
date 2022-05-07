@@ -3,11 +3,38 @@ from django.urls import reverse
 from datetime import date
 
 castrated_status = (('Não', 'Não'), ('Sim', 'Sim'))
+
 sex_status = (('Macho', 'Macho'), ('Fêmea', 'Fêmea'))
+
 procedures = (('Consulta', 'Consulta'), ('Retorno', 'Retorno'),
               ('Exame', 'Exame'), ('Cirurgia', 'Cirurgia'))
+
 type_sedative = (('Não', 'Não'), ('Simples', 'Simples'),
                  ('Complexo', 'Complexo'))
+
+type_anamnese = (('Aula', 'Aula'), ('Rotina', 'Rotina'))
+
+vaccination = (('Não Vacinado', 'Não Vacinado'), ('Vacinado', 'Vacinado'),     ('Não sabe', 'Não Sabe'), ('Desatualizada',
+               'Desatualizada'),             ('Atualizada', 'Atualizada'), ('Não Ética', 'Não Ética'), ('Ética', 'Ética'))
+
+type_v = (('V8', 'V8'), ('V10', 'V10'), ('V12', 'V12'))
+
+type_felina = (('Tréplice', 'Tríplice'), ('Quadrúpla', 'Quadrúpla'))
+
+vermi_ecto = (('Não', 'Não'), ('Não sabe Informar', 'Não Sabe Informar'),
+              ('Desatualizada', 'Desatualizada'), ('Atualizada', 'Atualizada'))
+
+leish = (('Não', 'Não'), ('Vacinado', 'Vacinado'),
+         ('Usa Coleira', 'Usa    Coleira'), ('Atualizada', 'Atualizada'), ('Desatualizada', 'Desatualizada'))
+
+conduct = (('Dócil', 'Dócil'), ('Inquieto', 'Inquieto'), ('Medroso', 'Medroso'),
+           ('Agressivo', 'Agressivo'))
+
+consciousness = (('Coma', 'Coma'), ('Estupor', 'Estupor'), ('Confusão', 'Confusão'), ('Normal/Alerta',
+                 'Normal/Alerta'), ('Sonolência/Apático', 'Sonolência/Apático'), ('Excitado', 'Excitado'))
+
+nutricional_status = (('Caquético', 'Caquético'), ('Magro', 'Magro'),
+                      ('Normal', 'Normal'), ('Gordo', 'Gordo'), ('Obeso', 'Obeso'))
 
 
 class Tutor(models.Model):
@@ -111,3 +138,48 @@ class MedicalCare(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.procedure} - {self.pet_name} - {self.date}'
+
+
+class GeneralClinic(models.Model):
+    medical_care = models.ForeignKey(
+        'MedicalCare', on_delete=models.PROTECT, null=True, verbose_name='Atendimento')
+    choice_anamnese = models.CharField(
+        max_length=6, choices=type_anamnese, verbose_name='Tipo anamnese')
+    anamnese = models.TextField(max_length=1000, verbose_name='Anamnese')
+    choice_anti_rabica = models.CharField(
+        max_length=13, choices=vaccination, verbose_name='Anti-Rábica')
+    choice_type_v = models.CharField(
+        max_length=3, choices=type_v, verbose_name='V8/V10/V12')
+    choice_v = models.CharField(
+        max_length=13, choices=vaccination, verbose_name='')
+    choice_type_felina = models.CharField(
+        max_length=9, choices=type_felina, verbose_name='Tríplice/Quádrupla Felina')
+    choice_felina = models.CharField(
+        max_length=13, choices=vaccination, verbose_name='')
+    others_felina = models.CharField(
+        max_length=30, null=True, blank=True, verbose_name='Outras Vacinas')
+    choice_verminose = models.CharField(
+        max_length=17, choices=vermi_ecto, verbose_name='Controle Verminose')
+    others_verminose = models.CharField(
+        max_length=30, null=True, blank=True, verbose_name='Verminose - Fármaco/Dose/Frequência')
+    choice_ectopas = models.CharField(
+        max_length=17, choices=vermi_ecto, verbose_name='Prevenção Ectoparasitas')
+    others_ectopas = models.CharField(
+        max_length=30, null=True, blank=True, verbose_name='Ectoparasitas - Fármaco/Dose/Frequência')
+    choice_leish = models.CharField(
+        max_length=17, choices=leish, verbose_name='Prevenção Leishmaniose')
+
+
+class PhysicalExam(models.Model):
+    medical_care = models.ForeignKey(
+        'MedicalCare', on_delete=models.PROTECT, null=True, verbose_name='Atendimento')
+    choice_conduct = models.CharField(
+        max_length=9, choices=conduct, verbose_name='Conduta')
+    weight = models.DecimalField(
+        max_digits=6, decimal_places=3, verbose_name='Peso', default=0)
+    choice_consciousness = models.CharField(
+        max_length=18, choices=consciousness, verbose_name='Nivel de Consciência')
+    stance = models.CharField(max_length=30, verbose_name='Postura')
+    hydration = models.CharField(max_length=30, verbose_name='Hidratação')
+    choice_nutricional_status = models.CharField(
+        max_length=18, choices=nutricional_status, verbose_name='Estado Nutricional')

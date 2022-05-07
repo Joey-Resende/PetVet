@@ -1,4 +1,4 @@
-from .models import MedicalCare, Pets, Tutor, Vet
+from .models import MedicalCare, Pets, Tutor, Vet, GeneralClinic, PhysicalExam
 from braces.views import GroupRequiredMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -245,3 +245,41 @@ class VetDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
     model = Vet
     template_name = 'core/form_delete.html'
     success_url = reverse_lazy('vets')
+
+
+# Views General Clinic
+class GeneralClinicCreate(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
+    model = GeneralClinic
+    fields = ['medical_care', 'choice_anamnese',
+              'anamnese', 'choice_anti_rabica', 'choice_type_v', 'choice_v', 'choice_type_felina', 'choice_felina', 'others_felina', 'choice_verminose', 'others_verminose', 'choice_ectopas', 'others_ectopas', 'choice_leish']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('medical_cares')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = 'PetVet - Ficha Clínica Geral'
+        context['title_page'] = 'Ficha Clínica Geral'
+        context['tips'] = 'Preencha os campos para criar uma nova ficha de clínica geral.'
+
+        return context
+
+
+# Views Physical Exam
+class PhysicalExamCreate(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
+    model = PhysicalExam
+    fields = ['medical_care', 'choice_conduct',
+              'weight', 'choice_consciousness', 'stance', 'hydration', 'choice_nutricional_status']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('medical_cares')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = 'PetVet - Exame Fisico Geral'
+        context['title_page'] = 'Exeme Fisico Geral'
+        context['tips'] = 'Preencha os campos para criar um novo exame fisico geral.'
+
+        return context
