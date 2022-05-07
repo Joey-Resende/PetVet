@@ -36,6 +36,17 @@ consciousness = (('Coma', 'Coma'), ('Estupor', 'Estupor'), ('Confusão', 'Confus
 nutricional_status = (('Caquético', 'Caquético'), ('Magro', 'Magro'),
                       ('Normal', 'Normal'), ('Gordo', 'Gordo'), ('Obeso', 'Obeso'))
 
+dental_calculus = (('Não', 'Não'), ('Leve', 'Leve'),
+                   ('Moderado', 'Moderado'), ('Intenso', 'Intenso'), ('Não Permitiu', 'Não Permitiu'))
+
+dental_loss = (('Não', 'Não'), ('Sim', 'Sim'),
+               ('Persistência de dente decíduo', 'Persistência de dente decíduo'), ('Não Permitiu', 'Não Permitiu'))
+
+ulcera = (('Não', 'Não'), ('Sim', 'Sim'), ('Não Permitiu', 'Não Permitiu'))
+
+auscu_cardio = (('Não Permitiu/Não Realizado', 'Não Permitiu/Não Realizado'), ('Bulhas Normofonéticas',
+                'Bulhas Normofonéticas'), ('Bulhas Hipofonéticas', 'Bulhas Hipofonéticas'), ('Sopro em Valva', 'Sopro em Valva'))
+
 
 class Tutor(models.Model):
     """Model representing a classe Tutor."""
@@ -183,3 +194,29 @@ class PhysicalExam(models.Model):
     hydration = models.CharField(max_length=30, verbose_name='Hidratação')
     choice_nutricional_status = models.CharField(
         max_length=18, choices=nutricional_status, verbose_name='Estado Nutricional')
+    oculopalpebral = models.CharField(
+        max_length=30, default='Não Permitiu', verbose_name='Mucosa Oculopalpebral')
+    bucal = models.CharField(
+        max_length=30, default='Não Permitiu', verbose_name='Mucosa Bucal')
+    genital = models.CharField(
+        max_length=30, default='Não Permitiu', verbose_name='Mucosa Genital')
+    choice_dental_calculus = models.CharField(
+        max_length=18, choices=dental_calculus, verbose_name='Cálculo Dentário')
+    choice_dental_loss = models.CharField(
+        max_length=29, choices=dental_loss, verbose_name='Perda Dentário')
+    gengivite = models.CharField(
+        max_length=18, choices=dental_calculus, verbose_name='Gengivite')
+    choice_ulcera = models.CharField(
+        max_length=12, choices=ulcera, verbose_name='Úlcera')
+    choice_halitose = models.CharField(
+        max_length=18, choices=dental_calculus, verbose_name='Halitose')
+    linfonodos = models.CharField(max_length=30, verbose_name='Linfonodos')
+    fc = models.CharField(max_length=30, default=0, verbose_name='FC')
+    fr = models.CharField(max_length=30, default=0, verbose_name='FR')
+    tpc = models.CharField(max_length=30, default=0, verbose_name='TCP')
+    tr = models.CharField(max_length=30, default=0, verbose_name='TR')
+    pulse = models.CharField(max_length=30, default=0, verbose_name='Pulso')
+    choice_auscu_cardio = models.CharField(
+        max_length=26, choices=auscu_cardio, verbose_name='Ausculta Cardíaca')
+    heart_rate = models.CharField(
+        max_length=30, default=0, verbose_name='Ritmo Cardíaco')

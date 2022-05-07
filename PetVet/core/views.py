@@ -271,7 +271,7 @@ class PhysicalExamCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = PhysicalExam
     fields = ['medical_care', 'choice_conduct',
-              'weight', 'choice_consciousness', 'stance', 'hydration', 'choice_nutricional_status']
+              'weight', 'choice_consciousness', 'stance', 'hydration', 'choice_nutricional_status', 'oculopalpebral', 'bucal', 'genital', 'choice_dental_calculus', 'choice_dental_loss', 'gengivite', 'choice_ulcera', 'choice_halitose', 'linfonodos', 'fc', 'fr', 'tpc', 'tr', 'pulse', 'choice_auscu_cardio', 'heart_rate']
     template_name = 'core/form.html'
     success_url = reverse_lazy('medical_cares')
 
@@ -279,7 +279,7 @@ class PhysicalExamCreate(LoginRequiredMixin, CreateView):
         context = super().get_context_data(*args, **kwargs)
 
         context['title_window'] = 'PetVet - Exame Fisico Geral'
-        context['title_page'] = 'Exeme Fisico Geral'
+        context['title_page'] = 'Exame Fisico Geral'
         context['tips'] = 'Preencha os campos para criar um novo exame fisico geral.'
 
         return context
