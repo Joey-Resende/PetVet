@@ -47,6 +47,23 @@ ulcera = (('Não', 'Não'), ('Sim', 'Sim'), ('Não Permitiu', 'Não Permitiu'))
 auscu_cardio = (('Não Permitiu/Não Realizado', 'Não Permitiu/Não Realizado'), ('Bulhas Normofonéticas',
                 'Bulhas Normofonéticas'), ('Bulhas Hipofonéticas', 'Bulhas Hipofonéticas'), ('Sopro em Valva', 'Sopro em Valva'))
 
+auscu_pulmonar = (('Ruído Normal', 'Ruído Normal'), ('Alterado', 'Alterado'),
+                  ('Não Permitiu', 'Não Permitiu'), ('Não Realizado ACP', 'Não Realizado ACP'))
+
+percu_pulmonar = (('Ndn (som claro)', 'Ndn (som claro)'),
+                  ('Submaciço', 'Submaciço'), ('Maciço', 'Maciço'))
+
+mamas = (('Ndn', 'Ndn'), ('Secreção', 'Secreção'),
+         ('Hiperplasia', 'Hiperplasia'))
+
+nodulo = (('Não', 'Não'), ('Firmes', 'Firmes'), ('Flutuante', 'Flutuante'),
+          ('Aderido', 'Aderido'), ('Não Aderido', 'Não Aderido'))
+
+local_pain = (('Lado Esquerdo', 'Lado Esquerdo'),
+              ('Lado Direito', 'Lado Direito'))
+
+pain_m = (('M1', 'M1'), ('M2', 'M2'), ('M3', 'M3'), ('M4', 'M4'), ('M5', 'M5'))
+
 
 class Tutor(models.Model):
     """Model representing a classe Tutor."""
@@ -220,3 +237,19 @@ class PhysicalExam(models.Model):
         max_length=26, choices=auscu_cardio, verbose_name='Ausculta Cardíaca')
     heart_rate = models.CharField(
         max_length=30, default=0, verbose_name='Ritmo Cardíaco')
+    choice_auscu_pulmonar = models.CharField(
+        max_length=17, choices=auscu_pulmonar, verbose_name='Ausculta Pulmonar')
+    choice_percu_pulmonar = models.CharField(
+        max_length=17, choices=percu_pulmonar, verbose_name='Percussão Pulmonar')
+    palpa_abdominal = models.CharField(
+        max_length=30, verbose_name='Palpação Abdominal')
+    choice_mamas = models.CharField(
+        max_length=17, choices=mamas, verbose_name='Mamas/Tetos')
+    choice_nodulo = models.CharField(
+        max_length=17, choices=nodulo, verbose_name='Mamas/Tetos')
+    choice_nodulo_pain = models.CharField(
+        max_length=30, choices=castrated_status, verbose_name='Dor Nódulo')
+    choice_local_pain = models.CharField(
+        max_length=30, choices=local_pain, verbose_name='Localização da Dor')
+    choice_pain_m = models.CharField(
+        max_length=3, choices=pain_m, verbose_name='')
