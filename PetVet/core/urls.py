@@ -9,6 +9,7 @@ from .views import MedicalCareDelete, PetDelete, TutorDelete, VetDelete, General
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
 
+
     path('medical_cares/', MedicalCareList.as_view(), name='medical_cares'),
     path('medical_care/<int:pk>', MedicalCareDetail.as_view(),
          name='medical_care_detail'),
