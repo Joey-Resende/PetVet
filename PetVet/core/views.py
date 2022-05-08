@@ -310,19 +310,58 @@ class GeneralClinicDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
 
 
 # Views Physical Exam
+class PhysicalExamList(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = PhysicalExam
+    template_name = 'core/physical_exam_list.html'
+
+
+class PhysicalExamDetail(LoginRequiredMixin, DetailView):
+    login_url = reverse_lazy('login')
+    model = PhysicalExam
+    template_name = 'core/physical_exam_detail.html'
+    success_url = reverse_lazy('physical_exams')
+
+
 class PhysicalExamCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = PhysicalExam
     fields = ['medical_care', 'choice_conduct',
               'weight', 'choice_consciousness', 'stance', 'hydration', 'choice_nutricional_status', 'oculopalpebral', 'bucal', 'genital', 'choice_dental_calculus', 'choice_dental_loss', 'gengivite', 'choice_ulcera', 'choice_halitose', 'linfonodos', 'fc', 'fr', 'tpc', 'tr', 'pulse', 'choice_auscu_cardio', 'heart_rate', 'choice_auscu_pulmonar', 'choice_percu_pulmonar', 'palpa_abdominal', 'choice_mamas', 'choice_nodulo', 'choice_nodulo_pain', 'choice_local_pain', 'choice_pain_m', 'genital_region', 'choice_ectoparasitas', 'ectoparasitas_intensity', 'pelage', 'ears', 'diag_differ', 'diag_final', 'case_classification']
     template_name = 'core/form.html'
-    success_url = reverse_lazy('medical_cares')
+    success_url = reverse_lazy('physical_exams')
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
         context['title_window'] = 'PetVet - Exame Fisico Geral'
-        context['title_page'] = 'Exame Fisico Geral'
+        context['title_page'] = 'Novo Exame Fisico Geral'
         context['tips'] = 'Preencha os campos para criar um novo exame fisico geral.'
 
         return context
+
+
+class PhysicalExamUpdate(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
+    model = PhysicalExam
+    fields = ['medical_care', 'choice_conduct',
+              'weight', 'choice_consciousness', 'stance', 'hydration', 'choice_nutricional_status', 'oculopalpebral', 'bucal', 'genital', 'choice_dental_calculus', 'choice_dental_loss', 'gengivite', 'choice_ulcera', 'choice_halitose', 'linfonodos', 'fc', 'fr', 'tpc', 'tr', 'pulse', 'choice_auscu_cardio', 'heart_rate', 'choice_auscu_pulmonar', 'choice_percu_pulmonar', 'palpa_abdominal', 'choice_mamas', 'choice_nodulo', 'choice_nodulo_pain', 'choice_local_pain', 'choice_pain_m', 'genital_region', 'choice_ectoparasitas', 'ectoparasitas_intensity', 'pelage', 'ears', 'diag_differ', 'diag_final', 'case_classification']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('physical_exams')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = 'PetVet - Editar Exame Fisico Geral'
+        context['title_page'] = 'Editar Exame Fisico Geral'
+        context['tips'] = 'Preencha os campos para editar esse exame.'
+
+        return context
+
+
+class PhysicalExamDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('login')
+    group_required = [u'Recepcionista', u'Admin']
+    model = PhysicalExam
+    template_name = 'core/form_delete.html'
+    success_url = reverse_lazy('physical_exams')

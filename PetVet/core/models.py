@@ -286,3 +286,14 @@ class PhysicalExam(models.Model):
         max_length=1000, verbose_name='Diagnósticos Definitivos')
     case_classification = models.CharField(
         max_length=13, choices=classifier, verbose_name='Classificação de caso')
+
+    class Meta:
+        ordering = ['id']
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular medical care instance."""
+        return reverse('physical_exam_detail', args=[str(self.id)])
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return f'{self.medical_care} - {self.diag_final} - {self.case_classification}'

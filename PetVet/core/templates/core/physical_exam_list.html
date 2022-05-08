@@ -1,0 +1,85 @@
+{% extends 'core/base_model.html' %} 
+{% load static %}
+
+
+{%block title%}
+<title>PetVet - Atendimenos: Exame Fisico Geral</title>
+{% endblock %} 
+
+{% block content %}
+<h3><strong>Lista dos Exames Fisicos</strong></h3>
+<hr>
+<a href="{% url 'physical_exam_new' %}" class="btn btn-success btn">Novo</a><br><br>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-hover table-dark" id="medical_care_table">
+    <thead class="thead-dark bg-dark">  
+      <tr>
+        <th>Atendimento</th>
+        <th>Comportamento</th>
+        <th>Diagnóstico Final</th>
+        <th>Classificação do Caso</th>
+        <th>Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for each in object_list %}
+      <tr>
+        <td>{{ each.medical_care }}</td>
+        <td>{{ each.choice_conduct }}</td>
+        <td>{{ each.diag_final }}</td>
+        <td>{{ each.case_classification }}</td>
+        <td>
+          <a href="{% url 'physical_exam_detail' each.pk %}" class="btn btn-warning btn-sm">Detalhes</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6">Nenhum exame fisico geral cadastrado.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+
+    $(document).ready(function(){
+
+        $('#general_clinic_table').DataTable({
+          responsive: true,
+          // "bSort": false,
+          "aaSorting": [],
+          "pageLength": 10,
+          "language": {
+              "decimal": "",
+              "emptyTable": "Sem dados disponíveis",
+              "info": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+              "infoEmpty": "Mostrando de 0 até 0 de 0 registos",
+              "infoFiltered": "(filtrado de _MAX_ registos no total)",
+              "infoPostFix": "",
+              "thousands": ",",
+              "lengthMenu": "",
+              "loadingRecords": "A carregar dados...",
+              "processing": "A processar...",
+              "search": "Pesquisa:",
+              "zeroRecords": "Não foram encontrados resultados",
+              "paginate": {
+                  "first": "Primeiro",
+                  "last": "Último",
+                  "next": ">",
+                  "previous": "<"
+              },
+              "aria": {
+                  "sortAscending": ": ordem crescente",
+                  "sortDescending": ": ordem decrescente"
+              }
+          }
+      });
+
+    });
+
+</script>
+{% endblock %}
