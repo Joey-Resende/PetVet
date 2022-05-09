@@ -271,7 +271,7 @@ class GeneralClinicCreate(LoginRequiredMixin, CreateView):
     fields = ['medical_care', 'choice_anamnese',
               'anamnese', 'choice_anti_rabica', 'choice_type_v', 'choice_v', 'choice_type_felina', 'choice_felina', 'others_felina', 'choice_verminose', 'others_verminose', 'choice_ectopas', 'others_ectopas', 'choice_leish']
     template_name = 'core/form.html'
-    success_url = reverse_lazy('medical_cares')
+    success_url = reverse_lazy('physical_exam_new')
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)

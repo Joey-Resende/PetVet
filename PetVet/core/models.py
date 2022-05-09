@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from datetime import date
 
+
 castrated_status = (('Não', 'Não'), ('Sim', 'Sim'))
 
 sex_status = (('Macho', 'Macho'), ('Fêmea', 'Fêmea'))
@@ -14,12 +15,13 @@ type_sedative = (('Não', 'Não'), ('Simples', 'Simples'),
 
 type_anamnese = (('Aula', 'Aula'), ('Rotina', 'Rotina'))
 
-vaccination = (('Não Vacinado', 'Não Vacinado'), ('Vacinado', 'Vacinado'),     ('Não sabe', 'Não Sabe'), ('Desatualizada',
-               'Desatualizada'),             ('Atualizada', 'Atualizada'), ('Não Ética', 'Não Ética'), ('Ética', 'Ética'))
+vaccination = (('Não Vacinado', 'Não Vacinado'), ('Não sabe', 'Não Sabe'), ('Vacinado, Desatualizada',
+               'Vacinado, Desatualizada'), ('Vacinado, Atualizada', 'Vacinado, Atualizada'))
 
-type_v = (('V8', 'V8'), ('V10', 'V10'), ('V12', 'V12'))
+type_v = (('Nenhuma', 'Nenhuma'), ('V8', 'V8'), ('V10', 'V10'), ('V12', 'V12'))
 
-type_felina = (('Tríplice', 'Tríplice'), ('Quadrúpla', 'Quadrúpla'))
+type_felina = (('Nenhuma', 'Nenhuma'), ('Tríplice', 'Tríplice'),
+               ('Quadrúpla', 'Quadrúpla'))
 
 vermi_ecto = (('Não', 'Não'), ('Não sabe Informar', 'Não Sabe Informar'),
               ('Desatualizada', 'Desatualizada'), ('Atualizada', 'Atualizada'))
@@ -50,16 +52,16 @@ auscu_cardio = (('Não Permitiu/Não Realizado', 'Não Permitiu/Não Realizado')
 auscu_pulmonar = (('Ruído Normal', 'Ruído Normal'), ('Alterado', 'Alterado'),
                   ('Não Permitiu', 'Não Permitiu'), ('Não Realizado ACP', 'Não Realizado ACP'))
 
-percu_pulmonar = (('Ndn (som claro)', 'Ndn (som claro)'),
-                  ('Submaciço', 'Submaciço'), ('Maciço', 'Maciço'))
+percu_pulmonar = (('Normal', 'Normal'),
+                  ('Submaciço', 'Submaciço'), ('Maciço', 'Maciço'), ('Não Realizado', 'Não Realizado'))
 
-mamas = (('Ndn', 'Ndn'), ('Secreção', 'Secreção'),
+mamas = (('Normal', 'Normal'), ('Secreção', 'Secreção'),
          ('Hiperplasia', 'Hiperplasia'))
 
 nodulo = (('Não', 'Não'), ('Firmes', 'Firmes'), ('Flutuante', 'Flutuante'),
           ('Aderido', 'Aderido'), ('Não Aderido', 'Não Aderido'))
 
-local_pain = (('Lado Esquerdo', 'Lado Esquerdo'),
+local_pain = (('Não', 'Não'), ('Lado Esquerdo', 'Lado Esquerdo'),
               ('Lado Direito', 'Lado Direito'))
 
 pain_m = (('M1', 'M1'), ('M2', 'M2'), ('M3', 'M3'), ('M4', 'M4'), ('M5', 'M5'))
@@ -179,17 +181,17 @@ class GeneralClinic(models.Model):
         'MedicalCare', on_delete=models.PROTECT, null=True, verbose_name='Atendimento')
     choice_anamnese = models.CharField(
         max_length=6, choices=type_anamnese, verbose_name='Tipo anamnese')
-    anamnese = models.TextField(max_length=1000, verbose_name='Anamnese')
+    anamnese = models.TextField(max_length=2000, verbose_name='Anamnese')
     choice_anti_rabica = models.CharField(
-        max_length=13, choices=vaccination, verbose_name='Anti-Rábica')
+        max_length=23, choices=vaccination, verbose_name='Anti-Rábica')
     choice_type_v = models.CharField(
-        max_length=3, choices=type_v, verbose_name='V8/V10/V12')
+        max_length=7, choices=type_v, verbose_name='V8/V10/V12')
     choice_v = models.CharField(
-        max_length=13, choices=vaccination, verbose_name='')
+        max_length=23, choices=vaccination, verbose_name='')
     choice_type_felina = models.CharField(
-        max_length=9, choices=type_felina, verbose_name='Tríplice/Quádrupla Felina')
+        max_length=23, choices=type_felina, verbose_name='Tríplice/Quádrupla Felina')
     choice_felina = models.CharField(
-        max_length=13, choices=vaccination, verbose_name='')
+        max_length=23, choices=vaccination, verbose_name='')
     others_felina = models.CharField(
         max_length=30, null=True, blank=True, verbose_name='Outras Vacinas')
     choice_verminose = models.CharField(
@@ -247,7 +249,7 @@ class PhysicalExam(models.Model):
     linfonodos = models.CharField(max_length=30, verbose_name='Linfonodos')
     fc = models.CharField(max_length=30, default=0, verbose_name='FC')
     fr = models.CharField(max_length=30, default=0, verbose_name='FR')
-    tpc = models.CharField(max_length=30, default=0, verbose_name='TCP')
+    tpc = models.CharField(max_length=30, default=0, verbose_name='TPC')
     tr = models.CharField(max_length=30, default=0, verbose_name='TR')
     pulse = models.CharField(max_length=30, default=0, verbose_name='Pulso')
     choice_auscu_cardio = models.CharField(
@@ -259,7 +261,7 @@ class PhysicalExam(models.Model):
     choice_percu_pulmonar = models.CharField(
         max_length=17, choices=percu_pulmonar, verbose_name='Percussão Pulmonar')
     palpa_abdominal = models.CharField(
-        max_length=30, verbose_name='Palpação Abdominal')
+        max_length=60, verbose_name='Palpação Abdominal')
     choice_mamas = models.CharField(
         max_length=17, choices=mamas, verbose_name='Mamas/Tetos')
     choice_nodulo = models.CharField(
@@ -275,13 +277,13 @@ class PhysicalExam(models.Model):
     choice_ectoparasitas = models.CharField(
         max_length=30, choices=parasitas, verbose_name='Ectoparasitas')
     ectoparasitas_intensity = models.CharField(
-        max_length=30, verbose_name='Intensidade dos Parasitas')
+        max_length=30,  null=True, blank=True, verbose_name='Intensidade dos Parasitas')
     pelage = models.CharField(
-        max_length=30, default='Normal', verbose_name='Pelagem')
+        max_length=60, default='Normal', verbose_name='Pelagem')
     ears = models.CharField(
-        max_length=30, default='Normal', verbose_name='Orelhas')
+        max_length=60, default='Normal', verbose_name='Orelhas')
     diag_differ = models.TextField(
-        max_length=1000, verbose_name='Diagnósticos Diferenciais')
+        max_length=1000, verbose_name='Suspeitas')
     diag_final = models.TextField(
         max_length=1000, verbose_name='Diagnósticos Definitivos')
     case_classification = models.CharField(

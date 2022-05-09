@@ -13,10 +13,10 @@
 
 <div class="table-responsive">
   <table class="table table-bordered table-hover table-dark" id="medical_care_table">
-    <thead class="thead-dark bg-dark">  
+    <thead class="thead-dark">  
       <tr>
         <th>Atendimento</th>
-        <th>Comportamento</th>
+        <th>Suspeitas</th>
         <th>Diagnóstico Final</th>
         <th>Classificação do Caso</th>
         <th>Opções</th>
@@ -26,7 +26,7 @@
       {% for each in object_list %}
       <tr>
         <td>{{ each.medical_care }}</td>
-        <td>{{ each.choice_conduct }}</td>
+        <td>{{ each.diag_differ }}</td>
         <td>{{ each.diag_final }}</td>
         <td>{{ each.case_classification }}</td>
         <td>
