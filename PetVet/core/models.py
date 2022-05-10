@@ -64,7 +64,8 @@ nodulo = (('Não', 'Não'), ('Firmes', 'Firmes'), ('Flutuante', 'Flutuante'),
 local_pain = (('Não', 'Não'), ('Lado Esquerdo', 'Lado Esquerdo'),
               ('Lado Direito', 'Lado Direito'))
 
-pain_m = (('M1', 'M1'), ('M2', 'M2'), ('M3', 'M3'), ('M4', 'M4'), ('M5', 'M5'))
+pain_m = (('Não', 'Não'), ('M1', 'M1'), ('M2', 'M2'),
+          ('M3', 'M3'), ('M4', 'M4'), ('M5', 'M5'))
 
 parasitas = (('Não', 'Não'), ('Carrapato', 'Carrapato'),
              ('Pulga', 'Pulga'), ('Miíase', 'Miíase'))
@@ -246,7 +247,7 @@ class PhysicalExam(models.Model):
         max_length=12, choices=ulcera, verbose_name='Úlcera')
     choice_halitose = models.CharField(
         max_length=18, choices=dental_calculus, verbose_name='Halitose')
-    linfonodos = models.CharField(max_length=30, verbose_name='Linfonodos')
+    linfonodos = models.CharField(max_length=60, verbose_name='Linfonodos')
     fc = models.CharField(max_length=30, default=0, verbose_name='FC')
     fr = models.CharField(max_length=30, default=0, verbose_name='FR')
     tpc = models.CharField(max_length=30, default=0, verbose_name='TPC')

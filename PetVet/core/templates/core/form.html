@@ -9,14 +9,21 @@
 {% block content %}
 
 <div class="row">
-  <div class="col-md-4 mx-auto">
+  <div class="col-md-8 mx-auto">
     <form action="" method="POST">
       <h3><strong>{{ title_page }}</strong></h3>
       <p>{{ tips }}</p>
       <hr />
       <br />
-      {% csrf_token %} {{ form|crispy }}
-
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            {% csrf_token %} {{ form|crispy }}
+          </div>
+          <div class="col">
+           
+          </div>
+        </div>
       <button type="submit" class="btn btn-warning mt-3">Salvar</button>
     </form>
   </div>
