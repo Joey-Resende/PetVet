@@ -6,6 +6,10 @@ authors = ["Joey-Resende <givanildo.resende@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+Django = "^4.0.4"
+django-crispy-forms = "^1.14.0"
+crispy-bootstrap5 = "^0.6"
+django-braces = "^1.15.0"
 
 [tool.poetry.dev-dependencies]
 isort = "^5.10.1"
