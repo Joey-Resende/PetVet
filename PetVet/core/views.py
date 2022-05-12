@@ -1,4 +1,4 @@
-from .models import MedicalCare, Pets, Tutor, Vet, GeneralClinic, PhysicalExam
+from .models import MedicalCare, Pets, Tutor, Vet, GeneralClinic, PhysicalExam, GeneralDhermExam
 from braces.views import GroupRequiredMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -365,3 +365,22 @@ class PhysicalExamDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
     model = PhysicalExam
     template_name = 'core/form_delete.html'
     success_url = reverse_lazy('physical_exams')
+
+
+# Views General Dherm Exam
+class GeneralDhermCreate(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
+    model = GeneralDhermExam
+    fields = ['medical_care', 'report', 'choice_anamnese',
+              'evolution_time', 'choice_evolution_status', 'evolution_score', 'where_begin', 'how_are_lesions', 'prurido', 'prurido_intensity', 'choice_prurido', 'prurido_history']
+    template_name = 'core/form.html'
+    success_url = reverse_lazy('physical_exams')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = 'PetVet - Exame Dermatológico Geral'
+        context['title_page'] = 'Novo Exame Dermatológico Geral'
+        context['tips'] = 'Preencha os campos para criar um novo exame Dermatólogico geral.'
+
+        return context

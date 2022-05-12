@@ -73,6 +73,18 @@ parasitas = (('Não', 'Não'), ('Carrapato', 'Carrapato'),
 classifier = (('Caso Simples', 'Caso Simples'),
               ('Caso Complexo', 'Caso Complexo'))
 
+evolucion_status = (('Piorou', 'Piorou'), ('Melhorou', 'Melhorou'),
+                    ('Não evoluiu', 'Não evoluiu'), ('Não sabe', 'Não sabe'))
+
+score = (('-', '-'), ('0', '0'), ('1', '1'), ('2', '2'),
+         ('3', '3'), ('4', '4'), ('5', '5'), ('6', '6'),
+         ('7', '7'), ('8', '8'), ('9', '9'), ('10', '10'))
+
+choice_prurido = (('-', '-'), ('Esporádico', 'Esporádico'),
+                  ('Frequente', 'Frequente'), ('Sazonal', 'Sazonal'),
+                  ('Não sazonal', 'Não sazonal'), ('Diurno', 'Diurno'),
+                  ('Noturno', 'Noturno'), ('Nos dois períodos', 'Nos dois períodos'))
+
 
 class Tutor(models.Model):
     """Model representing a classe Tutor."""
@@ -181,7 +193,7 @@ class GeneralClinic(models.Model):
     medical_care = models.ForeignKey(
         'MedicalCare', on_delete=models.PROTECT, null=True, verbose_name='Atendimento')
     choice_anamnese = models.CharField(
-        max_length=6, choices=type_anamnese, verbose_name='Tipo anamnese')
+        max_length=6, choices=type_anamnese, verbose_name='Tipo atendimento')
     anamnese = models.TextField(max_length=2000, verbose_name='Anamnese')
     choice_anti_rabica = models.CharField(
         max_length=23, choices=vaccination, verbose_name='Anti-Rábica')
@@ -300,3 +312,31 @@ class PhysicalExam(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return f'{self.medical_care} - {self.diag_final} - {self.case_classification}'
+
+
+class GeneralDhermExam(models.Model):
+    medical_care = models.ForeignKey(
+        'MedicalCare', on_delete=models.PROTECT, null=True, verbose_name='Atendimento')
+    report = models.TextField(max_length=500, verbose_name='Queixa principal')
+    choice_anamnese = models.CharField(
+        max_length=6, choices=type_anamnese, verbose_name='Tipo atendimento')
+    evolution_time = models.CharField(
+        max_length=30, verbose_name='Tempo de evolução')
+    choice_evolution_status = models.CharField(
+        max_length=30, choices=evolucion_status, verbose_name='Status da evolução')
+    evolution_score = models.CharField(
+        max_length=2, default='-', choices=score, verbose_name='Nota de evolução')
+    where_begin = models.CharField(
+        max_length=60, verbose_name='Onde as lesões iniciaram?')
+    how_are_lesions = models.CharField(
+        max_length=60, verbose_name='Como eram as primeiras lesões?')
+    prurido = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Prurido')
+    prurido_intensity = models.CharField(
+        max_length=2, default='-', choices=score, verbose_name='Intensidade do prurido')
+    choice_prurido = models.CharField(
+        max_length=17, default='-', choices=choice_prurido, verbose_name='')
+    prurido_history = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='O prurido antecede as lesões?')
+    recent_medical_care = models.CharField(
+        max_length=60, default='-', verbose_name='Recentemente foi atendido por veterinário? - Quais exames realizados?')
