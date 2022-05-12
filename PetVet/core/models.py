@@ -326,9 +326,9 @@ class GeneralDhermExam(models.Model):
         max_length=30, choices=evolucion_status, verbose_name='Status da evolução')
     evolution_score = models.CharField(
         max_length=2, default='-', choices=score, verbose_name='Nota de evolução')
-    where_begin = models.CharField(
+    quest_01_where_begin = models.CharField(
         max_length=60, verbose_name='Onde as lesões iniciaram?')
-    how_are_lesions = models.CharField(
+    quest_02_how_are_lesions = models.CharField(
         max_length=60, verbose_name='Como eram as primeiras lesões?')
     prurido = models.CharField(
         max_length=3, default='Não', choices=castrated_status, verbose_name='Prurido')
@@ -336,7 +336,33 @@ class GeneralDhermExam(models.Model):
         max_length=2, default='-', choices=score, verbose_name='Intensidade do prurido')
     choice_prurido = models.CharField(
         max_length=17, default='-', choices=choice_prurido, verbose_name='')
-    prurido_history = models.CharField(
+    quest_03_prurido_history = models.CharField(
         max_length=3, default='Não', choices=castrated_status, verbose_name='O prurido antecede as lesões?')
-    recent_medical_care = models.CharField(
-        max_length=60, default='-', verbose_name='Recentemente foi atendido por veterinário? - Quais exames realizados?')
+    quest_04_recent_medical_care = models.TextField(
+        max_length=200, default='Não', verbose_name='Recentemente foi atendido por veterinário? - Quais exames realizados?')
+    quest_05_aplication_prescrition_topic = models.TextField(
+        max_length=200, default='Não', verbose_name='Foi aplicado ou prescrito algum produto tópico? (nome, dose, tempo de uso)')
+    quest_06_feels_better_topic = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Melhorou?')
+    feels_intensity_topic = models.CharField(
+        max_length=2, default='-', choices=score, verbose_name='Nota')
+    quest_07_feels_intensity_topic = models.CharField(
+        max_length=2, default='-', choices=score, verbose_name='Foi usando antes ou depois do surgimento das lesões?')
+    quest_08_aplication_prescrition_oral = models.TextField(
+        max_length=200, default='Não', verbose_name='Foi aplicado ou prescrito algum produto via oral?')
+    quest_09_feels_better_oral = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Melhorou?')
+    quest_10_feels_intensity_oral = models.CharField(
+        max_length=2, default='-', choices=score, verbose_name='Foi usando antes ou depois do surgimento das lesões?')
+    quest_11_aplication_prescrition_oral = models.TextField(
+        max_length=200, default='Não', verbose_name='É alérgico a algum fármaco/Produto? Quais?')
+    quest_12_aplication_prescrition_oral = models.TextField(
+        max_length=200, default='Não', verbose_name='Há histórico anterior de dermatopias? Exames realizados/Tratamento prescrito')
+    quest_13_color_skin = models.TextField(
+        max_length=200, default='Não', verbose_name='Pele mudou de cor? / Quais áreas?')
+    quest_14_color_fur = models.TextField(
+        max_length=200, default='Não', verbose_name='Pelagem mudou de cor? / Quais áreas?')
+    quest_15_dermatopias = models.TextField(
+        max_length=200, default='Não', verbose_name='Há histórico de dermatopias familiar? / Quais áreas?')
+    quest_16_persons_dermatopias = models.CharField(
+        max_length=200, default='Não', choices=castrated_status, verbose_name='Há lesões nas pessoas que convivem com o animal?')
