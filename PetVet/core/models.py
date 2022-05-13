@@ -85,6 +85,9 @@ choice_prurido = (('-', '-'), ('Esporádico', 'Esporádico'),
                   ('Não sazonal', 'Não sazonal'), ('Diurno', 'Diurno'),
                   ('Noturno', 'Noturno'), ('Nos dois períodos', 'Nos dois períodos'))
 
+contacts_sint = (('Sim', 'Sim'), ('Não', 'Não'),
+                 ('Não sei', 'Não sei'), ('do paciente em atendimento foi antes', 'do paciente em atendimento foi antes'), ('do contactante foi antes', 'do contactante foi antes'))
+
 
 class Tutor(models.Model):
     """Model representing a classe Tutor."""
@@ -365,4 +368,14 @@ class GeneralDhermExam(models.Model):
     quest_15_dermatopias = models.TextField(
         max_length=200, default='Não', verbose_name='Há histórico de dermatopias familiar? / Quais áreas?')
     quest_16_persons_dermatopias = models.CharField(
-        max_length=200, default='Não', choices=castrated_status, verbose_name='Há lesões nas pessoas que convivem com o animal?')
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Há lesões nas pessoas que convivem com o animal?')
+    quest_17_contacts = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Contactantes?')
+    quest_18_contacts_quant = models.CharField(
+        max_length=60, default='Não', verbose_name='Espécie / Quantidade')
+    quest_19_contacts_assint = models.CharField(
+        max_length=60, default='Assintomáticos', verbose_name='Assintomáticos / Sintomáticos')
+    quest_20_contacts_sint_quant = models.CharField(
+        max_length=30, default='Não', verbose_name='Se sintomáticos, quantos? semelhante ao observado neste animal?')
+    quest_21_contacts_sint_period = models.CharField(
+        max_length=30, default='Não', choices=castrated_status, verbose_name='As lesões apareceram no mesmo período?')

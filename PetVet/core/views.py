@@ -375,7 +375,7 @@ class GeneralDhermCreate(LoginRequiredMixin, CreateView):
               'evolution_time', 'choice_evolution_status', 'evolution_score', 'quest_01_where_begin', 'quest_02_how_are_lesions', 'prurido', 'prurido_intensity', 'choice_prurido', 'quest_03_prurido_history', 'quest_04_recent_medical_care', 'quest_05_aplication_prescrition_topic', 'quest_06_feels_better_topic', 'quest_07_feels_intensity_topic', 'quest_08_aplication_prescrition_oral', 'quest_09_feels_better_oral', 'quest_10_feels_intensity_oral', 'quest_11_aplication_prescrition_oral',
               'quest_12_aplication_prescrition_oral', 'quest_13_color_skin',
               'quest_14_color_fur', 'quest_15_dermatopias',
-              'quest_16_persons_dermatopias']
+              'quest_16_persons_dermatopias', 'quest_16_persons_dermatopias', 'quest_17_contacts', 'quest_18_contacts_quant', 'quest_19_contacts_assint', 'quest_20_contacts_sint_quant', 'quest_21_contacts_sint_period']
     template_name = 'core/form.html'
     success_url = reverse_lazy('physical_exams')
 
