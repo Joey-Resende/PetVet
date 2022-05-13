@@ -88,6 +88,12 @@ choice_prurido = (('-', '-'), ('Esporádico', 'Esporádico'),
 contacts_sint = (('Sim', 'Sim'), ('Não', 'Não'),
                  ('Não sei', 'Não sei'), ('do paciente em atendimento foi antes', 'do paciente em atendimento foi antes'), ('do contactante foi antes', 'do contactante foi antes'))
 
+contacts_access = (('Sim', 'Sim'), ('Não', 'Não'),
+                   ('Esporadicamente', 'Esporadicamente'), ('Frequentemente', 'Frequentemente'), ('Diariamente', 'Diariamente'))
+
+contacts_sleep = (('Fora de casa', 'Fora de casa'),
+                  ('Dentro de casa', 'Dentro de casa'), ('Os dois', 'Os dois'))
+
 
 class Tutor(models.Model):
     """Model representing a classe Tutor."""
@@ -378,4 +384,12 @@ class GeneralDhermExam(models.Model):
     quest_20_contacts_sint_quant = models.CharField(
         max_length=30, default='Não', verbose_name='Se sintomáticos, quantos? semelhante ao observado neste animal?')
     quest_21_contacts_sint_period = models.CharField(
-        max_length=30, default='Não', choices=castrated_status, verbose_name='As lesões apareceram no mesmo período?')
+        max_length=36, default='Não', choices=contacts_sint, verbose_name='As lesões apareceram no mesmo período?')
+    quest_22_contacts_access_street = models.CharField(
+        max_length=15, default='Não', choices=contacts_access, verbose_name='Tem acesso à rua?')
+    quest_23_contacts_sleep_local = models.CharField(
+        max_length=14, default='Não', choices=contacts_sleep, verbose_name='Local onde dorme / passa o dia?')
+    quest_24_contacts_petbed = models.CharField(
+        max_length=30, default='-', verbose_name='Onde o animal dorme? Sobre o que o animal se deita?')
+    quest_25_contacts_wash_petbed = models.CharField(
+        max_length=30, default='-', verbose_name='Como é feita a limpea do local onde o animal dorme? Qual o produto?')
