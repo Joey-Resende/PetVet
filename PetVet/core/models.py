@@ -94,6 +94,9 @@ contacts_access = (('Sim', 'Sim'), ('Não', 'Não'),
 contacts_sleep = (('Fora de casa', 'Fora de casa'),
                   ('Dentro de casa', 'Dentro de casa'), ('Os dois', 'Os dois'))
 
+pulgas_carrapatos = (('Não', 'Não'), ('Não sei', 'Não sei'), ('Sim', 'Sim'),
+                     ('Leve', 'Leve'), ('Moderado', 'Moderado'), ('Intenso', 'Intenso'))
+
 
 class Tutor(models.Model):
     """Model representing a classe Tutor."""
@@ -392,4 +395,14 @@ class GeneralDhermExam(models.Model):
     quest_24_contacts_petbed = models.CharField(
         max_length=30, default='-', verbose_name='Onde o animal dorme? Sobre o que o animal se deita?')
     quest_25_contacts_wash_petbed = models.CharField(
-        max_length=30, default='-', verbose_name='Como é feita a limpea do local onde o animal dorme? Qual o produto?')
+        max_length=30, default='-', verbose_name='Como é feita a limpeza do local onde o animal dorme? Qual o produto?')
+    quest_26_contacts_grass_earth = models.CharField(
+        max_length=15, default='Não', choices=contacts_access, verbose_name='Tem contato com terra e grama?')
+    quest_27_contacts_plants = models.CharField(
+        max_length=30, default='Não', verbose_name='Há plantas em casa ou que ele tenha contato?')
+    quest_28_special_place = models.CharField(
+        max_length=30, default='Não', verbose_name='Foi levado em algum em especial nos últimos meses?')
+    quest_29_travel_cities = models.CharField(
+        max_length=30, default='Não', verbose_name='Viaje para outras cidades?')
+    quest_30_pulgas_carrapatos = models.CharField(
+        max_length=15, default='Não', choices=pulgas_carrapatos, verbose_name='Tem pulgas/carrapatos?')
