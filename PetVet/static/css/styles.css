@@ -32,7 +32,7 @@ div {
 
 
 .navbar {
-    background-color: var(--azul-3);
+    background-color: var(--amarelo-1);
     color: var(--amarelo-2);
 }
 
@@ -42,10 +42,6 @@ div {
 
 p {
     color: var(--branco-1);
-}
-
-footer {
-    background-color: var(--azul-3);
 }
 
 .bd-placeholder-img {

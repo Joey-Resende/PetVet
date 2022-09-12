@@ -1,76 +1,133 @@
-{% extends 'core/base_model.html' %} 
-{% load static %} 
+{% extends 'core/base_model.html' %}
+{% load static %}
 
 {%block title%}
 <title>PetVet - Home</title>
-{% endblock %} 
+{% endblock %}
 
 {% block content %}
-<div class="row">
-  <div class="col-md-4 mx-auto">
-    <div class="container">
-      {% if request.user.is_authenticated %}
-      <h3 class="text-center">
-        <strong>Bem vindo ao PetVet</strong> <br />{{ user.profile.name }}
-      </h3>
-      <hr />
-      {% else %}
+<section>
 
-      <h3>
-        <strong>
-          <i class="fa fa-exclamation" aria-hidden="true"></i>
-          Para ter acesso ao sistema e necessário fazer login.
-        </strong>
-      </h3>
-      {% endif %}
-      <div class="row col-4 mx-auto">
-        <img
-          class="card-img-top"
-          src="{% static 'img/vet_hospital_icon.png/' %}"
-          alt="Imagem de capa do card"
-        />
+  <div class="col-12 py-4 text-center">
+    <h3>
+      <strong style="color: #003570;">
+        A PetVet é um sistema para o gerenciamento da sua clínica veterinária
+      </strong>
+    </h3>
+  </div>
+  <div class="container-fluid row py-4">
+    <div class="row py-4">
+      <div class="col-4">
+        <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ynwxyv27.json" background="transparent"
+          speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
       </div>
-      <div class="card text-white bg-dark mb-3">
-        <div class="card-body">
-          <h5 class="card-title">
-            O hospital tem as seguintes contagens de registros:
-          </h5>
+      <div class="col-8 border-end border-bottom border-warning border-2  rounded shadow">
+        <div class="align-middle">
+          <h3 class="text-center py-4">
+            <strong style="color: #003570;">
+              O que é?
+            </strong>
+          </h3>
+          <p class="fw-bold text-center" style="color: #ffffff;">
+            A PetVet é um sistema que proprociona o gerenciamento da sua clínica veterinária. Realização de atendimentos, exames, cirurgias e outros procedimentos, de forma simples e rápida e agradável.
+          </p>
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">
-            Total de Atendimentos: <strong>{{ num_medical_cares }}</strong>
-          </li>
-          <li class="list-group-item">
-            Total de Exames Clínicos Gerais: <strong>{{ num_general_clinics }}</strong>
-          </li>
-          <li class="list-group-item">
-            Total de Exames Fisicos Gerais: <strong>{{ num_physical_exams }}</strong>
-          </li>
-          <li class="list-group-item">
-            Total de Pets: <strong>{{ num_pets }}</strong>
-          </li>
-          <li class="list-group-item">
-            Total de Tutores: <strong>{{ num_tutors }}</strong>
-          </li>
-        </ul>
-        <div class="card-body"></div>
+
       </div>
-      <hr />
-      <br />
-      {% if request.user.is_authenticated and user.profile.name is none %}
-      <h5 class="text-center">
-        <strong
-          >Você precisa completar seu cadastro. Acesse o meus dados
-          <a href="{% url 'meus_dados' %}"
-            ><i class="fas fa-address-card text-warning" aria-hidden="true"></i
-          ></a>
-          para atualizar.</strong
-        >
-      </h5>
-      {% else %} 
-      
-      {% endif %}
+    </div>
+
+    <div class="row py-4">
+      <div class="col-8 border-top border-start border-warning border-2  rounded shadow">
+        <div class="">
+          <h3 class="text-center py-4">
+            <strong style="color: #003570;">
+              Funcionalidades?
+            </strong>
+          </h3>
+          <p class="fw-bold" style="color: #ffffff;">
+            <li>Cadastros - (Pets, Tutores, Veterinários, Exames).</li>
+            <li>Controles - (Atendimentos, Exames, Cirurgias).</li>
+            <li>Impressões - (Solicitações de exames e procedimentos especificos).</li>
+          </p>
+        </div>
+
+      </div>
+      <div class="col-4">
+        <lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_h8chtt4u.json" background="transparent"
+          speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+      </div>
     </div>
   </div>
+
+</section>
+
+
+<div class="shadow-sm py-4 text-center border border-warning border-2 rounded shadow">
+  <h3 class="p-3">
+    <strong style="color: #003570;">
+      Veja um Resumo dos atendimentos
+    </strong>
+  </h3>
+
+  <div classs="row">
+    <div class="col-12 text-center">
+      <div class="container">
+        {% if request.user.is_authenticated %}
+        <h3 class="text-center">
+          <strong>Bem vindo ao PetVet</strong> <br />{{ user.profile.name }}
+        </h3>
+        <hr />
+        {% else %}
+
+        <h3>
+          <strong>
+            <i class="fa fa-exclamation" aria-hidden="true"></i>
+            Para ter acesso ao sistema e necessário fazer login.
+          </strong>
+        </h3>
+        {% endif %}
+        <div class="row col-2 mx-auto">
+          <img class="card-img-top" src="{% static 'img/vet_hospital_icon.png/' %}" alt="Imagem de capa do card" />
+        </div>
+        <div class="card text-white bg-dark mb-3">
+          <div class="card-body">
+            <h5 class="card-title">
+              O hospital tem as seguintes contagens de registros:
+            </h5>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              Total de Atendimentos: <strong>{{ num_medical_cares }}</strong>
+            </li>
+            <li class="list-group-item">
+              Total de Exames Clínicos Gerais: <strong>{{ num_general_clinics }}</strong>
+            </li>
+            <li class="list-group-item">
+              Total de Exames Fisicos Gerais: <strong>{{ num_physical_exams }}</strong>
+            </li>
+            <li class="list-group-item">
+              Total de Pets: <strong>{{ num_pets }}</strong>
+            </li>
+            <li class="list-group-item">
+              Total de Tutores: <strong>{{ num_tutors }}</strong>
+            </li>
+          </ul>
+          <div class="card-body"></div>
+        </div>
+        <hr />
+        <br />
+        {% if request.user.is_authenticated and user.profile.name is none %}
+        <h5 class="text-center">
+          <strong>Você precisa completar seu cadastro. Acesse o meus dados
+            <a href="{% url 'meus_dados' %}"><i class="fas fa-address-card text-warning" aria-hidden="true"></i></a>
+            para atualizar.</strong>
+        </h5>
+        {% else %}
+
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
 </div>
 {% endblock %}
