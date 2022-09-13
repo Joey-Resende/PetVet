@@ -15,8 +15,7 @@
   <link href="{% static 'img/faviconII.ico/' %}" rel="shortcut icon" type="image/x-icon" />
 
   <!-- bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css/' %}" />
 
   <!-- Awesome Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
@@ -36,13 +35,13 @@
 
     {% block menu %}
     
-    <nav class="navbar navbar-expand-lg navbar-dark bg-warning" aria-label="Sixth navbar example">
+    <nav class="navbar navbar-expand-lg bg-warning" aria-label="Sixth navbar example">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'index' %}">
           <img src="{% static 'img/favicon.ico/' %}" height="40" alt="" />
         </a>
-        <button class="navbar-toggler btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample06" aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon btn-dark"></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample06" aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
   
         <div class="collapse navbar-collapse" id="navbarsExample06">
@@ -121,17 +120,36 @@
             <ul class="navbar-nav bd-navbar-nav flex=row">
               {% if request.user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link text-dark" href="#">
+                <a class="nav-link text-dark" href="{% url 'meus_dados' %}">
                   <i class="fas fa-user-circle" aria-hidden="true"></i>
                   <span id="username">{{ request.user }}</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link text-dark" href="{% url 'meus_dados' %}">
+
+              <div class="dropdown">
+                <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                   <i class="fas fa-address-card" aria-hidden="true"></i>
                   Meus dados
-                </a>
-              </li>
+                </button>
+                <form class="dropdown-menu p-4 bg-dark">
+                  <div class="mb-3">
+                    <label for="exampleDropdownFormEmail2" class="form-label">Nome completo</label>
+                    <input type="email" class="form-control" id="exampleDropdownFormEmail2">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleDropdownFormPassword2" class="form-label">Cpf</label>
+                    <input type="password" class="form-control" id="exampleDropdownFormPassword2">
+                  </div>
+                  <div class="mb-3">
+                    <div class="mb-3">
+                      <label for="exampleDropdownFormPassword2" class="form-label">Telefone</label>
+                      <input type="password" class="form-control" id="exampleDropdownFormPassword2">
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-warning">Salvar</button>
+                </form>
+              </div>
+
               <!-- fica para proxima versao
                 <li class="nav-item">
                   <a class="nav-link text-dark" href="#">
@@ -208,9 +226,7 @@
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js/' %}"></script>
 
   <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/dt-1.11.5/datatables.min.js"></script>
 

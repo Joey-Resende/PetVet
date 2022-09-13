@@ -11,7 +11,7 @@
   <div class="col-12 py-4 text-center">
     <h3>
       <strong style="color: #003570;">
-        A PetVet é um sistema para o gerenciamento da sua clínica veterinária
+        O PetVet é um sistema para o gerenciamento da sua clínica veterinária
       </strong>
     </h3>
   </div>
@@ -19,7 +19,7 @@
     <div class="row py-4">
       <div class="col-4">
         <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ynwxyv27.json" background="transparent"
-          speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+          speed="1" style="width: 180px; height: 180px;" loop autoplay></lottie-player>
       </div>
       <div class="col-8 border-end border-bottom border-warning border-2  rounded shadow">
         <div class="align-middle">
@@ -29,7 +29,7 @@
             </strong>
           </h3>
           <p class="fw-bold text-center" style="color: #ffffff;">
-            A PetVet é um sistema que proprociona o gerenciamento da sua clínica veterinária. Realização de atendimentos, exames, cirurgias e outros procedimentos, de forma simples e rápida e agradável.
+            O PetVet é um sistema que simplifica o gerenciamento da sua clínica veterinária. Crie e acompanhe seus atendimentos, exames, cirurgias e outros procedimentos, de forma simples e rápida com uma interface agradável.
           </p>
         </div>
 
@@ -45,24 +45,25 @@
             </strong>
           </h3>
           <p class="fw-bold" style="color: #ffffff;">
-            <li>Cadastros - (Pets, Tutores, Veterinários, Exames).</li>
-            <li>Controles - (Atendimentos, Exames, Cirurgias).</li>
-            <li>Impressões - (Solicitações de exames e procedimentos especificos).</li>
+            <li class="fw-bold">Cadastros - (Pets, Tutores, Veterinários, Exames).</li>
+            <li class="fw-bold">Controles - (Atendimentos, Exames, Cirurgias).</li>
+            <li class="fw-bold">Impressões - (Solicitações de exames e procedimentos especificos).</li>
           </p>
         </div>
 
       </div>
       <div class="col-4">
         <lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_h8chtt4u.json" background="transparent"
-          speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+          speed="1" style="width: 180px; height: 180px;" loop autoplay></lottie-player>
       </div>
     </div>
   </div>
 
 
 
-
-<div class="shadow-sm py-4 text-center border border-warning border-2 rounded shadow">
+<div classs="row">
+  <div class="col-md-6 offset-md-3"" text-center">
+<div class="shadow-sm py-1 text-center border-end border-bottom border-warning border-2 rounded shadow">
   <h3 class="p-3">
     <strong style="color: #003570;">
       Veja um Resumo dos atendimentos
@@ -70,7 +71,7 @@
   </h3>
 
   <div classs="row">
-    <div class="col-12 text-center">
+    <div class="col text-center">
       <div class="container">
         {% if request.user.is_authenticated %}
         <h3 class="text-center">
@@ -128,6 +129,7 @@
       </div>
     </div>
   </div>
-
+</div>
+</div>
 </div>
 {% endblock %}
