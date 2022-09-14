@@ -129,21 +129,21 @@
               <div class="dropdown">
                 <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                   <i class="fas fa-address-card" aria-hidden="true"></i>
-                  Meus dados
+                  Meus dados cadastrados
                 </button>
-                <form class="dropdown-menu p-4 bg-dark">
+                <form action="" class="dropdown-menu p-3 bg-dark" method="POST">
                   <div class="mb-3">
-                    <label for="exampleDropdownFormEmail2" class="form-label">Nome completo</label>
-                    <input type="email" class="form-control" id="exampleDropdownFormEmail2">
+                    <label for="name" class="form-label">Nome completo</label>
+                    <input type="text" class="form-control" id="name" value="{{ request.user.profile.name }}">
                   </div>
                   <div class="mb-3">
-                    <label for="exampleDropdownFormPassword2" class="form-label">Cpf</label>
-                    <input type="password" class="form-control" id="exampleDropdownFormPassword2">
+                    <label for="cpf" class="form-label">Cpf</label>
+                    <input type="text" class="form-control" id="cpf" value="{{ request.user.profile.cpf }}">
                   </div>
                   <div class="mb-3">
                     <div class="mb-3">
-                      <label for="exampleDropdownFormPassword2" class="form-label">Telefone</label>
-                      <input type="password" class="form-control" id="exampleDropdownFormPassword2">
+                      <label for="phone" class="form-label">Telefone</label>
+                      <input type="text" class="form-control" id="phone" value="{{ request.user.profile.phone }}">
                     </div>
                   </div>
                   <button type="submit" class="btn btn-warning">Salvar</button>
