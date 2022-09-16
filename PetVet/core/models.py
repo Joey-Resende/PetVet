@@ -138,7 +138,7 @@ class Pets(models.Model):
     breed = models.CharField(
         max_length=30, verbose_name='Raça')
     gender = models.CharField(
-        max_length=5, choices=sex_status, verbose_name='Genêro')
+        max_length=5, choices=sex_status, verbose_name='Gênero')
     date_of_birth = models.DateField(
         null=True, blank=True, verbose_name='Data de Nascimento')
     castrated = models.CharField(
@@ -212,11 +212,11 @@ class GeneralClinic(models.Model):
     choice_type_v = models.CharField(
         max_length=7, choices=type_v, verbose_name='V8/V10/V12')
     choice_v = models.CharField(
-        max_length=23, choices=vaccination, verbose_name='')
+        max_length=23, choices=vaccination, verbose_name='Opções V')
     choice_type_felina = models.CharField(
         max_length=23, choices=type_felina, verbose_name='Tríplice/Quádrupla Felina')
     choice_felina = models.CharField(
-        max_length=23, choices=vaccination, verbose_name='')
+        max_length=23, choices=vaccination, verbose_name='Opções Felina')
     others_felina = models.CharField(
         max_length=30, null=True, blank=True, verbose_name='Outras Vacinas')
     choice_verminose = models.CharField(
@@ -294,9 +294,9 @@ class PhysicalExam(models.Model):
     choice_nodulo_pain = models.CharField(
         max_length=30, choices=castrated_status, verbose_name='Dor Nódulo')
     choice_local_pain = models.CharField(
-        max_length=30, choices=local_pain, verbose_name='Localização da Dor')
+        max_length=30, choices=local_pain, verbose_name='Local da Dor')
     choice_pain_m = models.CharField(
-        max_length=3, choices=pain_m, verbose_name='')
+        max_length=3, choices=pain_m, verbose_name='Código Região')
     genital_region = models.CharField(
         max_length=30, default='Normal', verbose_name='Região Genital')
     choice_ectoparasitas = models.CharField(

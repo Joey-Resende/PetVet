@@ -1,0 +1,202 @@
+{% extends 'core/base_model.html' %} 
+{% load crispy_forms_tags %} 
+{% load static%} 
+
+{% block title %}
+<title>{{ title_window }}</title>
+{% endblock %} 
+
+{% block content %}
+<div class="col-md-10 mx-auto">
+    <h3><strong>{{ title_page }}</strong></h3>
+    <p>{{ tips }}</p>
+    <hr />
+    <br />
+    <form method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.medical_care|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.choice_conduct|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.weight|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.choice_consciousness|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">  
+        <div class="col-md-4 mb-0">
+          {{ form.stance|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.hydration|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.choice_nutricional_status|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">  
+        <div class="col-md-4 mb-0">
+          {{ form.oculopalpebral|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.bucal|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.genital|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-0">
+          {{ form.choice_dental_calculus|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.choice_dental_loss|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.gengivite|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-0">
+          {{ form.choice_ulcera|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.choice_halitose|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.linfonodos|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mb-0">
+          {{ form.fc|as_crispy_field }}
+        </div>
+        <div class="col-md-3 mb-0">
+          {{ form.fr|as_crispy_field }}
+        </div>
+        <div class="col-md-3 mb-0">
+          {{ form.tpc|as_crispy_field }}
+        </div>
+        <div class="col-md-3 mb-0">
+          {{ form.tr|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-0">
+          {{ form.pulse|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.choice_auscu_cardio|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.heart_rate|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-0">
+          {{ form.choice_auscu_pulmonar|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.choice_percu_pulmonar|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.palpa_abdominal|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mb-0">
+          {{ form.choice_mamas|as_crispy_field }}
+        </div>
+        <div class="col-md-3 mb-0">
+          {{ form.choice_nodulo|as_crispy_field }}
+        </div>
+        <div class="col-md-2 mb-0">
+          {{ form.choice_nodulo_pain|as_crispy_field }}
+        </div>
+        <div class="col-md-2 mb-0">
+          {{ form.choice_local_pain|as_crispy_field }}
+        </div>
+        <div class="col-md-2 mb-0">
+          {{ form.choice_pain_m|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-0">
+          {{ form.genital_region|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.choice_ectoparasitas|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.ectoparasitas_intensity|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.pelage|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.ears|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-0">
+          {{ form.diag_differ|as_crispy_field }}
+        </div>
+      </div>  
+      <div class="row">
+        <div class="col mb-0">
+          {{ form.diag_final|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-0">
+          {{ form.diag_differ|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.case_classification|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          
+        </div>
+      </div>
+      <button type="submit" class="btn btn-warning mt-3">Salvar</button>
+    </form>
+</div>
+{% endblock %} 
+
+
+{% block scripts %}
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+
+      $("#id_date").mask("00/00/0000");
+      $("#id_date_of_birth").mask("00/00/0000");
+      $("#id_time").mask("00:00");
+      $("#id_cpf").mask("000.000.000-00");
+      $("#id_cep").mask("00000-000");
+      var SPMaskBehavior = function (val) {
+        return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+      },
+      spOptions = {
+        onKeyPress: function(val, e, field, options) {
+            field.mask(SPMaskBehavior.apply({}, arguments), options);
+          }
+      };
+      
+      $('#id_phone').mask(SPMaskBehavior, spOptions);
+
+    });
+</script>
+{% endblock %}

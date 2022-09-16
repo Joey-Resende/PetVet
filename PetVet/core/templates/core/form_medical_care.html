@@ -1,0 +1,76 @@
+{% extends 'core/base_model.html' %} 
+{% load crispy_forms_tags %} 
+{% load static%} 
+
+{% block title %}
+<title>{{ title_window }}</title>
+{% endblock %} 
+
+{% block content %}
+<div class="col-md-10 mx-auto">
+    <h3><strong>{{ title_page }}</strong></h3>
+    <p>{{ tips }}</p>
+    <hr />
+    <br />
+    <form method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.date|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.time|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.pet_name|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.procedure|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">  
+        <div class="col-md-6 mb-0">
+          {{ form.vet_name|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.sedative|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">  
+        <div class="col mb-0">
+          {{ form.report|as_crispy_field }}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-warning mt-3">Salvar</button>
+    </form>
+</div>
+{% endblock %} 
+
+
+{% block scripts %}
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+
+      $("#id_date").mask("00/00/0000");
+      $("#id_date_of_birth").mask("00/00/0000");
+      $("#id_time").mask("00:00");
+      $("#id_cpf").mask("000.000.000-00");
+      $("#id_cep").mask("00000-000");
+      var SPMaskBehavior = function (val) {
+        return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+      },
+      spOptions = {
+        onKeyPress: function(val, e, field, options) {
+            field.mask(SPMaskBehavior.apply({}, arguments), options);
+          }
+      };
+      
+      $('#id_phone').mask(SPMaskBehavior, spOptions);
+
+    });
+</script>
+{% endblock %}

@@ -47,7 +47,7 @@ class MedicalCareCreate(LoginRequiredMixin, CreateView):
     model = MedicalCare
     fields = ['date', 'time', 'pet_name',
               'procedure', 'vet_name', 'sedative', 'report']
-    template_name = 'core/form.html'
+    template_name = 'core/form_medical_care.html'
     success_url = reverse_lazy('medical_cares')
 
     def get_context_data(self, *args, **kwargs):
@@ -65,7 +65,7 @@ class MedicalCareUpdate(LoginRequiredMixin, UpdateView):
     model = MedicalCare
     fields = ['date', 'time', 'pet_name',
               'procedure', 'vet_name', 'sedative', 'report']
-    template_name = 'core/form.html'
+    template_name = 'core/form_medical_care.html'
     success_url = reverse_lazy('medical_cares')
 
     def get_context_data(self, *args, **kwargs):
@@ -105,7 +105,7 @@ class PetCreate(LoginRequiredMixin, CreateView):
     model = Pets
     fields = ['pet_name', 'species', 'breed', 'gender',
               'date_of_birth', 'castrated', 'weight', 'tutor_name']
-    template_name = 'core/form.html'
+    template_name = 'core/form_pets.html'
     success_url = reverse_lazy('pets')
 
     def get_context_data(self, *args, **kwargs):
@@ -123,7 +123,7 @@ class PetUpdate(LoginRequiredMixin, UpdateView):
     model = Pets
     fields = ['pet_name', 'species', 'breed', 'gender',
               'date_of_birth', 'castrated', 'weight', 'tutor_name']
-    template_name = 'core/form.html'
+    template_name = 'core/form_pets.html'
     success_url = reverse_lazy('pets')
 
     def get_context_data(self, *args, **kwargs):
@@ -163,7 +163,7 @@ class TutorCreate(LoginRequiredMixin, CreateView):
     model = Tutor
     fields = ['tutor_name', 'cpf', 'phone', 'email', 'cep',
               'street', 'number', 'district', 'city', 'state']
-    template_name = 'core/form.html'
+    template_name = 'core/form_tutor.html'
     success_url = reverse_lazy('tutors')
 
     def get_context_data(self, *args, **kwargs):
@@ -181,7 +181,7 @@ class TutorUpdate(LoginRequiredMixin, UpdateView):
     model = Tutor
     fields = ['tutor_name', 'cpf', 'phone', 'email', 'cep',
               'street', 'number', 'district', 'city', 'state']
-    template_name = 'core/form.html'
+    template_name = 'core/form_tutor.html'
     success_url = reverse_lazy('tutors')
 
     def get_context_data(self, *args, **kwargs):
@@ -270,7 +270,7 @@ class GeneralClinicCreate(LoginRequiredMixin, CreateView):
     model = GeneralClinic
     fields = ['medical_care', 'choice_anamnese',
               'anamnese', 'choice_anti_rabica', 'choice_type_v', 'choice_v', 'choice_type_felina', 'choice_felina', 'others_felina', 'choice_verminose', 'others_verminose', 'choice_ectopas', 'others_ectopas', 'choice_leish']
-    template_name = 'core/form.html'
+    template_name = 'core/form_general_clinic.html'
     success_url = reverse_lazy('physical_exam_new')
 
     def get_context_data(self, *args, **kwargs):
@@ -288,7 +288,7 @@ class GeneralClinicUpdate(LoginRequiredMixin, UpdateView):
     model = GeneralClinic
     fields = ['medical_care', 'choice_anamnese',
               'anamnese', 'choice_anti_rabica', 'choice_type_v', 'choice_v', 'choice_type_felina', 'choice_felina', 'others_felina', 'choice_verminose', 'others_verminose', 'choice_ectopas', 'others_ectopas', 'choice_leish']
-    template_name = 'core/form.html'
+    template_name = 'core/form_general_clinic.html'
     success_url = reverse_lazy('general_clinics')
 
     def get_context_data(self, *args, **kwargs):
@@ -328,7 +328,7 @@ class PhysicalExamCreate(LoginRequiredMixin, CreateView):
     model = PhysicalExam
     fields = ['medical_care', 'choice_conduct',
               'weight', 'choice_consciousness', 'stance', 'hydration', 'choice_nutricional_status', 'oculopalpebral', 'bucal', 'genital', 'choice_dental_calculus', 'choice_dental_loss', 'gengivite', 'choice_ulcera', 'choice_halitose', 'linfonodos', 'fc', 'fr', 'tpc', 'tr', 'pulse', 'choice_auscu_cardio', 'heart_rate', 'choice_auscu_pulmonar', 'choice_percu_pulmonar', 'palpa_abdominal', 'choice_mamas', 'choice_nodulo', 'choice_nodulo_pain', 'choice_local_pain', 'choice_pain_m', 'genital_region', 'choice_ectoparasitas', 'ectoparasitas_intensity', 'pelage', 'ears', 'diag_differ', 'diag_final', 'case_classification']
-    template_name = 'core/form.html'
+    template_name = 'core/form_physical_exam.html'
     success_url = reverse_lazy('physical_exams')
 
     def get_context_data(self, *args, **kwargs):
@@ -346,7 +346,7 @@ class PhysicalExamUpdate(LoginRequiredMixin, UpdateView):
     model = PhysicalExam
     fields = ['medical_care', 'choice_conduct',
               'weight', 'choice_consciousness', 'stance', 'hydration', 'choice_nutricional_status', 'oculopalpebral', 'bucal', 'genital', 'choice_dental_calculus', 'choice_dental_loss', 'gengivite', 'choice_ulcera', 'choice_halitose', 'linfonodos', 'fc', 'fr', 'tpc', 'tr', 'pulse', 'choice_auscu_cardio', 'heart_rate', 'choice_auscu_pulmonar', 'choice_percu_pulmonar', 'palpa_abdominal', 'choice_mamas', 'choice_nodulo', 'choice_nodulo_pain', 'choice_local_pain', 'choice_pain_m', 'genital_region', 'choice_ectoparasitas', 'ectoparasitas_intensity', 'pelage', 'ears', 'diag_differ', 'diag_final', 'case_classification']
-    template_name = 'core/form.html'
+    template_name = 'core/form_physical_exam.html'
     success_url = reverse_lazy('physical_exams')
 
     def get_context_data(self, *args, **kwargs):
