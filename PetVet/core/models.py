@@ -347,7 +347,7 @@ class GeneralDhermExam(models.Model):
     prurido_intensity = models.CharField(
         max_length=2, default='-', choices=score, verbose_name='Intensidade do prurido')
     choice_prurido = models.CharField(
-        max_length=17, default='-', choices=choice_prurido, verbose_name='')
+        max_length=17, default='-', choices=choice_prurido, verbose_name='Periodo do prurido')
     quest_03_prurido_history = models.CharField(
         max_length=3, default='Não', choices=castrated_status, verbose_name='O prurido antecede as lesões?')
     quest_04_recent_medical_care = models.TextField(

@@ -1,0 +1,210 @@
+{% extends 'core/base_model.html' %} 
+{% load crispy_forms_tags %} 
+{% load static%} 
+
+{% block title %}
+<title>{{ title_window }}</title>
+{% endblock %} 
+
+{% block content %}
+<div class="col-md-10 mx-auto">
+    <h3><strong>{{ title_page }}</strong></h3>
+    <p>{{ tips }}</p>
+    <hr />
+    <br />
+    <form method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.medical_care|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+         
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-0">
+          {{ form.report|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">  
+        <div class="col-md-6 mb-0">
+          {{ form.choice_anamnese|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.evolution_time|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">  
+        <div class="col-md-6 mb-0">
+          {{ form.choice_evolution_status|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.evolution_score|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.quest_01_where_begin|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.quest_02_how_are_lesions|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mb-0">
+          {{ form.prurido|as_crispy_field }}
+        </div>
+        <div class="col-md-3 mb-0">
+          {{ form.prurido_intensity|as_crispy_field }}
+        </div>
+        <div class="col-md-3 mb-0">
+          {{ form.choice_prurido|as_crispy_field }}
+        </div>
+        <div class="col-md-3 mb-0">
+          {{ form.quest_03_prurido_history|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-0">
+          {{ form.quest_04_recent_medical_care|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-0">
+          {{ form.quest_05_aplication_prescrition_topic|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.quest_06_feels_better_topic|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.quest_07_feels_intensity_topic|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-0">
+          {{ form.quest_08_aplication_prescrition_oral|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-0">
+          {{ form.quest_09_feels_better_oral|as_crispy_field }}
+        </div>
+        <div class="col-md-6 mb-0">
+          {{ form.quest_10_feels_intensity_oral|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-0">
+          {{ form.quest_11_aplication_prescrition_oral|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-0">
+          {{ form.quest_12_aplication_prescrition_oral|as_crispy_field }}
+        </div>
+      </div>  
+      <div class="row">
+        <div class="col mb-0">
+          {{ form.quest_13_color_skin|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-0">
+          {{ form.quest_14_color_fur|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mb-0">
+          {{ form.quest_15_dermatopias|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-0">
+          {{ form.quest_16_persons_dermatopias|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.quest_17_contacts|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.quest_18_contacts_quant|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-0">
+          {{ form.quest_19_contacts_assint|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.quest_20_contacts_sint_quant|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.quest_21_contacts_sint_period|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-0">
+          {{ form.quest_22_contacts_access_street|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.quest_23_contacts_sleep_local|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.quest_24_contacts_petbed|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-0">
+          {{ form.quest_25_contacts_wash_petbed|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.quest_26_contacts_grass_earth|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.quest_27_contacts_plants|as_crispy_field }}
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-0">
+          {{ form.quest_28_special_place|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.quest_29_travel_cities|as_crispy_field }}
+        </div>
+        <div class="col-md-4 mb-0">
+          {{ form.quest_30_pulgas_carrapatos|as_crispy_field }}
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-warning mt-3">Salvar</button>
+    </form>
+</div>
+{% endblock %} 
+
+
+{% block scripts %}
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+
+      $("#id_date").mask("00/00/0000");
+      $("#id_date_of_birth").mask("00/00/0000");
+      $("#id_time").mask("00:00");
+      $("#id_cpf").mask("000.000.000-00");
+      $("#id_cep").mask("00000-000");
+      var SPMaskBehavior = function (val) {
+        return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+      },
+      spOptions = {
+        onKeyPress: function(val, e, field, options) {
+            field.mask(SPMaskBehavior.apply({}, arguments), options);
+          }
+      };
+      
+      $('#id_phone').mask(SPMaskBehavior, spOptions);
+
+    });
+</script>
+{% endblock %}
