@@ -1,0 +1,71 @@
+{% extends 'core/base_model.html' %} 
+{% load static %}
+
+{%block title%}
+<title>PetVet - Exames</title>
+{% endblock %} 
+
+{% block content %}
+<div class="row">
+  <div class="col-sm-8 mx-auto">
+    
+    <div class="container">
+      <h3><strong>Detalhe do Exame Dermatológico</strong></h3><hr>
+      <div class="row col-3">
+        <img class="card-img-top" src="{% static 'img/fitness_dog.png/' %}" alt="Imagem de capa do card">
+      </div>
+      <div class="card text-white bg-dark mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Atendimento: {{ generaldhermexam.medical_care }}</h5>
+          <p class="card-text">Queixa Principal: {{ generaldhermexam.report }}</p>
+        </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Tipo de Atendimento: {{ generaldhermexam.choice_anamnese }}</li>
+            <li class="list-group-item">Tempo de Evolução: {{ generaldhermexam.evolution_time }}</li>
+            <li class="list-group-item">Status da Evolução: {{ generaldhermexam.choice_evolution_status }}</li>
+            <li class="list-group-item">Nota da Evolução: {{ generaldhermexam.evolution_score }}</li>
+            <li class="list-group-item">Onde as lesões iniciaram?: {{ generaldhermexam.quest_01_where_begin }}</li>
+            <li class="list-group-item">Como eram as primeiras lesões?: {{ generaldhermexam.quest_02_how_are_lesions }}</li>
+            <li class="list-group-item">Prurido: {{ generaldhermexam.prurido }}</li>
+            <li class="list-group-item">Intensidade do Prurido: {{ generaldhermexam.prurido_intensity }}</li>
+            <li class="list-group-item">Periodo do Prurido: {{ generaldhermexam.choice_prurido }}</li>
+            <li class="list-group-item">O Prurido antecede as lesões?: {{ generaldhermexam.quest_03_prurido_history }}</li>
+            <li class="list-group-item">Recentemente foi atendido por veterinário? (Quais exames realizados?): {{ generaldhermexam.quest_04_recent_medical_care }}</li>
+            <li class="list-group-item">Foi aplicado ou prescrito algum produto tópico? (nome, dose, tempo de uso): {{ generaldhermexam.quest_05_aplication_prescrition_topic }}</li>
+            <li class="list-group-item">Melhorou?: {{ generaldhermexam.quest_06_feels_better_topic }}</li>
+            <li class="list-group-item">Nota: {{ generaldhermexam.feels_intensity_topic }}</li>
+            <li class="list-group-item">Foi usado antes ou depois do surgimento das lesões?: {{ generaldhermexam.quest_07_feels_intensity_topic }}</li>
+            <li class="list-group-item">Foi aplicado ou prescrito algum produto via oral?: {{ generaldhermexam.quest_08_aplication_prescrition_oral }}</li>
+            <li class="list-group-item">Melhorou?: {{ generaldhermexam.quest_09_feels_better_oral }}</li>
+            <li class="list-group-item">Foi usado antes ou depois do surgimento das lesões?: {{ generaldhermexam.quest_10_feels_intensity_oral }}</li>
+            <li class="list-group-item">É alérgico a algum fármaco/Produto? (Quais?): {{ generaldhermexam.quest_11_aplication_prescrition_oral }}</li>
+            <li class="list-group-item">Há histórico anterior de dermatopias? Exames realizados/Tratamento prescrito: {{ generaldhermexam.quest_12_aplication_prescrition_oral }}</li>
+            <li class="list-group-item">Pele mudou de cor? / Quais áreas?: {{ generaldhermexam.quest_13_color_skin }}</li>
+            <li class="list-group-item">Pelagem mudou de cor? / Quais áreas?: {{ generaldhermexam.quest_14_color_fur }}</li>
+            <li class="list-group-item">Há historico de dermatopias familiar? / Quais áreas?: {{ generaldhermexam.quest_15_dermatopias }}</li>
+            <li class="list-group-item">Há lesões nas pessoas que convivem com o animal?: {{ generaldhermexam.quest_16_persons_dermatopias }}</li>
+            <li class="list-group-item">Contactantes?: {{ generaldhermexam.quest_17_contacts }}</li>
+            <li class="list-group-item">Espécie / Quantidade: {{ generaldhermexam.quest_18_contacts_quant }}</li>
+            <li class="list-group-item">Assintomáticos / Sintomáticos: {{ generaldhermexam.quest_19_contacts_assint }}</li>
+            <li class="list-group-item">Se sintomáticos, quantos? semelhante ao observado neste animal?: {{ generaldhermexam.quest_20_contacts_sint_quant }}</li>
+            <li class="list-group-item">As lesões apareceram no mesmo período?: {{ generaldhermexam.quest_21_contacts_sint_period }}</li>
+            <li class="list-group-item">Tem acesso à rua?: {{ generaldhermexam.quest_22_contacts_access_street }}</li>
+            <li class="list-group-item">Local onde dorme / Passa o dia?: {{ generaldhermexam.quest_23_contacts_sleep_local }}</li>
+            <li class="list-group-item">Onde o animal dorme? / Sobre o que o animal se deita?: {{ generaldhermexam.quest_24_contacts_petbed }}</li>
+            <li class="list-group-item">Como é feita a limpeza do local onde o animal dorme? / Qual o produto?: {{ generaldhermexam.quest_25_contacts_wash_petbed }}</li>
+            <li class="list-group-item">Tem contato com terra e ou grama?: {{ generaldhermexam.quest_26_contacts_grass_earth }}</li>
+            <li class="list-group-item">Há plantas em casa ou que ele tenha contato?: {{ generaldhermexam.quest_27_contacts_plants }}</li>
+            <li class="list-group-item">Foi levado em algum lugar em especial nos últimos meses?: {{ generaldhermexam.quest_28_special_place }}</li>
+            <li class="list-group-item">Viaja para outras cidades?: {{ generaldhermexam.quest_29_travel_cities }}</li>
+            <li class="list-group-item">Tem pulgas / carrapatos?: {{ generaldhermexam.quest_30_pulgas_carrapatos }}</li>
+          </ul>
+        <div class="card-body">
+          <a href="{% url 'general_dherm_exams' %}" class="btn btn-outline-light btn-sm">Voltar</a>
+          <a href="{% url 'general_dherm_exam_edit' generaldhermexam.pk %}" class="btn btn-warning btn-sm">Editar</a>
+          <a href="{% url 'general_dherm_exam_delete' generaldhermexam.pk %}" class="btn btn-danger btn-sm">Excluir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

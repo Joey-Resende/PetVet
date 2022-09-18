@@ -333,15 +333,15 @@ class GeneralDhermExam(models.Model):
     choice_anamnese = models.CharField(
         max_length=6, choices=type_anamnese, verbose_name='Tipo atendimento')
     evolution_time = models.CharField(
-        max_length=30, verbose_name='Tempo de evolução')
+        max_length=30, default='-' ,verbose_name='Tempo de evolução')
     choice_evolution_status = models.CharField(
-        max_length=30, choices=evolucion_status, verbose_name='Status da evolução')
+        max_length=30, choices=evolucion_status, default='-' ,verbose_name='Status da evolução')
     evolution_score = models.CharField(
         max_length=2, default='-', choices=score, verbose_name='Nota de evolução')
     quest_01_where_begin = models.CharField(
-        max_length=60, verbose_name='Onde as lesões iniciaram?')
+        max_length=60, default='-', verbose_name='Onde as lesões iniciaram?')
     quest_02_how_are_lesions = models.CharField(
-        max_length=60, verbose_name='Como eram as primeiras lesões?')
+        max_length=60, default='-', verbose_name='Como eram as primeiras lesões?')
     prurido = models.CharField(
         max_length=3, default='Não', choices=castrated_status, verbose_name='Prurido')
     prurido_intensity = models.CharField(
