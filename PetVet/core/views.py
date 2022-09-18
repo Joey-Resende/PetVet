@@ -19,12 +19,14 @@ class IndexView(TemplateView):
         num_medical_cares = MedicalCare.objects.all().count()
         num_general_clinics = GeneralClinic.objects.all().count()
         num_physical_exams = PhysicalExam.objects.all().count()
+        num_dherm_exams = GeneralDhermExam.objects.all().count()
 
         context['num_pets'] = num_pets
         context['num_tutors'] = num_tutors
         context['num_medical_cares'] = num_medical_cares
         context['num_general_clinics'] = num_general_clinics
         context['num_physical_exams'] = num_physical_exams
+        context['num_dherm_exams'] = num_dherm_exams
 
         return context
 

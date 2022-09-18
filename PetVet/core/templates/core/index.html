@@ -2,7 +2,7 @@
 {% load static %}
 
 {%block title%}
-<title>PetVet - Home</title>
+<title>PetVet - Início</title>
 {% endblock %}
 
 {% block content %}
@@ -10,7 +10,7 @@
 
   <div class="col-12 py-4 text-center">
     <h3>
-      <strong style="color: #003570;">
+      <strong style="color: #D98E04;">
         O PetVet é um sistema para o gerenciamento da sua clínica veterinária
       </strong>
     </h3>
@@ -21,10 +21,10 @@
         <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ynwxyv27.json" background="transparent"
           speed="1" style="width: 180px; height: 180px;" loop autoplay></lottie-player>
       </div>
-      <div class="col-8 border-end border-bottom border-warning border-2  rounded shadow">
+      <div class="col-8 border-end border-bottom border-warning border-2 rounded shadow bg-dark">
         <div class="align-middle">
           <h3 class="text-center py-4">
-            <strong style="color: #003570;">
+            <strong style="color: #0477BF;">
               O que é?
             </strong>
           </h3>
@@ -37,10 +37,10 @@
     </div>
 
     <div class="row py-4">
-      <div class="col-8 border-top border-start border-warning border-2  rounded shadow">
+      <div class="col-8 border-top border-start border-warning border-2  rounded shadow bg-dark">
         <div class="">
           <h3 class="text-center py-4">
-            <strong style="color: #003570;">
+            <strong style="color: #0477BF;">
               Funcionalidades
             </strong>
           </h3>
@@ -62,10 +62,10 @@
 
 
 <div classs="row">
-  <div class="col-md-6 offset-md-3"" text-center">
-<div class="shadow-sm py-1 text-center border-end border-bottom border-warning border-2 rounded shadow">
+  <div class="col-md-6 offset-md-3 text-center">
+<div class="shadow-sm py-1 text-center border-end border-bottom border-warning border-2 rounded shadow bg-dark">
   <h3 class="p-3">
-    <strong style="color: #003570;">
+    <strong style="color: #0477BF;">
       Veja um Resumo dos atendimentos
     </strong>
   </h3>
@@ -105,6 +105,9 @@
             </li>
             <li class="list-group-item">
               Total de Exames Fisicos Gerais: <strong>{{ num_physical_exams }}</strong>
+            </li>
+            <li class="list-group-item">
+              Total de Exames Dermatológicos: <strong>{{ num_dherm_exams }}</strong>
             </li>
             <li class="list-group-item">
               Total de Pets: <strong>{{ num_pets }}</strong>
