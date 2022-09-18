@@ -1,4 +1,5 @@
-from .models import MedicalCare, Pets, Tutor, Vet, GeneralClinic, PhysicalExam, GeneralDhermExam
+from .models import MedicalCare, Pets, Tutor, Vet
+from .models import GeneralClinic, PhysicalExam, GeneralDhermExam
 from braces.views import GroupRequiredMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
@@ -368,7 +369,20 @@ class PhysicalExamDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
 
 
 # Views General Dherm Exam
-class GeneralDhermCreate(LoginRequiredMixin, CreateView):
+class GeneralDhermExamList(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = GeneralDhermExam
+    template_name = 'core/general_dherm_exam_list.html'
+
+
+class GeneralDhermExamDetail(LoginRequiredMixin, DetailView):
+    login_url = reverse_lazy('login')
+    model = GeneralDhermExam
+    template_name = 'core/general_dherm_exam_detail.html'
+    success_url = reverse_lazy('general_dherm_exams')
+
+
+class GeneralDhermExamCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = GeneralDhermExam
     fields = ['medical_care', 'report', 'choice_anamnese',
@@ -377,13 +391,39 @@ class GeneralDhermCreate(LoginRequiredMixin, CreateView):
               'quest_14_color_fur', 'quest_15_dermatopias',
               'quest_16_persons_dermatopias', 'quest_17_contacts', 'quest_18_contacts_quant', 'quest_19_contacts_assint', 'quest_20_contacts_sint_quant', 'quest_21_contacts_sint_period', 'quest_22_contacts_access_street', 'quest_23_contacts_sleep_local', 'quest_24_contacts_petbed', 'quest_25_contacts_wash_petbed', 'quest_26_contacts_grass_earth', 'quest_27_contacts_plants', 'quest_28_special_place', 'quest_29_travel_cities', 'quest_30_pulgas_carrapatos']
     template_name = 'core/form_general_dherm_exam.html'
-    success_url = reverse_lazy('physical_exams')
+    success_url = reverse_lazy('general_dherm_exams')
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
 
-        context['title_window'] = 'PetVet - Exame Dermatológico Geral'
-        context['title_page'] = 'Novo Exame Dermatológico Geral'
-        context['tips'] = 'Preencha os campos para criar um novo exame Dermatólogico geral.'
+        context['title_window'] = 'PetVet - Exame Dermatológico'
+        context['title_page'] = 'Novo Exame Dermatológico'
+        context['tips'] = 'Preencha os campos para criar um novo exame Dermatólogico.'
 
         return context
+
+
+class GeneralDhermExamUpdate(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('login')
+    model = GeneralDhermExam
+    fields = ['medical_care', 'choice_conduct',
+              'weight', 'choice_consciousness', 'stance', 'hydration', 'choice_nutricional_status', 'oculopalpebral', 'bucal', 'genital', 'choice_dental_calculus', 'choice_dental_loss', 'gengivite', 'choice_ulcera', 'choice_halitose', 'linfonodos', 'fc', 'fr', 'tpc', 'tr', 'pulse', 'choice_auscu_cardio', 'heart_rate', 'choice_auscu_pulmonar', 'choice_percu_pulmonar', 'palpa_abdominal', 'choice_mamas', 'choice_nodulo', 'choice_nodulo_pain', 'choice_local_pain', 'choice_pain_m', 'genital_region', 'choice_ectoparasitas', 'ectoparasitas_intensity', 'pelage', 'ears', 'diag_differ', 'diag_final', 'case_classification']
+    template_name = 'core/form_general_dherm_exam.html'
+    success_url = reverse_lazy('general_dherm_exams')
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+
+        context['title_window'] = 'PetVet - Editar Exame Dermatológico'
+        context['title_page'] = 'Editar Exame Dermatológico'
+        context['tips'] = 'Preencha os campos para editar esse exame.'
+
+        return context
+
+
+class GeneralDhermExamDelete(GroupRequiredMixin, LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('login')
+    group_required = [u'Recepcionista', u'Admin']
+    model = GeneralDhermExam
+    template_name = 'core/form_delete.html'
+    success_url = reverse_lazy('general_dherm_exams')

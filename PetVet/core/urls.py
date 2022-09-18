@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import IndexView, MedicalCareList, PetList, TutorList,  VetList, GeneralClinicList, PhysicalExamList
-from .views import MedicalCareDetail, PetDetail, TutorDetail, GeneralClinicDetail, PhysicalExamDetail
-from .views import MedicalCareCreate, PetCreate, TutorCreate, VetCreate, GeneralClinicCreate, PhysicalExamCreate, GeneralDhermCreate
-from .views import MedicalCareUpdate, PetUpdate, TutorUpdate, VetUpdate, GeneralClinicUpdate, PhysicalExamUpdate
-from .views import MedicalCareDelete, PetDelete, TutorDelete, VetDelete, GeneralClinicDelete, PhysicalExamDelete
+from .views import IndexView, MedicalCareList, PetList, TutorList,  VetList, GeneralClinicList, PhysicalExamList, GeneralDhermExamList
+from .views import MedicalCareDetail, PetDetail, TutorDetail, GeneralClinicDetail, PhysicalExamDetail, GeneralDhermExamDetail
+from .views import MedicalCareCreate, PetCreate, TutorCreate, VetCreate, GeneralClinicCreate, PhysicalExamCreate, GeneralDhermExamCreate
+from .views import MedicalCareUpdate, PetUpdate, TutorUpdate, VetUpdate, GeneralClinicUpdate, PhysicalExamUpdate, GeneralDhermExamUpdate
+from .views import MedicalCareDelete, PetDelete, TutorDelete, VetDelete, GeneralClinicDelete, PhysicalExamDelete, GeneralDhermExamDelete
 
 
 urlpatterns = [
@@ -61,6 +61,14 @@ urlpatterns = [
     path('physical_exam_delete/<int:pk>',
          PhysicalExamDelete.as_view(), name='physical_exam_delete'),
 
-    path('dherm_exam_new/', GeneralDhermCreate.as_view(),
-         name='dherm_exam_new'),
+
+    path('general_dherm_exams/', GeneralDhermExamList.as_view(), name='general_dherm_exams'),
+    path('general_dherm_exam/<int:pk>', GeneralDhermExamDetail.as_view(),
+         name='general_dherm_exam_detail'),
+    path('general_dherm_exam_new/', GeneralDhermExamCreate.as_view(),
+         name='general_dherm_exam_new'),
+    path('general_dherm_exam_edit/<int:pk>',
+         GeneralDhermExamUpdate.as_view(), name='general_dherm_exam_edit'),
+    path('general_dherm_exam_delete/<int:pk>',
+         GeneralDhermExamDelete.as_view(), name='general_dherm_exam_delete'),
 ]

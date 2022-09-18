@@ -406,3 +406,14 @@ class GeneralDhermExam(models.Model):
         max_length=30, default='Não', verbose_name='Viaje para outras cidades?')
     quest_30_pulgas_carrapatos = models.CharField(
         max_length=15, default='Não', choices=pulgas_carrapatos, verbose_name='Tem pulgas/carrapatos?')
+    
+    class Meta:
+        ordering = ['id']
+
+    def get_absolute_url(self):
+        """Returns the url to access a particular general dherm exam care instance."""
+        return reverse('general_dherm_exam_detail', args=[str(self.id)])
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return f'{self.medical_care} - {self.choice_anamnese} - {self.report}'

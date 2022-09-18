@@ -6,18 +6,17 @@
 {% endblock %} 
 
 {% block content %}
-<h3><strong>Lista dos Exames Fisicos</strong></h3>
+<h3><strong>Lista dos Exames Dermatológicos</strong></h3>
 <hr>
-<a href="{% url 'physical_exam_new' %}" class="btn btn-success btn">Novo</a><br><br>
+<a href="{% url 'general_dherm_exam_new' %}" class="btn btn-success btn">Novo</a><br><br>
 
 <div class="table-responsive">
-  <table class="table table-bordered table-hover table-dark" id="physical_exam_table">
-    <thead class="thead-dark bg-dark">  
+  <table class="table table-bordered table-hover table-dark" id="general_dherm_table">
+    <thead class="thead-dark">  
       <tr>
         <th>Atendimento</th>
-        <th>Suspeitas</th>
-        <th>Diagnóstico Final</th>
-        <th>Classificação do Caso</th>
+        <th>Tipo de Atendimento</th>
+        <th>Queixa Principal</th>
         <th>Opções</th>
       </tr>
     </thead>
@@ -25,16 +24,15 @@
       {% for each in object_list %}
       <tr>
         <td>{{ each.medical_care }}</td>
-        <td>{{ each.diag_differ }}</td>
-        <td>{{ each.diag_final }}</td>
-        <td>{{ each.case_classification }}</td>
+        <td>{{ each.choice_anamnese }}</td>
+        <td>{{ each.report }}</td>
         <td>
-          <a href="{% url 'physical_exam_detail' each.pk %}" class="btn btn-warning btn-sm">Detalhes</a>
+          <a href="{% url 'general_dherm_exam_detail' each.pk %}" class="btn btn-warning btn-sm">Detalhes</a>
         </td>
       </tr>
       {% empty %}
       <tr>
-        <td colspan="6">Nenhum exame fisico geral cadastrado.</td>
+        <td colspan="6">Nenhum exame Dermatológico cadastrado.</td>
       </tr>
       {% endfor %}
     </tbody>
@@ -47,7 +45,7 @@
 
     $(document).ready(function(){
 
-        $('#physical_exam_table').DataTable({
+        $('#pet_table').DataTable({
           responsive: true,
           // "bSort": false,
           "aaSorting": [],
@@ -63,7 +61,7 @@
               "lengthMenu": "",
               "loadingRecords": "A carregar dados...",
               "processing": "A processar...",
-              "search": "Pesquisa:",
+              "search": "Procurar:",
               "zeroRecords": "Não foram encontrados resultados",
               "paginate": {
                   "first": "Primeiro",
