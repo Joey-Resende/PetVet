@@ -406,7 +406,15 @@ class GeneralDhermExam(models.Model):
         max_length=30, default='Não', verbose_name='Viaje para outras cidades?')
     quest_30_pulgas_carrapatos = models.CharField(
         max_length=15, default='Não', choices=pulgas_carrapatos, verbose_name='Tem pulgas/carrapatos?')
-    
+    quest_31_previne_carrapatos = models.CharField(max_length=50, default='Sim', verbose_name='Previne? (Sim, Não - Produto):')
+    quest_32_dose_freq = models.CharField(max_length=50, default='-', verbose_name='Dose / Frequência?:')
+    quest_33_food = models.CharField(max_length=50, default='APENAS Ração', verbose_name='Alimentação - Caseira, Ração(marca)?:')
+    quest_34_food_switch_freq = models.CharField(max_length=50, default='Não', verbose_name='Faz troca frequente de ração? (marcas usadas):')
+    quest_35_food_diet_time = models.CharField(max_length=30, default='-', verbose_name='Há quanto tempo ingere esta dieta? (marcas usadas):')
+    quest_36_water_offer = models.CharField(max_length=25, default='Torneira', verbose_name='Oferece água? (filtrada / torneira):')
+    quest_37_homemade_food = models.CharField(max_length=100, default='-', verbose_name='Se come comida caseira, o que ja comeu?:')
+
+        
     class Meta:
         ordering = ['id']
 

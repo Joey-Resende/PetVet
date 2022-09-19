@@ -8,38 +8,38 @@
 
 
 {% block content %}
-
-<div class="row">
-    {% if request.user.is_authenticated %}
-    <div class="col-md-4 mx-auto">
-        <h3>
-            <i class="fa fa-exclamation" aria-hidden="true"></i>
-            <strong>Ação não permitida</strong>
-        </h3>
-        <hr>
-        <div class="row col-5 mx-auto">
-            <img class="card-img-top" src="{% static 'img/labrador_dog_icon.png/' %}" alt="Imagem de capa do card">
-          </div>
-        <p class="lead">
-            <strong>Houve algum problema para processar a ação desejada ou você não tem permissão para isso.</strong><hr>
+<div class="container-fluid">
+    <div class="row">
+        {% if request.user.is_authenticated %}
+        <div class="col-md-4 mx-auto">
+            <h3>
+                <i class="fa fa-exclamation" aria-hidden="true"></i>
+                <strong>Ação não permitida</strong>
+            </h3>
+            <hr>
+            <div class="row col-5 mx-auto">
+                <img class="card-img-top" src="{% static 'img/labrador_dog_icon.png/' %}" alt="Imagem de capa do card">
+            </div>
+            <p class="lead">
+                <strong>Houve algum problema para processar a ação desejada ou você não tem permissão para isso.</strong><hr>
+                
+            </p>
+        </div>
+        {% else %}
+        
+        <div class ="col-md-4 mx-auto">
+            <h3><strong>Autenticação</strong></h3>
+            <hr>
+            <form action="" method="POST">
             
-        </p>
+                {% csrf_token %}
+        
+                {{ form|crispy }}
+        
+                <button type="submit" class="btn btn-warning mt-3">Entrar</button>
+            </form>
+        </div>
+        {% endif %}
     </div>
-    {% else %}
-    
-    <div class ="col-md-4 mx-auto">
-        <h3><strong>Autenticação</strong></h3>
-        <hr>
-        <form action="" method="POST">
-           
-            {% csrf_token %}
-    
-            {{ form|crispy }}
-    
-            <button type="submit" class="btn btn-warning mt-3">Entrar</button>
-        </form>
-    </div>
-    {% endif %}
 </div>
-
 {% endblock %}
