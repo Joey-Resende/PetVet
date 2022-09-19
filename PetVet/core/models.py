@@ -421,8 +421,12 @@ class GeneralDhermExam(models.Model):
     quest_43_feels_cold = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Sente muito frio?')
     quest_44_is_active = models.CharField(max_length=3, default='Sim', choices=castrated_status, verbose_name='É ativo?')
     quest_45_hipoativo = models.CharField(max_length=3, default='Sim', choices=castrated_status, verbose_name='Hipoativo?')
-    
-    
+    quest_46_agitado = models.CharField(max_length=3, default='Normal', choices=castrated_status, verbose_name='Muito agitado?')
+    quest_47_anxiety = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Ansioso?')
+    quest_48_anxiety_travel = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Fica ansioso quando alguém sai de casa ou viaja?')
+    quest_49_wound_get_worse = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='As lesões pioram nessas situações?')
+    quest_50_family_change = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Houve mudanças com na familia? (Humano ou Pet)')  
+    quest_51_family_change_affinity = models.CharField(max_length=3, default='-', choices=castrated_status, verbose_name='Se sim, ele era apegado?')
         
     class Meta:
         ordering = ['id']
