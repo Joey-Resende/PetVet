@@ -413,7 +413,16 @@ class GeneralDhermExam(models.Model):
     quest_35_food_diet_time = models.CharField(max_length=30, default='-', verbose_name='Há quanto tempo ingere esta dieta? (marcas usadas):')
     quest_36_water_offer = models.CharField(max_length=25, default='Torneira', verbose_name='Oferece água? (filtrada / torneira):')
     quest_37_homemade_food = models.CharField(max_length=100, default='-', verbose_name='Se come comida caseira, o que ja comeu?:')
-
+    quest_38_diarr = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Diarréia?')
+    quest_39_diarr_food = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Relacionado a algum alimento?')
+    quest_40_diarr_saz = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='É sazonal?')
+    quest_41_material_things = models.CharField(max_length=50, default='-', verbose_name='De que material são feitos, vasilha de água, comida e brinquedos?:')
+    quest_42_solar_time = models.CharField(max_length=30, default='Não', verbose_name='Passa muito tempo em áreas com sol? (Em quais horários):')
+    quest_43_feels_cold = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Sente muito frio?')
+    quest_44_is_active = models.CharField(max_length=3, default='Sim', choices=castrated_status, verbose_name='É ativo?')
+    quest_45_hipoativo = models.CharField(max_length=3, default='Sim', choices=castrated_status, verbose_name='Hipoativo?')
+    
+    
         
     class Meta:
         ordering = ['id']
