@@ -460,6 +460,12 @@ class GeneralDhermExam(models.Model):
         max_length=3, default='Não', choices=castrated_status, verbose_name='Lambe as extremidades?:')
     quest_57_stay_alone = models.CharField(
         max_length=3, default='Não', choices=castrated_status, verbose_name='Fica muito tempo sozinho?:')
+    quest_58_eat_differ = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Tomou algum medicamento ou comeu alguma coisa diferente antes de ocorrer o problema?:')
+    quest_59_sneeze = models.CharField(
+        max_length=30, default='Não', verbose_name='Há espirros? (Sim/Não - Frequência):')
+    quest_60_nasal_eye_discharge = models.CharField(
+        max_length=30, default='Não', verbose_name='Secreção nasal ou ocular? (Sim/Não - Frequência):')
 
     class Meta:
         ordering = ['id']
