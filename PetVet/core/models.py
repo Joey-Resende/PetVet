@@ -333,9 +333,9 @@ class GeneralDhermExam(models.Model):
     choice_anamnese = models.CharField(
         max_length=6, choices=type_anamnese, verbose_name='Tipo atendimento')
     evolution_time = models.CharField(
-        max_length=30, default='-' ,verbose_name='Tempo de evolução')
+        max_length=30, default='-', verbose_name='Tempo de evolução')
     choice_evolution_status = models.CharField(
-        max_length=30, choices=evolucion_status, default='-' ,verbose_name='Status da evolução')
+        max_length=30, choices=evolucion_status, default='-', verbose_name='Status da evolução')
     evolution_score = models.CharField(
         max_length=2, default='-', choices=score, verbose_name='Nota de evolução')
     quest_01_where_begin = models.CharField(
@@ -406,28 +406,61 @@ class GeneralDhermExam(models.Model):
         max_length=30, default='Não', verbose_name='Viaje para outras cidades?')
     quest_30_pulgas_carrapatos = models.CharField(
         max_length=15, default='Não', choices=pulgas_carrapatos, verbose_name='Tem pulgas/carrapatos?')
-    quest_31_previne_carrapatos = models.CharField(max_length=50, default='Sim', verbose_name='Previne? (Sim, Não - Produto):')
-    quest_32_dose_freq = models.CharField(max_length=50, default='-', verbose_name='Dose / Frequência?:')
-    quest_33_food = models.CharField(max_length=50, default='APENAS Ração', verbose_name='Alimentação - Caseira, Ração(marca)?:')
-    quest_34_food_switch_freq = models.CharField(max_length=50, default='Não', verbose_name='Faz troca frequente de ração? (marcas usadas):')
-    quest_35_food_diet_time = models.CharField(max_length=30, default='-', verbose_name='Há quanto tempo ingere esta dieta? (marcas usadas):')
-    quest_36_water_offer = models.CharField(max_length=25, default='Torneira', verbose_name='Oferece água? (filtrada / torneira):')
-    quest_37_homemade_food = models.CharField(max_length=100, default='-', verbose_name='Se come comida caseira, o que ja comeu?:')
-    quest_38_diarr = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Diarréia?')
-    quest_39_diarr_food = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Relacionado a algum alimento?')
-    quest_40_diarr_saz = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='É sazonal?')
-    quest_41_material_things = models.CharField(max_length=50, default='-', verbose_name='De que material são feitos, vasilha de água, comida e brinquedos?:')
-    quest_42_solar_time = models.CharField(max_length=30, default='Não', verbose_name='Passa muito tempo em áreas com sol? (Em quais horários):')
-    quest_43_feels_cold = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Sente muito frio?')
-    quest_44_is_active = models.CharField(max_length=3, default='Sim', choices=castrated_status, verbose_name='É ativo?')
-    quest_45_hipoativo = models.CharField(max_length=3, default='Sim', choices=castrated_status, verbose_name='Hipoativo?')
-    quest_46_agitado = models.CharField(max_length=3, default='Normal', choices=castrated_status, verbose_name='Muito agitado?')
-    quest_47_anxiety = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Ansioso?')
-    quest_48_anxiety_travel = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Fica ansioso quando alguém sai de casa ou viaja?')
-    quest_49_wound_get_worse = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='As lesões pioram nessas situações?')
-    quest_50_family_change = models.CharField(max_length=3, default='Não', choices=castrated_status, verbose_name='Houve mudanças com na familia? (Humano ou Pet)')  
-    quest_51_family_change_affinity = models.CharField(max_length=3, default='-', choices=castrated_status, verbose_name='Se sim, ele era apegado?')
-        
+    quest_31_previne_carrapatos = models.CharField(
+        max_length=50, default='Sim', verbose_name='Previne? (Sim, Não - Produto):')
+    quest_32_dose_freq = models.CharField(
+        max_length=50, default='-', verbose_name='Dose / Frequência?:')
+    quest_33_food = models.CharField(
+        max_length=50, default='APENAS Ração', verbose_name='Alimentação - Caseira, Ração(marca)?:')
+    quest_34_food_switch_freq = models.CharField(
+        max_length=50, default='Não', verbose_name='Faz troca frequente de ração? (marcas usadas):')
+    quest_35_food_diet_time = models.CharField(
+        max_length=30, default='-', verbose_name='Há quanto tempo ingere esta dieta? (marcas usadas):')
+    quest_36_water_offer = models.CharField(
+        max_length=25, default='Torneira', verbose_name='Oferece água? (filtrada / torneira):')
+    quest_37_homemade_food = models.CharField(
+        max_length=100, default='-', verbose_name='Se come comida caseira, o que ja comeu?:')
+    quest_38_diarr = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Diarréia?')
+    quest_39_diarr_food = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Relacionado a algum alimento?')
+    quest_40_diarr_saz = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='É sazonal?')
+    quest_41_material_things = models.CharField(
+        max_length=50, default='-', verbose_name='De que material são feitos, vasilha de água, comida e brinquedos?:')
+    quest_42_solar_time = models.CharField(
+        max_length=30, default='Não', verbose_name='Passa muito tempo em áreas com sol? (Em quais horários):')
+    quest_43_feels_cold = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Sente muito frio?:')
+    quest_44_is_active = models.CharField(
+        max_length=3, default='Sim', choices=castrated_status, verbose_name='É ativo?')
+    quest_45_hipoativo = models.CharField(
+        max_length=3, default='Sim', choices=castrated_status, verbose_name='Hipoativo?:')
+    quest_46_agitado = models.CharField(
+        max_length=6, default='Normal', choices=castrated_status, verbose_name='Muito agitado?:')
+    quest_47_anxiety = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Ansioso?:')
+    quest_48_anxiety_travel = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Fica ansioso quando alguém sai de casa ou viaja?:')
+    quest_49_wound_get_worse = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='As lesões pioram nessas situações?:')
+    quest_50_family_change = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Houve mudanças com na familia? (Humano ou Pet):')
+    quest_51_family_change_affinity = models.CharField(
+        max_length=3, default='-', choices=castrated_status, verbose_name='Se sim, ele era apegado?:')
+    quest_52_family_change_house = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Houve mudança de casa?:')
+    quest_53_restrict_area_stay = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Restrição de área para o animal ficar?:')
+    quest_54_restrict_walk_play = models.CharField(
+        max_length=19, default='Não passeio com ele', choices=castrated_status, verbose_name='Restrição de passeio/brincadeiras?:')
+    quest_55_others_changes = models.CharField(
+        max_length=50, default='-', verbose_name='Houveram outras mudanças no ambiente que possam desencadear ansiedade?:')
+    quest_56_lick_ends = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Lambe as extremidades?:')
+    quest_57_stay_alone = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Fica muito tempo sozinho?:')
+
     class Meta:
         ordering = ['id']
 
