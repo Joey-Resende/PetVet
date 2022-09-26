@@ -465,7 +465,13 @@ class GeneralDhermExam(models.Model):
     quest_59_sneeze = models.CharField(
         max_length=30, default='Não', verbose_name='Há espirros? (Sim/Não - Frequência):')
     quest_60_nasal_eye_discharge = models.CharField(
-        max_length=30, default='Não', verbose_name='Secreção nasal ou ocular? (Sim/Não - Frequência):')
+        max_length=50, default='Não', verbose_name='Secreção nasal ou ocular? (Sim/Não - Frequência - Coloração):')
+    quest_61_castrated = models.CharField(
+        max_length=50, default='Não', verbose_name='Castrado? (Sim/Não - Com quantos anos/meses):')
+    quest_62_cio_frequence_anual = models.CharField(
+        max_length=30, default='-', verbose_name='Frequência anual do cio:')
+    quest_63_cio_ausence = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Ausência de cio?:')
 
     class Meta:
         ordering = ['id']
