@@ -472,6 +472,50 @@ class GeneralDhermExam(models.Model):
         max_length=30, default='-', verbose_name='Frequência anual do cio:')
     quest_63_cio_ausence = models.CharField(
         max_length=3, default='Não', choices=castrated_status, verbose_name='Ausência de cio?:')
+    quest_64_pseudociese = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Pseudociese?:')
+    quest_65_gave_birth = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Já pariu?:')
+    quest_66_gave_birth_quant = models.CharField(
+        max_length=30, default='-, vivos(-), mortos(-)', verbose_name='Quantas vezes(vivos(), mortos()):')
+    quest_67_mamas_add = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Mamas aumentadas?:')
+    quest_68_mamas_nodulo = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Nódulos mamários?:')
+    quest_69_libido = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Animal tem libido?:')
+    quest_70_libido_sex = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='É por animais do mesmo sexo?:')
+    quest_71_otites = models.CharField(
+        max_length=25, default='Não', choices=castrated_status, verbose_name='Otites? - (Sazonal ou não):')
+    quest_72_polifagia = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Tem Polifagia?:')
+    quest_73_polifagia = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Tem Polidipsia?:')
+    quest_74_poliuria = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Tem Poliúria?:')
+    quest_75_tumor_nodulo = models.CharField(
+        max_length=3, default='Não', choices=castrated_status, verbose_name='Tem tumor/nódulo?:')
+    quest_76_tumor_grow_speed = models.CharField(
+        max_length=25, default='-', choices=castrated_status, verbose_name='Qual a velocidade do crescimento do tumor?:')
+    quest_77_tumor_where_begin = models.CharField(
+        max_length=30, default='-', choices=castrated_status, verbose_name='Onde começou?:')
+    quest_78_tumor_pruriginoso = models.CharField(
+        max_length=30, default='Não', verbose_name='Pruriginoso? (nota - 0 a 10):')
+    quest_79_tumor_operado = models.CharField(
+        max_length=3, default='-', choices=castrated_status, verbose_name='Já foi operado anteriormente?:')
+    quest_79_tumor_operado_renew = models.CharField(
+        max_length=3, default='-', choices=castrated_status, verbose_name='Houve recidiva?:')
+    quest_80_pet_bath = models.CharField(
+        max_length=3, default='-', choices=castrated_status, verbose_name='Banha o animal?:')
+    quest_81_pet_bath_local = models.CharField(
+        max_length=10, default='Casa', verbose_name='Banha o animal em casa ou Pet Shop?:')
+    quest_82_pet_bath_freq = models.CharField(
+        max_length=25, default='-', verbose_name='Frequência?:')
+    quest_83_pet_bath_prod = models.CharField(
+        max_length=65, default='-', verbose_name='Produtos usados no banho:')
+    quest_84_other_system = models.CharField(
+        max_length=65, default='-', verbose_name='Outros sistemas:')
 
     class Meta:
         ordering = ['id']
