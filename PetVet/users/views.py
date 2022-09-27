@@ -32,7 +32,7 @@ class UserCreate(CreateView):
 
 
 class ProfileUpdate(UpdateView):
-    template_name = 'core/form.html'
+    template_name = 'users/form_modal.html'
     model = Profile
     fields = ['name', 'cpf', 'phone']
     success_url = reverse_lazy('index')
@@ -45,7 +45,7 @@ class ProfileUpdate(UpdateView):
         context = super().get_context_data(*args, **kwargs)
 
         context['title_window'] = 'PetVet - Meus Dados'
-        context['title_page'] = 'Meus Dados'
+        context['title_page'] = 'Meus Dados Cadastrados'
         context['tips'] = 'Preencha os campos para completar seu perfil.'
 
         return context

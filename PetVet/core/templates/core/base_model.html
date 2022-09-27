@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %} 
 
 <!DOCTYPE html>
 <html lang="pt-br" class="h-100">
@@ -34,7 +35,7 @@
 
     {% block menu %}
     
-    <nav class="navbar navbar-expand-lg sticky-top bg-warning" aria-label="Sixth navbar example">
+    <nav class="navbar navbar-expand-lg sticky-top bg-warning">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'index' %}">
           <img src="{% static 'img/favicon.ico/' %}" height="40" alt="" />
@@ -58,7 +59,6 @@
               </a>
             </li>
             
-           
             <li class="nav-item dropdown">
               <a class="nav-link text-dark dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-clipboard-check" aria-hidden="true"></i>
@@ -113,52 +113,43 @@
             </li>
           </ul>
           
-         
-          
           <div class="collapse navbar-collapse d-lg-flex justify-content-end">
             <ul class="navbar-nav bd-navbar-nav flex=row">
               {% if request.user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link text-dark" href="{% url 'meus_dados' %}">
-                  <i class="fas fa-user-circle" aria-hidden="true"></i>
-                  <span id="username">{{ request.user }}</span>
-                </a>
-              </li>
-
-              <div class="dropdown">
-                <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                  <i class="fas fa-address-card" aria-hidden="true"></i>
-                  Meus dados cadastrados
+                <button type="button" class="btn btn-warning"  style="--bs-btn-padding-y: .45rem; --bs-btn-padding-x: 0rem" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <i class="fas fa-user-circle" aria-hidden="true"></i>
+                    <span id="username">{{ request.user }}</span>
                 </button>
-                <form action="/users/update_profile/" class="dropdown-menu p-3 bg-dark" method="POST">
-                  <div class="mb-3">
-                    <label for="name" class="form-label">Nome completo</label>
-                    {% csrf_token %}
-                    <input type="text" class="form-control" id="name" value="{{ request.user.profile.name }}">
-                  </div>
-                  <div class="mb-3">
-                    <label for="cpf" class="form-label">Cpf</label>
-                    {% csrf_token %}
-                    <input type="text" class="form-control" id="cpf" value="{{ request.user.profile.cpf }}">
-                  </div>
-                  <div class="mb-3">
-                    <div class="mb-3">
-                      <label for="phone" class="form-label">Telefone</label>
-                      {% csrf_token %}
-                      <input type="text" class="form-control" id="phone" value="{{ request.user.profile.phone }}">
+               <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content bg-dark">
+                      <div class="modal-header">
+                        <h5 class="modal-title text-warning" id="staticBackdropLabel">{{ title_page }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                          <p class="text-warning">{{ tips }}</p>
+                          <div class="container-fluid">
+                              <div class="row">
+                                <div class="col">
+                                  {% csrf_token %} 
+                                  {{ form|crispy }}
+                                </div>
+                                <div class="col">
+                      
+                                </div>
+                              </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-success">Salvar</button>
+                      </div>
                     </div>
                   </div>
-                  <button type="submit" class="btn btn-warning">Salvar</button>
-                </form>
-              </div>
-
-              <!-- fica para proxima versao
-                <li class="nav-item">
-                  <a class="nav-link text-dark" href="#">
-                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
-                    Alterar senha
-                  </a>
-                -->
+                </div>
+               
               </li>
               <li class="nav-item">
                 <a class="nav-link text-dark" href="{% url 'logout' %}">
