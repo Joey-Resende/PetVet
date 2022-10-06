@@ -32,7 +32,7 @@ class UserCreate(CreateView):
 
 
 class ProfileUpdate(UpdateView):
-    template_name = 'users/form_modal.html'
+    template_name = 'core/form.html'
     model = Profile
     fields = ['name', 'cpf', 'phone']
     success_url = reverse_lazy('index')
