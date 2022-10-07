@@ -35,7 +35,7 @@
 
     {% block menu %}
     
-    <nav class="navbar navbar-expand-lg sticky-top bg-warning">
+    <nav class="navbar navbar-expand-lg sticky-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="{% url 'index' %}">
           <img src="{% static 'img/favicon.ico/' %}" height="40" alt="" />
@@ -160,27 +160,21 @@
       
   </main>
 
-    
 {% block footer %}
-<div class="container border border-warning border-2 rounded shadow bg-dark">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-1">
-    <div class="col-md-4 d-flex align-items-center">
-      <a href="{% url 'index' %}" class="mb-3 me-2 mb-md-0">
-        <img src="{% static 'img/cat_yellow.png/' %}" width="50" height="50" alt=""> 
-      </a>
-      <span class="mb-3 mb-md-0 text-warning"><strong>&copy;PetVet</strong></span>
-    </div>
-
-    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-      <li class="ms-3 text-warning"><strong>Dev: Joey Resende</strong>  <a href="https://github.com/Joey-Resende" target="_blank">
-        <i class="fab fa-github fa-lg text-black" aria-hidden="true"></i>
-      </a></li>
-      <li class="ms-3"><a href="https://www.linkedin.com/in/givanildo-resende/" target="_blank">
-        <i class="fab fa-linkedin fa-lg text-black" aria-hidden="true"></i>
-      </a></li>
-      <li class="ms-3"></li>
-    </ul>
-  </footer>
+<footer class="blog-footer">
+  <p>
+    <a href="#"><img src="{% static 'img/cat_yellow.png/' %}" width="80" height="80" alt=""></a>
+    <h3>PetVet</h3>
+  </p>
+  <p>Dev: Joey Resende
+    <a href="https://www.linkedin.com/in/givanildo-resende/" target="_blank">
+      <i class="fab fa-linkedin fa-lg text-black" aria-hidden="true"></i>
+    </a>
+    <a href="https://github.com/Joey-Resende" target="_blank">
+      <i class="fab fa-github fa-lg text-black" aria-hidden="true"></i>
+    </a>
+  </p>
+</footer>
 </div>
 {% endblock %}
   
