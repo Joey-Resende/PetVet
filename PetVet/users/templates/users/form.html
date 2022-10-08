@@ -14,11 +14,8 @@
             <form action="" method="POST">
                 <h3>Autenticação</h3>
                 <p>Preencha os campos para acessar a página</p><hr><br>
-
-                {% csrf_token %}
-        
-                {{ form|crispy }}
-        
+                    {% csrf_token %}
+                    {{ form|crispy }}
                 <button type="submit" class="btn btn-warning mt-3">Entrar</button>
             </form>
             </form>
