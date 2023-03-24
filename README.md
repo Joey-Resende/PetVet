@@ -1,4 +1,4 @@
-# <img src="file:///home/joey/Documents/Back%20up%20notebook/coding/PetVet/PetVet/static/img/favicon-III.png" title="" alt="icon" width="50">  **PetVet**
+# <img src="file:///PetVet/PetVet/static/img/favicon-III.png" title="" alt="icon" width="50">  **PetVet**
 
 <img title="" src="file:///home/joey/Documents/Back%20up%20notebook/coding/PetVet/PetVet/static/img/cat_yellow.png" alt="" data-align="center">
 
