@@ -1,6 +1,6 @@
 # <img src="https://github.com/Joey-Resende/PetVet/blob/main/PetVet/static/img/faviconII.ico" title="" alt="icon" width="50">  **PetVet**
 
-<img title="" src="file:///home/joey/Documents/Back%20up%20notebook/coding/PetVet/PetVet/static/img/cat_yellow.png" alt="" data-align="center">
+<img title="" src="https://github.com/Joey-Resende/PetVet/blob/main/PetVet/static/img/cat_yellow.png" alt="" data-align="center">
 
 ## **Ideia do projeto**
 
@@ -87,4 +87,4 @@ O **PetVet** está disponivel sobre os termos do MIT License. Para os termos com
 
 
 
-<img title="" src="file:///home/joey/Documents/Back%20up%20notebook/coding/PetVet/PetVet/static/img/login_screen.png" alt="tela_login" data-align="center">
+<img title="" src="https://github.com/Joey-Resende/PetVet/blob/main/PetVet/static/img/login_screen.png" alt="tela_login" data-align="center">
