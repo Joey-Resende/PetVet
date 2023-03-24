@@ -1,6 +1,6 @@
 # <img src="https://github.com/Joey-Resende/PetVet/blob/main/PetVet/static/img/faviconII.ico" title="" alt="icon" width="50">  **PetVet**
 
-<img title="" src="https://github.com/Joey-Resende/PetVet/blob/main/PetVet/static/img/cat_yellow.png" alt="" data-align="center">
+<img title="cat-cest" src="https://github.com/Joey-Resende/PetVet/blob/main/PetVet/static/img/cat_yellow.png" alt="" data-align="center">
 
 ## **Ideia do projeto**
 
