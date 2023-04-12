@@ -85,6 +85,4 @@ Atualmente o sistema possui as seguintes funcionalidades:
 
 O **PetVet** está disponivel sobre os termos do MIT License. Para os termos completos veja [licença](https://github.com/Joey-Resende/PetVet/blob/main/LICENSE).
 
-
-
 <img title="" src="https://github.com/Joey-Resende/PetVet/blob/main/PetVet/static/img/login_screen.png" alt="tela_login" data-align="center">
