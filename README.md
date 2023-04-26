@@ -31,27 +31,27 @@ E recomendado o uso de um ambiente virtual para que as dependências fiquem isol
 
 - Criar um **ambiente virtual** com o poetry
   
-  1. ```
-     poetry shell         
-     ```
+  ```bash
+  poetry shell         
+  ```
 
 - Instala as dependências com o **poetry**
   
-  1. ```
-     poetry install
-     ```
+  ```bash
+  poetry install
+  ```
 
 - Se tudo deu certo ja poderemos iniciar o servidor e testar a aplicação, para isso precisamos do arquivo **manage.py** que se encontra no proximo nivel dos diretórios
   
-  - ```
-    cd PetVet/
-    ```
+  ```bash
+  cd PetVet/
+  ```
 
 - O arquivo **manage.py** nos fornece alguns comandos, entre eles o de iniciar o servidor.
   
-  - ```
-    python3 manage.py runserver
-    ```
+  ```bash
+  python3 manage.py runserver
+  ```
 
 - Depois de iniciar o servidor só e necessário criar **um usuário** para acessar o sistema. O usuário padrão que e criado tem todas as permissões exceto a de excluir registros.
 
