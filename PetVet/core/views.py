@@ -103,6 +103,13 @@ class PetDetail(LoginRequiredMixin, DetailView):
     success_url = reverse_lazy('pets')
 
 
+class PetAllCareList(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = MedicalCare
+    template_name = 'core/pet_all_care_list.html'
+    success_url = reverse_lazy('pets')
+
+
 class PetCreate(LoginRequiredMixin, CreateView):
     login_url = reverse_lazy('login')
     model = Pets

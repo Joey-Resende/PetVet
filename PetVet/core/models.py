@@ -136,7 +136,7 @@ class Pets(models.Model):
     species = models.CharField(
         max_length=20, verbose_name='Espécie')
     breed = models.CharField(
-        max_length=30, verbose_name='Raça')
+        max_length=30, default='SPRD',verbose_name='Raça')
     gender = models.CharField(
         max_length=5, choices=sex_status, verbose_name='Gênero')
     date_of_birth = models.DateField(

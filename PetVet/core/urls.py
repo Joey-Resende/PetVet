@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import IndexView, MedicalCareList, PetList, TutorList,  VetList, GeneralClinicList, PhysicalExamList, GeneralDhermExamList
+from .views import IndexView, MedicalCareList, PetList, TutorList,  VetList, GeneralClinicList, PhysicalExamList, GeneralDhermExamList, PetAllCareList
 from .views import MedicalCareDetail, PetDetail, TutorDetail, GeneralClinicDetail, PhysicalExamDetail, GeneralDhermExamDetail
 from .views import MedicalCareCreate, PetCreate, TutorCreate, VetCreate, GeneralClinicCreate, PhysicalExamCreate, GeneralDhermExamCreate
 from .views import MedicalCareUpdate, PetUpdate, TutorUpdate, VetUpdate, GeneralClinicUpdate, PhysicalExamUpdate, GeneralDhermExamUpdate
@@ -19,6 +19,7 @@ urlpatterns = [
     path('medical_care_delete/<int:pk>',
          MedicalCareDelete.as_view(), name='medical_care_delete'),
 
+    path('pet_all_care_list/<int:pk>', PetAllCareList.as_view(), name='pet_all_care_list'),
 
     path('pets/', PetList.as_view(), name='pets'),
     path('pet/<int:pk>', PetDetail.as_view(), name='pet_detail'),
