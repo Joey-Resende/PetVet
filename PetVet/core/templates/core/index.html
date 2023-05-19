@@ -21,7 +21,7 @@
         <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_ynwxyv27.json" background="transparent"
           speed="1" style="width: 180px; height: 180px;" loop autoplay></lottie-player>
       </div>
-      <div class="col-8 border-end border-bottom border-warning border-2 rounded shadow bg-dark">
+      <div class="col-8 border-end border-bottom border-warning border-opacity-25 border-2 rounded shadow bg-dark">
         <div class="align-middle">
           <h3 class="text-center py-4">
             <strong style="color: #0477BF;">
@@ -37,7 +37,7 @@
     </div>
 
     <div class="row py-4">
-      <div class="col-8 border-top border-start border-warning border-2  rounded shadow bg-dark">
+      <div class="col-8 border-top border-start border-warning border-2 border-opacity-25 rounded shadow bg-dark">
         <div class="">
           <h3 class="text-center py-4">
             <strong style="color: #0477BF;">
@@ -63,7 +63,7 @@
 
 <div classs="row">
   <div class="col-md-6 offset-md-3 text-center">
-<div class="shadow-sm py-1 text-center border-end border-bottom border-warning border-2 rounded shadow bg-dark">
+<div class="shadow-sm py-1 text-center border-end border-bottom border-warning border-2 border-opacity-25 rounded shadow bg-dark">
   <h3 class="p-3">
     <strong style="color: #0477BF;">
       Veja um Resumo dos atendimentos
@@ -77,7 +77,6 @@
         <h3 class="text-center">
           <strong>Bem vindo ao PetVet</strong> <br />{{ user.profile.name }}
         </h3>
-        <hr />
         {% else %}
 
         <h3>
@@ -97,29 +96,26 @@
             </h5>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">
+            <li class="list-group-item text-white bg-dark">
               Total de Atendimentos: <strong>{{ num_medical_cares }}</strong>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-white bg-dark">
               Total de Exames Clínicos Gerais: <strong>{{ num_general_clinics }}</strong>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-white bg-dark">
               Total de Exames Fisicos Gerais: <strong>{{ num_physical_exams }}</strong>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-white bg-dark">
               Total de Exames Dermatológicos: <strong>{{ num_dherm_exams }}</strong>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-white bg-dark">
               Total de Pets: <strong>{{ num_pets }}</strong>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item text-white bg-dark">
               Total de Tutores: <strong>{{ num_tutors }}</strong>
             </li>
           </ul>
-          <div class="card-body"></div>
-        </div>
-        <hr />
-        <br />
+     
         {% if request.user.is_authenticated and user.profile.name is none %}
         <h5 class="text-center">
           <strong>Você precisa completar seu cadastro. Acesse o meus dados
